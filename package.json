@@ -1,0 +1,26 @@
+{
+  "name": "inf5750-project",
+  "version": "0.0.1",
+  "description": "Group project in inf5750",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eskalol/StackSmashingDetected.git"
+  },
+  "keywords": [
+    "nodejs",
+    "react",
+    "redux",
+    "sass",
+    "bootstrap"
+  ],
+  "author": "Eskil, Nicolay, Torstein",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Eskalol/StackSmashingDetected/issues"
+  },
+  "homepage": "https://github.com/Eskalol/StackSmashingDetected#readme"
+}
