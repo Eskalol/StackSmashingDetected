@@ -1,3 +1,6 @@
+notifications:
+  slack: stacksmashingdetected:CFyc02quspIexOTU1aoV1a7e
+
 language: node_js
 node_js:
   - 'stable'
