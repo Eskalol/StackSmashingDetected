@@ -7,7 +7,7 @@
 [![devDependencies Status](https://david-dm.org/Eskalol/StackSmashingDetected/dev-status.svg)](https://david-dm.org/Eskalol/StackSmashingDetected?type=dev)
 
 ##Test coverage
-[![Coverage Status](https://coveralls.io/repos/github/Eskalol/StackSmashingDetected/badge.svg?branch=master)](https://coveralls.io/github/Eskalol/StackSmashingDetected?branch=master)
+[![codecov](https://codecov.io/gh/Eskalol/StackSmashingDetected/branch/master/graph/badge.svg)](https://codecov.io/gh/Eskalol/StackSmashingDetected)
 
 Group project in inf5750
 
