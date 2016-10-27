@@ -1,4 +1,28 @@
 {
+  "name": "StackSmashingDetected",
+  "version": "0.42.0",
+  "description": "INF5750 project",
+  "keywords": [
+    "React",
+    "Redux",
+    "Sass",
+    "babel",
+    "eslint",
+    "webpack",
+    "karma",
+    "gulp 4",
+    "jasmine",
+    "codecov"
+  ],
+  "author": "Eskil Opdahl Nordland <eskil.nordland@gmail.com>,
+             Nicolay David Mohebi <n.d.mohebi@usit.uio.no
+             Torstein Brevig <torstbre@ifi.uio.no>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eskalol/StackSmashingDetected"
+  },
+
   "dependencies": {
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
