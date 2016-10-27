@@ -3,7 +3,7 @@ notifications:
     rooms:
       secure: WdYiEH8YY2TyDEyw9K+ogoxce9/6ge+VtLO6h74e1uLPV6Xbb/e891SBMed6LBnSd4eIYMsNWRoWiuSlmmBGUV3265Yjahl2X6kGLLQh9fLB1nw05zmKApnfzCnB9owbTlqikVJcWJAtCf9161IM3Q1vST0hUU+b2izQT8+vVH6LMoVxgBKcTtFhleTUdlrCibrvYPBUNJ/vGSpudLw2LT8YP0U27zSo6cbHQNGQ3u0fW6jVUkGIZxmav7lqgZfbJCGuH3bjIj6gGQySB5880R7y+lqyaL+CA2hvpDGF89TyAyCkJ4UckQuP08DKmvC7L1QeDZ6ykDsz97iMgdrCGW/w60lI/xbd6ir+4vgi9YrbybVEsZGdJgZOrF754smez8zt/Eb4zmpdt6SZjFFVmAxUR+QCVPCisY2UFu1j4O7kMa7cOEWrAH8yrjsKIvfCj1emN9LtI56/pPSegBZggbzAmrYa1jOhpXFDnCdlCJyiA501oyEz7gI2KeRJWAEb6lE9nqjNOfkNJ2dt7mLqK8B1PbxVdY9hVHLdZwD2eCrMFmqNCXe5Thq8Ytl47bInEZP4jw0yKfjWokNoNFHDamAc3bUgOpM03aS57+Ic69rGEZ3FVYgRlMMk1zTd+KowZAUsSXah3krincVCdaWoU3ZBnwOZcDm0pbhOIkxg6j0=
     template:
-      - '<a href="(https://github.com/Eskalol/%{repository_name}/tree/%{branch})">(%{branch})</a> %{repository_name}'
+      - '(%{branch})(https://github.com/Eskalol/%{repository_name}/tree/%{branch}) %{repository_name}'
       - 'Build #%{build_number} [![(%{build_id})] (%{build_url})] (%{compare_url}) %{result} in %{elapsed_time}'
       - '(%{commit}) message: %{commit_message} by %{author}'
     format: html
