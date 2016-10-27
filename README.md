@@ -9,6 +9,10 @@
 ###[Contributor guide](https://github.com/Eskalol/StackSmashingDetected/blob/master/not_for_deploy/contrib.md)
 ###[Project description](https://github.com/Eskalol/StackSmashingDetected/blob/master/not_for_deploy/project.md)
 
+###Coverage
+[<object data="https://codecov.io/gh/Eskalol/StackSmashingDetected/branch/master/graphs/sunburst.svg" type="image/svg+xml"></object>]
+
+
 ###Fountain and Yeoman
 [<img src="http://fountainjs.io/assets/imgs/artworks/fountainjs-logo6-machine.png" width="200">](http://fountainjs.io/)[<img src="http://blog.teamtreehouse.com/wp-content/uploads/2014/01/yeoman-logo.png" width="200">](http://yeoman.io/)
 
