@@ -10,7 +10,7 @@
 ###[Project description](https://github.com/Eskalol/StackSmashingDetected/blob/master/not_for_deploy/project.md)
 
 ###Coverage
-[<object data="https://codecov.io/gh/Eskalol/StackSmashingDetected/branch/master/graphs/sunburst.svg" type="image/svg+xml"></object>]
+<object data="https://codecov.io/gh/Eskalol/StackSmashingDetected/branch/master/graphs/sunburst.svg" type="image/svg+xml"></object>
 
 
 ###Fountain and Yeoman
