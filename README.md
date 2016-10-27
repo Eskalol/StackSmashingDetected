@@ -10,5 +10,6 @@
 ###[Project description](https://github.com/Eskalol/StackSmashingDetected/blob/master/not_for_deploy/project.md)
 
 ###Fountain and Yeoman
-[![fointain](http://fountainjs.io/assets/imgs/artworks/fountainjs-logo6-machine.png)](http://fountainjs.io/)[![yeoman](http://blog.teamtreehouse.com/wp-content/uploads/2014/01/yeoman-logo.png)](http://yeoman.io/)
+[![fointain](http://fountainjs.io/assets/imgs/artworks/fountainjs-logo6-machine.png)<img src="http://fountainjs.io/assets/imgs/artworks/fountainjs-logo6-machine.png" width="100">](http://fountainjs.io/)[![yeoman](http://blog.teamtreehouse.com/wp-content/uploads/2014/01/yeoman-logo.png)<img src="http://blog.teamtreehouse.com/wp-content/uploads/2014/01/yeoman-logo.png" width="100">](http://yeoman.io/)
+
 We used the Yeoman generator Fountain to generate our initial project.
