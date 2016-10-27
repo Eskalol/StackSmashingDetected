@@ -1,6 +1,6 @@
 #How to contribute
 ####[Project description](https://github.com/Eskalol/StackSmashingDetected/blob/master/not_for_deploy/project.md)
-####Also check issue tracker for open issues.
+####[Also check issue tracker for open issues](https://github.com/Eskalol/StackSmashingDetected/issues)
 
 ##Setup
 ```{r, engine='bash', count_lines}
