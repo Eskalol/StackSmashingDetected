@@ -1,13 +1,11 @@
 # StackSmashingDetected
-##Build
-[![Build Status](https://travis-ci.org/Eskalol/StackSmashingDetected.svg?branch=master)](https://travis-ci.org/Eskalol/StackSmashingDetected)
-
-##Dependencies
-[![dependencies Status](https://david-dm.org/Eskalol/StackSmashingDetected/status.svg)](https://david-dm.org/Eskalol/StackSmashingDetected)
-[![devDependencies Status](https://david-dm.org/Eskalol/StackSmashingDetected/dev-status.svg)](https://david-dm.org/Eskalol/StackSmashingDetected?type=dev)
+###Health
+[![Build Status](https://travis-ci.org/Eskalol/StackSmashingDetected.svg?branch=master)](https://travis-ci.org/Eskalol/StackSmashingDetected)[![dependencies Status](https://david-dm.org/Eskalol/StackSmashingDetected/status.svg)](https://david-dm.org/Eskalol/StackSmashingDetected)[![devDependencies Status](https://david-dm.org/Eskalol/StackSmashingDetected/dev-status.svg)](https://david-dm.org/Eskalol/StackSmashingDetected?type=dev)[![codecov](https://codecov.io/gh/Eskalol/StackSmashingDetected/branch/master/graph/badge.svg)](https://codecov.io/gh/Eskalol/StackSmashingDetected)
 
 ##Test coverage
-[![codecov](https://codecov.io/gh/Eskalol/StackSmashingDetected/branch/master/graph/badge.svg)](https://codecov.io/gh/Eskalol/StackSmashingDetected)
+[![Coverage graph]](https://codecov.io/gh/Eskalol/StackSmashingDetected/branch/master/graphs/tree.svg)
+[![Commit graph]](https://codecov.io/gh/Eskalol/StackSmashingDetected/branch/master/graphs/commits.svg)
+
 
 Group project in inf5750
 
