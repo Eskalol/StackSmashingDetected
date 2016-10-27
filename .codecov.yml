@@ -1,0 +1,10 @@
+coverage:
+	precision: 2
+	round: down
+	range: 50...100
+	
+	notify:
+		slack:
+			default:
+				url: "https://hooks.slack.com/services/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"
+				threshold: 1%
