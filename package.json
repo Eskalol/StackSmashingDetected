@@ -14,9 +14,9 @@
     "jasmine",
     "codecov"
   ],
-  "author": "Eskil Opdahl Nordland <eskil.nordland@gmail.com>,
-             Nicolay David Mohebi <n.d.mohebi@usit.uio.no
-             Torstein Brevig <torstbre@ifi.uio.no>",
+  "author": ["Eskil Opdahl Nordland <eskil.nordland@gmail.com>",
+             "Nicolay David Mohebi <n.d.mohebi@usit.uio.no",
+             "Torstein Brevig <torstbre@ifi.uio.no>"],
   "license": "MIT",
   "repository": {
     "type": "git",
