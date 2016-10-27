@@ -6,6 +6,7 @@
 [![Coverage graph]](https://codecov.io/gh/Eskalol/StackSmashingDetected/branch/master/graphs/tree.svg)
 [![Commit graph]](https://codecov.io/gh/Eskalol/StackSmashingDetected/branch/master/graphs/commits.svg)
 
+###[Contributor guide](https://github.com/Eskalol/StackSmashingDetected/blob/master/not_for_deploy/contrib.md)
 
 Group project in inf5750
 
