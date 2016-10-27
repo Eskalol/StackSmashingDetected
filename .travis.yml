@@ -1,11 +1,5 @@
 notifications:
   slack: stacksmashingdetected:CFyc02quspIexOTU1aoV1a7e
-  	template:
-  		- "Build: %{status} %{build_url}"
-  		- "%{branch} : %{repository}"
-  		- " (%{commit}) : %{message}"
-  		- "by %{committer_name} on %{committed_at}"
-  		- "Build details: %{build_url}"
 
 language: node_js
 node_js:
