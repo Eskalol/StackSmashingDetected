@@ -36,7 +36,7 @@ export function putKey(namespace, key, encrypted){
 
 
 export function deleteKeys(namespace){
-  axios.delete(`${url}/api/25/dataStore/${namespace}`$)
+  axios.delete(`${url}/api/25/dataStore/${namespace}`)
     .then((response) => {
       return response.data;
     })
@@ -46,7 +46,7 @@ export function deleteKeys(namespace){
 }
 
 export function deleteKey(namespace, key){
-  axios.delete(`${url}/api/25/dataStore/${namespace}/${key}`$)
+  axios.delete(`${url}/api/25/dataStore/${namespace}/${key}`)
     .then((response) =>  {
       return response.data;
     })
