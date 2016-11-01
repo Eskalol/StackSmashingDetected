@@ -1,45 +1,18 @@
-import React, {Component, PropTypes} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import Header from '../components/Header';
-import MainSection from '../components/MainSection';
-import * as TodoActions from '../actions/index';
+import React, {Component} from 'react';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
+import Menu from '../components/Menu/Menu';
 
-class App extends Component {
+export default class App extends Component {
   render() {
-    const {todos, actions} = this.props;
     return (
-      <div>
-        <Header
-          addTodo={actions.addTodo}
-          />
-        <MainSection
-          todos={todos}
-          actions={actions}
-          />
+      <div id="outer-container" style={{height: '100%'}}>
+        <Menu/>
+        <main id="page-wrap">
+          <Header/>
+          <Footer/>
+        </main>
       </div>
-    );
+      );
   }
 }
-
-App.propTypes = {
-  todos: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
-};
-
-function mapStateToProps(state) {
-  return {
-    todos: state.todos
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(TodoActions, dispatch)
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);

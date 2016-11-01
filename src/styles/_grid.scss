@@ -1,0 +1,33 @@
+@import 'mixins';
+@import 'variables';
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 1rem;
+}
+
+// grid item
+.col {
+  padding: 0.5rem;
+
+  &:nth-child(even) {
+    background-color: #eee;
+  }
+
+  &:nth-child(odd) {
+    background-color: #ddd;
+  }
+}
+
+// loop over the breakpoints
+@each $key, $value in $breakpoints {
+  @for $i from 1 through $items {
+    .col-#{$key}-#{$i} {
+      flex: 0 0 100%;
+      @include break($key) {
+        flex: 0 0 #{$i / $items * 100%};
+      }
+    }
+  }
+}
