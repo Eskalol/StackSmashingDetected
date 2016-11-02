@@ -1,14 +1,15 @@
+@import '../colors';
 
 .header-content {
   text-align: center;
-  color: #BFBFBF;
+  color: $background;
 }
 
 .header {
   position: fixed;
   width: 100%;
   height: 5.0em;
-  background-color: #96939B;
+  background-color: $foreground;
   margin: 0px auto;
   top: 0px;
 }

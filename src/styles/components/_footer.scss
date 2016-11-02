@@ -1,9 +1,10 @@
+@import '../colors';
 
 .footer {
   position: fixed;
   width: 100%;
   height: 3.5em;
-  background-color: #96939B;
+  background-color: $foreground;
   margin: auto 0px;
   bottom: 0px;
 
@@ -13,11 +14,11 @@
 
   a {
     text-decoration: none;
-    color: #b8b7ad;
+    color: $background;
 
     &:hover,
     &:focus {
-      color: #FC814A;
+      color: $text-color;
     }
   }
 }

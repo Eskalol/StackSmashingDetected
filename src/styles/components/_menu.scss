@@ -1,20 +1,22 @@
+@import '../colors';
+
 .bm-burger-bars {
-  background: #BFBFBF;
+  background: $background;
 }
 
 .bm-morph-shape {
-  fill: #564256;
+  fill: $menu;
 }
 
 .bm-menu {
-  background: #564256;
+  background: $menu;
 
   a {
-    color: #b8b7ad;
+    color: $background;
 
     &:hover,
     &:focus {
-      color: #FC814A;
+      color: $text-color;
     }
   }
 }
@@ -25,7 +27,7 @@
   height: 2.0em;
   left: 1.5em;
   top: 1.5em;
-  color: #FC814A;
+  color: $text-color;
 }
 
 .bm-item-list {
@@ -40,7 +42,12 @@
 }
 
 .bm-cross {
-  background: #bdc3c7;
+  background: $background;
+
+  &:hover,
+  &:focus {
+    color: $text-color;
+  }
 }
 
 .bm-menu {
