@@ -4,9 +4,9 @@ import BurgerMenu from 'react-burger-menu';
 import './menu.scss';
 
 const items = [
-  <a key="0" href=""><span>Datastore</span></a>,
-  <a key="0" href=""><span>Messages</span></a>,
-  <a key="0" href=""><span>Cool</span></a>
+  <a key="0" href=""><i className="fa fa-database"/><span>Datastore</span></a>,
+  <a key="0" href=""><i className="fa fa-comment"/><span>Messages</span></a>,
+  <a key="0" href=""><i className="fa fa-calendar-o"/><span>Calendar</span></a>
 ];
 
 export default class extends Component {
