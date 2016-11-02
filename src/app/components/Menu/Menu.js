@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import BurgerMenu from 'react-burger-menu';
 
-import './menu.scss';
-
 const items = [
   <a key="0" href=""><i className="fa fa-database"/><span>Datastore</span></a>,
   <a key="0" href=""><i className="fa fa-comment"/><span>Messages</span></a>,
