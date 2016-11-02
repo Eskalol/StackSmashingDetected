@@ -45,14 +45,6 @@ import {Line} from 'react-chartjs';
 
 }*/
 
-/* function rand(min, max, num) {
-  let rtn = [];
-  while (rtn.length < num) {
-    rtn.push((Math.random() * (max - min)) + min);
-  }
-  return rtn;
-}*/
-
 function mockData() {
   return {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -65,7 +57,6 @@ function mockData() {
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(220,220,220,1)",
-        // data: rand(32, 100, 7)
         data: [2, 1, 2, 3, 5, 2, 2]
       },
       {
@@ -76,19 +67,16 @@ function mockData() {
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(151,187,205,1)",
-        // data: rand(32, 100, 7)
-        data: [0, 4, 1, 4, 6, 6, 1]
+        data: [0, 4, 1, 4, 6, 5, 1]
       }
     ]
   };
 }
 
-export default class App2 extends Component {
+export default class AnalyseNamespaces extends Component {
   render() {
     return (
-      <div>
-        <Line data={mockData()} options={null} width="550" height="250"/>
-      </div>
+      <Line data={mockData()} options={null} width="550" height="250"/>
     );
   }
 }
