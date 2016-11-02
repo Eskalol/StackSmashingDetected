@@ -1,12 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 const LineChart = require('react-chartjs').Line;
 
 // Add appropriate service call imports when available here
 
-
 // This graph is straight from the react-chartjs example
 // Change as needed when it works
-export function createGraph(type, chartData, chartOptions) {
+/* export function createGraph(type, chartData, chartOptions) {
   let graph = null;
 
   if (type === "Line") {
@@ -17,10 +16,9 @@ export function createGraph(type, chartData, chartOptions) {
     });
   }
   return graph;
-}
+}*/
 
-
-export function analyseNamespaces(){
+/* export function analyseNamespaces(){
   // Use the service to get a list of namespaces
   let namespaces = getNamespaces();
 
@@ -30,11 +28,10 @@ export function analyseNamespaces(){
   // Create a graph over how many keys each namespace has
   // namespaces[0] now has its keys at keys[0]
 
-
   // Put namespaces and keys together in such a way that createGraph can plot it
 
   return createGraph("Line", namespaces, null);
-}
+}*/
 
 // Analyse the keys in a namespace, using their metadata
 // Ideas:
@@ -43,6 +40,19 @@ export function analyseNamespaces(){
 
 // Need a "getKeyMetaData(key)" for this to work
 
-export function analyseKeys(namespace){
+/* export function analyseKeys(namespace){
 
+}*/
+
+const testData = [0, 1, 2, 3];
+
+export default class App2 extends Component {
+  render() {
+    return (
+      <div>
+        <h1>TEST</h1>
+        // <LineChart data={testData} options={null} width="600" height="250"/>
+      </div>
+    );
+  }
 }

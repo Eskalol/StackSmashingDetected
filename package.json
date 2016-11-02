@@ -14,23 +14,26 @@
     "jasmine",
     "codecov"
   ],
-  "author": ["Eskil Opdahl Nordland <eskil.nordland@gmail.com>",
-             "Nicolay David Mohebi <n.d.mohebi@usit.uio.no",
-             "Torstein Brevig <torstbre@ifi.uio.no>"],
+  "author": [
+    "Eskil Opdahl Nordland <eskil.nordland@gmail.com>",
+    "Nicolay David Mohebi <n.d.mohebi@usit.uio.no",
+    "Torstein Brevig <torstbre@ifi.uio.no>"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/Eskalol/StackSmashingDetected"
   },
-
   "dependencies": {
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1",
-    "react-router": "^2.4.0",
+    "chart.js": "^1.1.1",
     "classnames": "^2.2.5",
-    "react-redux": "^4.4.5",
-    "redux": "^3.5.1",
     "es6-shim": "^0.35.0",
+    "react": "^15.3.2",
+    "react-chartjs": "^0.8.0",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.4.0",
+    "redux": "^3.5.1",
     "todomvc-app-css": "^2.0.4"
   },
   "devDependencies": {
