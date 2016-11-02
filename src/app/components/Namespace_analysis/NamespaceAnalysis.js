@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-const LineChart = require('react-chartjs').Line;
+// const LineChart = require('react-chartjs').Line;
+import {Line} from 'react-chartjs';
 
 // Add appropriate service call imports when available here
 
@@ -44,14 +45,49 @@ const LineChart = require('react-chartjs').Line;
 
 }*/
 
-const testData = [0, 1, 2, 3];
+/* function rand(min, max, num) {
+  let rtn = [];
+  while (rtn.length < num) {
+    rtn.push((Math.random() * (max - min)) + min);
+  }
+  return rtn;
+}*/
+
+function mockData() {
+  return {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+      {
+        label: "My First dataset",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        // data: rand(32, 100, 7)
+        data: [2, 1, 2, 3, 5, 2, 2]
+      },
+      {
+        label: "My Second dataset",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(151,187,205,1)",
+        // data: rand(32, 100, 7)
+        data: [0, 4, 1, 4, 6, 6, 1]
+      }
+    ]
+  };
+}
 
 export default class App2 extends Component {
   render() {
     return (
       <div>
-        <h1>TEST</h1>
-        // <LineChart data={testData} options={null} width="600" height="250"/>
+        <Line data={mockData()} options={null} width="550" height="250"/>
       </div>
     );
   }

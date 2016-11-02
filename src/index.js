@@ -24,5 +24,5 @@ import 'todomvc-app-css/index.css';
 
 render(
   <App2/>,
-  document.getDocumentGetElementById('root')
+  document.getElementById('root')
 );
