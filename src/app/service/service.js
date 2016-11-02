@@ -5,6 +5,7 @@ import 'babel-polyfill';
 export function getNamespaces() {
   axios.get(`${url}/api/25/dataStore/`)
     .then(response => {
+      console.log(response);
       return response.data;
     })
      .catch(error => {
