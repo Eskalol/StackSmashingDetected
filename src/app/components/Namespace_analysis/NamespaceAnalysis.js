@@ -45,38 +45,36 @@ import {Line} from 'react-chartjs';
 
 }*/
 
-function mockData() {
-  return {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
-    datasets: [
-      {
-        label: "My First dataset",
-        fillColor: "rgba(220,220,220,0.2)",
-        strokeColor: "rgba(220,220,220,1)",
-        pointColor: "rgba(220,220,220,1)",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(220,220,220,1)",
-        data: [2, 1, 2, 3, 5, 2, 2]
-      },
-      {
-        label: "My Second dataset",
-        fillColor: "rgba(151,187,205,0.2)",
-        strokeColor: "rgba(151,187,205,1)",
-        pointColor: "rgba(151,187,205,1)",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(151,187,205,1)",
-        data: [0, 4, 1, 4, 6, 5, 1]
-      }
-    ]
-  };
-}
+const mockData = {
+  labels: ["January", "February", "March", "April", "May", "June", "July"],
+  datasets: [
+    {
+      label: "My First dataset",
+      fillColor: "rgba(220,220,220,0.2)",
+      strokeColor: "rgba(220,220,220,1)",
+      pointColor: "rgba(220,220,220,1)",
+      pointStrokeColor: "#fff",
+      pointHighlightFill: "#fff",
+      pointHighlightStroke: "rgba(220,220,220,1)",
+      data: [2, 1, 2, 3, 5, 2, 2]
+    },
+    {
+      label: "My Second dataset",
+      fillColor: "rgba(151,187,205,0.2)",
+      strokeColor: "rgba(151,187,205,1)",
+      pointColor: "rgba(151,187,205,1)",
+      pointStrokeColor: "#fff",
+      pointHighlightFill: "#fff",
+      pointHighlightStroke: "rgba(151,187,205,1)",
+      data: [0, 4, 1, 4, 6, 5, 1]
+    }
+  ]
+};
 
 export default class AnalyseNamespaces extends Component {
   render() {
     return (
-      <Line data={mockData()} options={null} width="550" height="250"/>
+      <Line data={mockData} options={null} width="550" height="250"/>
     );
   }
 }
