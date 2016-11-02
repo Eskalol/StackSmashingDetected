@@ -27,7 +27,6 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "es6-shim": "^0.35.0",
-    "file-loader": "^0.9.0",
     "font-awesome": "^4.7.0",
     "normalize.css": "^5.0.0",
     "react": "^15.0.1",
@@ -35,9 +34,7 @@
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
-    "redux": "^3.5.1",
-    "todomvc-app-css": "^2.0.4",
-    "url-loader": "^0.5.7"
+    "redux": "^3.5.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.2.2",
@@ -52,6 +49,8 @@
     "browser-sync-spa": "^1.0.3",
     "codecov.io": "^0.1.6",
     "css-loader": "^0.23.1",
+    "file-loader": "^0.9.0",
+    "url-loader": "^0.5.7",
     "del": "^2.0.2",
     "es6-shim": "^0.35.0",
     "eslint": "^3.2.2",
