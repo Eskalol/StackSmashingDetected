@@ -4,6 +4,7 @@
 @import 'styles/components/footer';
 @import 'styles/components/menu';
 @import 'styles/components/containers';
+@import url("http://fonts.googleapis.com/css?family=Raleway:400,700,800");
 
 html {
   height: 100%;
@@ -13,6 +14,9 @@ body {
   margin: 0px;
   height: 100%;
   background-color: $background;
+  font-family: 'Raleway', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #app {
