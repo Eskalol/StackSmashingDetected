@@ -1,31 +1,51 @@
 import 'babel-polyfill';
 
-import React from 'react';
+import React, {Component} from 'react';
 import {render} from 'react-dom';
-import App from './app/containers/App';
-// import {Provider} from 'react-redux';
-// import App from './app/containers/App';
-// import configureStore from './app/store/configureStore';
-// import {Router, Route, browserHistory} from 'react-router';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
+import {Provider} from 'react-redux';
 
-// import 'todomvc-app-css/index.css';
+import configureStore from './app/store/configureStore';
 
-// const store = configureStore();
-
-// render(
-//   <Provider store={store}>
-//     <Router history={browserHistory}>
-//       <Route path="/" component={App}/>
-//     </Router>
-//   </Provider>,
-//   document.getElementById('root')
-// );
+import Datastore from './app/containers/Datastore';
+import Dhis from './app/containers/Dhis';
+import Header from './app/components/Header/Header';
+import Footer from './app/components/Footer/Footer';
+import Menu from './app/components/Menu/Menu';
 
 import './index.scss';
 import 'normalize.css';
 import 'font-awesome/css/font-awesome.css';
 
+const store = configureStore();
+
+class App extends Component {
+  render() {
+    return (
+      <div id="outer-container" style={{height: '100%'}}>
+        <Menu/>
+        <main id="page-wrap">
+          <Header/>
+          {this.props.children}
+          <Footer/>
+        </main>
+      </div>
+    );
+  }
+}
+
+App.propTypes = {
+  children: React.Component
+};
+
 render(
-  <App/>,
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={Dhis}/>
+        <Route path="datastore" component={Datastore}/>
+      </Route>
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );

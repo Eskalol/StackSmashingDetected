@@ -1,0 +1,1 @@
+export const CHANGE_HEADER_TEXT = 'CHANGE_HEADER_TEXT';

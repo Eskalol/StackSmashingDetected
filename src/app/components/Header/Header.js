@@ -1,6 +1,17 @@
 import React, {Component} from 'react';
+// import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
-export default class extends Component {
+class Header extends Component {
+
+  constructor(props) {
+    super(props);
+    console.log(props);
+  }
+
+  getHeaderText() {
+    return this.props.ht;
+  }
 
   render() {
     return (
@@ -8,7 +19,7 @@ export default class extends Component {
         <div className="header-content">
           <div className="row">
             <div className="col-sm-3"></div>
-            <div className="col-sm-5"><h1>DHIS</h1></div>
+            <div className="col-sm-5"><h1>{this.getHeaderText()}</h1></div>
             <div className="col-sm-4">
               <i className="fa fa-search fa-2x" aria-hidden="true"/>
               <input type="text" id="search" className="input-box" placeholder="Search..."/>
@@ -16,7 +27,22 @@ export default class extends Component {
           </div>
         </div>
       </header>
-      );
+    );
   }
 
 }
+
+Header.propTypes = {
+  ht: React.PropTypes.string.isRequired
+};
+
+/**
+ * grabs header from store in state and map to props
+ * @param  {json} state application state
+ * @return {json}       props
+ */
+function mapStateToProps(state) {
+  return state.header;
+}
+
+export default connect(mapStateToProps)(Header);
