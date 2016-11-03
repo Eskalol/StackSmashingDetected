@@ -99,6 +99,17 @@
       }
       @content
     }
+    &.info {
+      border: solid $size $info;
+      @if $border == 'border-input' {
+        &:focus,
+        &.focus {
+          transition: border 0.3s;
+          border-bottom: solid 2px $info;
+        }
+      }
+      @content
+    }
   }
 
   @if $border == 'bottom-border' {
@@ -116,5 +127,27 @@
       border-bottom: solid $size $error;
       @content
     }
+    &.info {
+      border-bottom: solid $size $error;
+      @content
+    }
+  }
+}
+
+@mixin status-bg() {
+  &.warning {
+    background: $warning;
+  }
+
+  &.success {
+    background: $success;
+  }
+
+  &.error {
+    background: $error;
+  }
+
+  &.info {
+    background: $info;
   }
 }

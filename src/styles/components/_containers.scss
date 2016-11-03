@@ -40,4 +40,5 @@
   padding-top: 0.5rem;
   text-align: middle;
   @include status('border', 2px);
+  @include status-bg();
 }
