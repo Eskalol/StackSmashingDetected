@@ -37,6 +37,18 @@ module.exports = {
         loaders: [
           'babel'
         ]
+      },
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loaders: [
+          'url-loader?limit=10000&mimetype=application/font-woff'
+        ]
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loaders: [
+          'file-loader'
+        ]
       }
     ]
   },
@@ -62,6 +74,6 @@ module.exports = {
   },
   entry: {
     app: `./${conf.path.src('index')}`,
-    vendor: Object.keys(pkg.dependencies).filter(dep => ['todomvc-app-css'].indexOf(dep) === -1)
+    vendors: ['font-awesome/css/font-awesome.css', 'normalize.css']
   }
 };
