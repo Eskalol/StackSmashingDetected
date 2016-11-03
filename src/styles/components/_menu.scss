@@ -1,7 +1,11 @@
 @import '../colors';
 
 .bm-burger-bars {
-  background: $background;
+  background-color: $background;
+  &:hover,
+  &:focus {
+    background-color: $text-color;
+  }
 }
 
 .bm-morph-shape {
@@ -27,7 +31,7 @@
   height: 2.0em;
   left: 1.5em;
   top: 1.5em;
-  color: $text-color;
+  background-color: $foreground;
 }
 
 .bm-item-list {

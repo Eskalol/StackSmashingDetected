@@ -1,9 +1,11 @@
 @import '../colors';
 
+$footer-height: 55;
+
 .footer {
   position: fixed;
   width: 100%;
-  height: 3.5em;
+  height: #{$footer-height}px;
   background-color: $foreground;
   margin: auto 0px;
   bottom: 0px;

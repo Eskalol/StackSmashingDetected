@@ -1,0 +1,41 @@
+@import 'header';
+@import 'footer';
+@import '../colors';
+
+
+.main-container {
+  display: flex;
+  margin-top: #{$header-height+10}px;
+  margin-bottom: #{$footer-height}px;
+}
+
+.center {
+  display: inline-block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flow {
+  display: flex;
+}
+
+.container {
+  display: flex;
+  margin: 1rem;
+  margin-top: 0rem;
+  padding: 1rem;
+  border: solid 2px $foreground;
+  background: $background;
+  color: black;
+}
+
+.container-header {
+  background: $foreground;
+  color: $background;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  text-align: middle;
+}

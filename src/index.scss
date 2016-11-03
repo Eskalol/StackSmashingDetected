@@ -3,9 +3,29 @@
 @import 'styles/components/header';
 @import 'styles/components/footer';
 @import 'styles/components/menu';
+@import 'styles/components/containers';
+
+html {
+  height: 100%;
+}
 
 body {
   margin: 0px;
   height: 100%;
   background-color: $background;
+}
+
+#app {
+  height: 100%;
+}
+
+main {
+  height: 100%;
+  text-align: center;
+  background: $background;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

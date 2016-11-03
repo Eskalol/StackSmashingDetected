@@ -4,3 +4,56 @@
   }
 }
 
+@mixin placeholder {
+  &::-webkit-input-placeholder { @content }
+  &:-moz-placeholder           { @content }
+  &::-moz-placeholder          { @content }
+  &:-ms-input-placeholder      { @content }
+}
+
+@mixin input-line($background, $foreground) {
+  .input-line {
+    border: none;
+    background-color: $background;
+    border-bottom: solid 2px $foreground;
+    padding: 10px;
+    transition: border 0.3s;
+    color: $foreground;
+
+    @content
+
+    @include placeholder {
+      font-style: italic;
+      color: $foreground;
+    }
+
+    &:focus,
+    .focus {
+      border-bottom: solid 2px $foreground;
+      outline: none;
+    }
+  }
+}
+
+@mixin input-box($background, $foreground) {
+  .input-box {
+    border: solid 5px $foreground;
+    background-color: $background;
+    padding: 10px;
+    transition: border 0.3s;
+    color: $foreground;
+
+    @content
+
+    @include placeholder {
+      font-style: italic;
+      color: $foreground;
+    }
+
+    &:focus,
+    .focus {
+      border-bottom: solid 2px $foreground;
+      outline: none;
+    }
+  }
+}

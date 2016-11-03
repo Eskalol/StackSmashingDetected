@@ -1,10 +1,11 @@
 @import 'mixins';
 @import 'variables';
+@import 'colors';
 
 .row {
   display: flex;
   flex-flow: row wrap;
-  margin-bottom: 1rem;
+  margin-bottom: 0.3rem;
 }
 
 // grid item
@@ -12,11 +13,11 @@
   padding: 0.5rem;
 
   &:nth-child(even) {
-    background-color: #eee;
+    background-color: adjust-hue($background, -5deg);
   }
 
   &:nth-child(odd) {
-    background-color: #ddd;
+    background-color: adjust-hue($background, 5deg);
   }
 }
 
