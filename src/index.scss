@@ -4,6 +4,7 @@
 @import 'styles/components/footer';
 @import 'styles/components/menu';
 @import 'styles/components/containers';
+@import 'styles/mixins';
 @import url("http://fonts.googleapis.com/css?family=Raleway:400,700,800");
 
 html {
@@ -33,3 +34,6 @@ main {
     display: none;
   }
 }
+
+@include input-box($background, $foreground);
+@include input-line($background, $foreground);

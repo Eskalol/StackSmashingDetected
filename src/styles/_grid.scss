@@ -6,6 +6,9 @@
   display: flex;
   flex-flow: row wrap;
   margin-bottom: 0.3rem;
+
+  @include status('border', 2px);
+
 }
 
 // grid item
@@ -29,6 +32,7 @@
       @include break($key) {
         flex: 0 0 #{$i / $items * 100%};
       }
+      @include status('border', 2px);
     }
   }
 }

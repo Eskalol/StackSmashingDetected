@@ -32,6 +32,8 @@
       border-bottom: solid 2px $foreground;
       outline: none;
     }
+
+    @include status('bottom-border', 2px);
   }
 }
 
@@ -51,9 +53,68 @@
     }
 
     &:focus,
-    .focus {
+    &.focus {
       border-bottom: solid 2px $foreground;
       outline: none;
+    }
+
+    @include status('border-input', 5px);
+  }
+}
+
+@mixin status($border, $size) {
+  @if $border == 'border' or $border == 'border-input' {
+    &.warning {
+      border: solid $size $warning;
+      @if $border == 'border-input' {
+        &:focus,
+        &.focus {
+          transition: border 0.3s;
+          border-bottom: solid 2px $warning;
+        }
+      }
+      @content
+    }
+
+    &.success {
+      border: solid $size $success;
+      @if $border == 'border-input' {
+        &:focus,
+        &.focus {
+          transition: border 0.3s;
+          border-bottom: solid 2px $success;
+        }
+      }
+      @content
+    }
+
+    &.error {
+      border: solid $size $error;
+      @if $border == 'border-input' {
+        &:focus,
+        &.focus {
+          transition: border 0.3s;
+          border-bottom: solid 2px $error;
+        }
+      }
+      @content
+    }
+  }
+
+  @if $border == 'bottom-border' {
+    &.warning {
+      border-bottom: solid $size $warning;
+      @content
+    }
+
+    &.success {
+      border-bottom: solid $size $success;
+      @content
+    }
+
+    &.error {
+      border-bottom: solid $size $error;
+      @content
     }
   }
 }

@@ -28,6 +28,7 @@
   border: solid 2px $foreground;
   background: $background;
   color: black;
+  @include status('border', 2px);
 }
 
 .container-header {
@@ -38,4 +39,5 @@
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
   text-align: middle;
+  @include status('border', 2px);
 }
