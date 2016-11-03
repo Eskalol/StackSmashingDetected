@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 // import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
-class Header extends Component {
+export class Header extends Component {
 
   constructor(props) {
     super(props);
