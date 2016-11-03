@@ -26,23 +26,11 @@ class Dhis extends Component {
           <div className="col-md-2">
             <div className="container-header warning">input-line with warnings</div>
             <div className="container warning">
-              <div className="row">
+              <div className="row no-wrap">
                 <div className="col col-md-3">
                   Normal: <input type="text" className="input-line"/>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col col-md-3">
                   Warning: <input type="text" className="input-line warning"/>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col col-md-3">
                   Error: <input type="text" className="input-line error"/>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col col-md-3">
                   Success: <input type="text" className="input-line success"/>
                 </div>
               </div>
@@ -51,10 +39,12 @@ class Dhis extends Component {
           <div className="col-md-2">
             <div className="container-header info">input-box with warnings</div>
             <div className="container info">
-              <p>Normal: <input type="text" className="input-box"/></p>
-              <p>Warning: <input type="text" className="input-box warning"/></p>
-              <p>Error: <input type="text" className="input-box error"/></p>
-              <p>Success: <input type="text" className="input-box success"/></p>
+              <div className="row no-wrap">
+                Normal: <input type="text" className="input-box"/>
+                Warning: <input type="text" className="input-box warning"/>
+                Error: <input type="text" className="input-box error"/>
+                Success: <input type="text" className="input-box success"/>
+              </div>
             </div>
           </div>
           <div className="col-md-2 container">

@@ -9,6 +9,9 @@
 
   @include status('border', 2px);
 
+  &.no-wrap {
+    flex-flow: column nowrap;
+  }
 }
 
 // grid item
