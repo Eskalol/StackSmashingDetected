@@ -20,7 +20,7 @@ class Menu extends Component {
   }
 
   render() {
-    const Menu = BurgerMenu.bubble;
+    const Menu = decorator(BurgerMenu.bubble);
     return (
       <Menu id="bubble" pageWrapId={'page-wrap'} outerContainerId={'outer-container'}>
         {items}
@@ -30,4 +30,4 @@ class Menu extends Component {
 
 }
 
-export default decorator(Menu);
+export default Menu;
