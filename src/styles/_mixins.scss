@@ -62,6 +62,31 @@
   }
 }
 
+@mixin text-area($background, $foreground) {
+  .text-area {
+    border: solid 5px $foreground;
+    background-color: $background;
+    padding: 10px;
+    transition: border 0.3s;
+    color: $foreground;
+
+    @content
+
+    @include placeholder {
+      font-style: italic;
+      color: $foreground;
+    }
+
+    &:focus,
+    &.focus {
+      border-bottom: solid 2px $foreground;
+      outline: none;
+    }
+
+    @include status('border-input', 5px);
+  }
+}
+
 @mixin status($border, $size) {
   @if $border == 'border' or $border == 'border-input' {
     &.warning {
