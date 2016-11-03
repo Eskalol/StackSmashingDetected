@@ -1,6 +1,15 @@
 import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as HeaderActions from '../actions/header';
 
 class Dhis extends Component {
+  constructor(props) {
+    super(props);
+    const {actions} = this.props;
+    actions.changeText("DHIS");
+  }
+
   render() {
     return (
       <div className="main-container center">
@@ -21,4 +30,19 @@ class Dhis extends Component {
   }
 }
 
-export default Dhis;
+Dhis.propTypes = {
+  actions: React.PropTypes.object.isRequired
+};
+
+/**
+ * maps actions to props
+ * @param  {dispatch} dispatch dispatch
+ * @return {json}              json object with action functions
+ */
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(HeaderActions, dispatch)
+  };
+}
+
+export default connect(null, mapDispatchToProps)(Dhis);

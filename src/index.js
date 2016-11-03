@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import {Provider} from 'react-redux';
+import {syncHistoryWithStore} from 'react-router-redux';
 
 import configureStore from './app/store/configureStore';
 
@@ -18,6 +19,8 @@ import 'normalize.css';
 import 'font-awesome/css/font-awesome.css';
 
 const store = configureStore();
+
+const history = syncHistoryWithStore(browserHistory, store);
 
 class App extends Component {
   render() {
@@ -40,7 +43,7 @@ App.propTypes = {
 
 render(
   <Provider store={store}>
-    <Router history={browserHistory}>
+    <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={Dhis}/>
         <Route path="datastore" component={Datastore}/>

@@ -7,7 +7,6 @@ class Datastore extends Component {
   constructor(props) {
     super(props);
     const {actions} = this.props;
-    console.log(actions);
     actions.changeText("Datastore");
   }
 
