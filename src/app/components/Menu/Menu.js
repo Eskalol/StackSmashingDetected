@@ -25,7 +25,7 @@ class Menu extends Component {
       <Menu id="bubble" pageWrapId={'page-wrap'} outerContainerId={'outer-container'}>
         {items}
       </Menu>
-      );
+    );
   }
 
 }

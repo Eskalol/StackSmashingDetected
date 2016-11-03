@@ -11,7 +11,7 @@ class Footer extends Component {
           <div className="col-sm-3"></div>
         </div>
       </footer>
-      );
+    );
   }
 }
 
