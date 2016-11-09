@@ -29,6 +29,12 @@
   background: $background;
   color: black;
   @include status('border', 2px);
+
+  &.hover {
+    &:hover {
+      background-color: adjust-hue($background, 50deg);
+    }
+  }
 }
 
 .container-header {
