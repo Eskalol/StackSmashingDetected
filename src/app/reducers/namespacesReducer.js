@@ -1,35 +1,22 @@
+import {REQUEST_NAMESPACES, RECEIVE_NAMESPACES} from '../constants/namespaceTypes';
 
-const initialState = [
-  {
-    name: "lol",
-    id: 1
-  },
-  {
-    name: "Cool",
-    id: 2
-  },
-  {
-    name: "Ja",
-    id: 3
-  },
-  {
-    name: "Nei",
-    id: 4
-  },
-  {
-    name: "Trump",
-    id: 5
-  },
-  {
-    name: "jaroslaw Pasza",
-    id: 6
-  },
-  {
-    name: "Imba",
-    id: 7
+const initialState = {
+  isFetching: false,
+  items: ["lol", "hei"]
+};
+
+export default function namespaces(state = initialState, action) {
+  switch (action.type) {
+    case REQUEST_NAMESPACES:
+      return Object.assign({}, state, {
+        isFetching: true
+      });
+    case RECEIVE_NAMESPACES:
+      return Object.assign({}, state, {
+        isFetching: false,
+        items: ["cool", "imba"]
+      });
+    default:
+      return state;
   }
-];
-
-export default function namespaces(state = initialState) {
-  return state;
 }

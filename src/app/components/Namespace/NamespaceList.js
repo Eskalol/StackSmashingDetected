@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-
-import Namespace from './Namespace';
+import {connect} from 'react-redux';
+// import Namespace from './Namespace';
 
 class NamespaceList extends Component {
   constructor(props) {
@@ -12,11 +12,7 @@ class NamespaceList extends Component {
     return (
       <div>
         {
-          this.props.namespaces.map((namespace, i) => {
-            return (
-              <Namespace key={i} namespace={namespace}/>
-            );
-          })
+          this.props.items.map((value, i) => <div key={i}>{value}</div>)
         }
       </div>
     );
@@ -24,7 +20,19 @@ class NamespaceList extends Component {
 }
 
 NamespaceList.propTypes = {
-  namespaces: React.PropTypes.array.isRequired
+  items: React.PropTypes.array.isRequired
 };
 
-export default NamespaceList;
+function mapStateToProps(state) {
+  return state.namespaces;
+}
+
+export default connect(mapStateToProps)(NamespaceList);
+
+        // {
+        //   this.props.namespaces.map((namespace, i) => {
+        //     return (
+        //       <Namespace key={i} namespace={namespace}/>
+        //     );
+        //   })
+        // }

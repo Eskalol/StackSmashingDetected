@@ -2,33 +2,31 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as HeaderActions from '../actions/header';
-
+import * as NamespaceActions from '../actions/namespace';
 import NamespaceList from '../components/Namespace/NamespaceList';
 
 class Datastore extends Component {
   constructor(props) {
     super(props);
+    console.log("datastore");
+    console.log(this.props);
     const {actions} = this.props;
     actions.changeText("Datastore");
+    actions.fetchNamespaces();
   }
 
   render() {
     return (
       <div className="main-container center">
-        <NamespaceList namespaces={this.props.namespaces}/>
+        <NamespaceList/>
       </div>
     );
   }
 }
 
 Datastore.propTypes = {
-  actions: React.PropTypes.object.isRequired,
-  namespaces: React.PropTypes.array.isRequired
+  actions: React.PropTypes.object.isRequired
 };
-
-function mapStateToProps(state) {
-  return {namespaces: state.namespaces};
-}
 
 /**
  * maps action to props
@@ -37,8 +35,8 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(HeaderActions, dispatch)
+    actions: bindActionCreators(Object.assign({}, HeaderActions, NamespaceActions), dispatch)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Datastore);
+export default connect(null, mapDispatchToProps)(Datastore);
