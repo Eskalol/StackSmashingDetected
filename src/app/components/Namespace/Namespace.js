@@ -10,7 +10,7 @@ class Namespace extends Component {
     return (
       <div className="row">
         <div className="col col-md-5 container center hover">
-          <span>{this.props.namespace.name}</span>
+          <span>{this.props.namespace}</span>
         </div>
       </div>
     );

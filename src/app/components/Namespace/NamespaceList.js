@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-// import Namespace from './Namespace';
+import Namespace from './Namespace';
 import Loading from '../Loading/Loading';
 
 class NamespaceList extends Component {
@@ -14,7 +14,8 @@ class NamespaceList extends Component {
       <div>
         {this.props.isFetching && <Loading/>}
         {
-          this.props.items.map((value, i) => <div key={i}>{value}</div>)
+          !this.props.isFetching &&
+          this.props.items.map((value, i) => <Namespace key={i} namespace={value}/>)
         }
       </div>
     );
@@ -31,11 +32,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(NamespaceList);
-
-        // {
-        //   this.props.namespaces.map((namespace, i) => {
-        //     return (
-        //       <Namespace key={i} namespace={namespace}/>
-        //     );
-        //   })
-        // }
