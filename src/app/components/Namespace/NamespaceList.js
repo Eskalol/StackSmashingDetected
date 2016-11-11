@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 // import Namespace from './Namespace';
+import Loading from '../Loading/Loading';
 
 class NamespaceList extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class NamespaceList extends Component {
   render() {
     return (
       <div>
+        {this.props.isFetching && <Loading/>}
         {
           this.props.items.map((value, i) => <div key={i}>{value}</div>)
         }
@@ -20,7 +22,8 @@ class NamespaceList extends Component {
 }
 
 NamespaceList.propTypes = {
-  items: React.PropTypes.array.isRequired
+  items: React.PropTypes.array.isRequired,
+  isFetching: React.PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {

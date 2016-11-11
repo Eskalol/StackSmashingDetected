@@ -2,7 +2,7 @@ import {REQUEST_NAMESPACES, RECEIVE_NAMESPACES} from '../constants/namespaceType
 
 const initialState = {
   isFetching: false,
-  items: ["lol", "hei"]
+  items: []
 };
 
 export default function namespaces(state = initialState, action) {
