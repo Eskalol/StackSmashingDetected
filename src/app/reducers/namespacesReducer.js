@@ -12,9 +12,10 @@ export default function namespaces(state = initialState, action) {
         isFetching: true
       });
     case RECEIVE_NAMESPACES:
+      console.log(action);
       return Object.assign({}, state, {
         isFetching: false,
-        items: ["cool", "imba"]
+        items: action.namespaces
       });
     default:
       return state;

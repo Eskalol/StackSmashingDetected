@@ -10,9 +10,10 @@ export function requestNamespaces() {
 }
 
 export function receiveNamespaces(json) {
+  console.log(json);
   return {
     type: RECEIVE_NAMESPACES,
-    namespaces: json.data,
+    namespaces: json,
     receivedAt: Date.now()
   };
 }
@@ -21,18 +22,20 @@ export function fetchNamespaces() {
   return dispatch => {
     dispatch(requestNamespaces());
 
-    return fetch('http://play.dhis2.org/demo/api/25/dataStore', {
-      method: "GET"
+    return fetch('https://play.dhis2.org/test/api/25/dataStore', {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Authorization": `Basic ${btoa("admin:district")}`,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      }
     }).then(response => {
-      console.log(response);
-      console.log(response.body);
       return response.json();
     }).then(json => {
-      console.log("imba");
       dispatch(receiveNamespaces(json));
     }).catch(error => {
       console.log(error.message);
-      console.log("fetch error");
     });
   };
 }
