@@ -30,12 +30,12 @@
 .container {
   display: inline-flex;
   // margin: 1rem;
-  // margin-top: 0rem;
-  // padding: 1rem;
+  margin-top: 0rem;
+  padding: 1rem;
   border: solid 2px $foreground;
   background: $background;
   color: black;
-  // @include status('border', 2px);
+  @include status('border', 2px);
 
   &.hover {
     &:hover {
