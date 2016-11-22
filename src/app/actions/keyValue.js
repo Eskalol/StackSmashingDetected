@@ -12,7 +12,7 @@ export function requestKeyValues() {
 export function receiveKeyValues(json) {
   console.log(json);
   return {
-    type: RECEIVE_KEYVALUESm
+    type: RECEIVE_KEYVALUES,
     keyvalues: json,
     receivedAt: Date.now()
   };
@@ -39,4 +39,3 @@ export function fetchKeyValues(namespace) {
     });
   };
 }
-
