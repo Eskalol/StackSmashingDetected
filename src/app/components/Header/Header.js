@@ -20,9 +20,14 @@ export class Header extends Component {
           <div className="row">
             <div className="col-sm-3"></div>
             <div className="col-sm-5"><h1>{this.getHeaderText()}</h1></div>
-            <div className="col-sm-4">
+
+            <div className="col-sm-3">
               <i className="fa fa-search fa-2x" aria-hidden="true"/>
               <input type="text" id="search" className="input-box" placeholder="Search..."/>
+            </div>
+
+            <div className="col-sm-1">
+              <i className="fa fa-bar-chart fa-2x" aria-hidden="true"/>
             </div>
           </div>
         </div>

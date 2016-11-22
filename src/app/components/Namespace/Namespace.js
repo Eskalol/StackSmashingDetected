@@ -11,9 +11,6 @@ class Namespace extends Component {
       <div className="row">
         <div className="col col-md-5 container center hover">
           <span>{this.props.namespace}</span>
-          <button className="col-md-2 right" type="button">
-            Analyse
-          </button>
         </div>
       </div>
     );
