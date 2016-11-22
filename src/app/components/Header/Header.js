@@ -27,7 +27,7 @@ export class Header extends Component {
             </div>
 
             <div className="col-sm-1 analysis-button">
-              <i className="fa fa-bar-chart fa-2x" aria-hidden="true"/>
+              <i className="fa fa-bar-chart fa-2x hover-color" aria-hidden="true"/>
             </div>
           </div>
         </div>

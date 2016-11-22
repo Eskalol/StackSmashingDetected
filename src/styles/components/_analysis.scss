@@ -9,3 +9,11 @@
   top: 0.7em;
   background-color: $foreground;
 }
+
+.hover-color {
+  background-color: $foreground;
+  &:hover,
+  &:focus {
+    color: $text-color;
+  }
+}
