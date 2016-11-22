@@ -7,6 +7,8 @@ const items = [
   <Link to="datastore" key="0"><i className="fa fa-database"/><span>Datastore</span></Link>,
   <a key="1" href=""><i className="fa fa-comment"/><span>Messages</span></a>,
   <a key="2" href=""><i className="fa fa-calendar-o"/><span>Calendar</span></a>,
+  // Fix the search here.
+  // Should not be a link, but "a" gives it a color on hover, TEMPORARY!
   <a key="3" href=""><i className="fa fa-search fa" aria-hidden="true"/><input type="text" id="search" placeholder="Search..."/></a>
 ];
 
