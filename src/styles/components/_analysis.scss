@@ -1,0 +1,11 @@
+@import '../colors';
+
+
+.analysis-button {
+  position: fixed;
+  width: 2.0em;
+  height: 2.0em;
+  right: 2.0em;
+  top: 0.7em;
+  background-color: $foreground;
+}
