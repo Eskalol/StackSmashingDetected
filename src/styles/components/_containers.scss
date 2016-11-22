@@ -4,32 +4,17 @@
 
 
 .main-container {
-  display: flex;
   margin-top: #{$header-height+10}px;
   margin-bottom: #{$footer-height}px;
 }
 
-.center {
-  display: inline-block;
-  width: 95%;
-  margin-left: auto;;
-  margin-right: auto;
-}
-
-.right {
-  display: inline-block;
-  width: 10%;
-  margin-left: auto;
-  margin-right: 1rem;
-}
 
 .flow {
   display: flex;
 }
 
 .container {
-  display: inline-flex;
-  // margin: 1rem;
+  margin: 1rem;
   margin-top: 0rem;
   padding: 1rem;
   border: solid 2px $foreground;
