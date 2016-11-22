@@ -6,7 +6,7 @@ export const requestKeys = namespace => ({ type: REQUEST_KEYS, namespace})
 export const receiveKeys = keys => ({ type: RECEIVE_KEYS, keys, recievedAt: Date.now()})
 export const recieveValue = value => ({ type: RECIEVE_VALUE, value, recievedAt: Date.now()})
 
-export function getKeys = function(namespace){
+export function getKeys(namespace){
   return dispatch => {
     dispatch(requestKeys(namespace));
     return fetch(`https://play.dhis2.org/test/api/25/dataStore/${namespace}`, {
