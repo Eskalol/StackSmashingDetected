@@ -1,10 +1,13 @@
 @import '../colors';
 
 
-.fa-forground {
-  color: $foreground;
-  &:hover,
-  &.hover {
-    color: $text-color;
+.fa {
+  &.fa-foreground {
+    color: $foreground;
+    &:hover,
+    &.hover {
+      color: $text-color;
+    }
   }
 }
+

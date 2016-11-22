@@ -23,7 +23,7 @@ class Datastore extends Component {
 
 Datastore.propTypes = {
   actions: React.PropTypes.object.isRequired,
-  children: React.Component
+  children: React.PropTypes.element.isRequired
 };
 
 /**

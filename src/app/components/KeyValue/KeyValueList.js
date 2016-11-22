@@ -11,8 +11,31 @@ class KeyValueList extends Component {
 
   render() {
     return (
-      <div className="main-container">
-        {this.props.namespace}
+      <div>
+        <span>
+        gfdsgsfdsgsdg
+        sdfgsgsdg
+        dsgdsg
+        dsgfds
+        gfdsgsfdsgsdggfsd
+        gfdsgsfdsgsdggfsdgfd
+        sdfgsgsdgdsg
+        dsgfdsdsf
+        gfdsgsfdsgsdggfsdgfdgs
+        gsfgrgrghrtgw
+        wrhrthwtrhtrwhwtr
+        wrhrthwtrhtrwhwtr
+        hrtshsrhrhrsh
+        rshhrhrshhrsgsrgtg
+        rtgrgsgrsgsg
+        rsgsgrs
+        sggrggrhsrthrsearf
+        aefreaf
+        aefreafaerfeafeafr
+        erafeafaegaegraetgerfgafeg
+        adfgadgdagagadfggafd
+        gdafgadfgafgd
+        </span>
       </div>
     );
   }
@@ -20,8 +43,8 @@ class KeyValueList extends Component {
 
 KeyValueList.propTypes = {
   items: React.PropTypes.array.isRequired,
-  isFetching: React.PropTypes.bool.isRequired,
-  params: React.PropTypes.object.isRequired
+  isFetching: React.PropTypes.bool.isRequired
+  // params: React.PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {

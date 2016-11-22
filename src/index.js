@@ -40,7 +40,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  children: React.Component
+  children: React.PropTypes.element.isRequired
 };
 
 render(
@@ -50,8 +50,8 @@ render(
         <IndexRoute component={Dhis}/>
         <Route path="datastore" component={Datastore}>
           <IndexRoute component={NamespaceList}/>
+          <Route path="/namespace" component={KeyValueList}/>
         </Route>
-        <Route path="namespace/:namespace" component={KeyValueList}/>
       </Route>
     </Router>
   </Provider>,

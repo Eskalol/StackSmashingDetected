@@ -31,7 +31,7 @@ class Namespace extends Component {
 }
 
 Namespace.propTypes = {
-  namespace: React.PropTypes.object.isRequired
+  namespace: React.PropTypes.string.isRequired
 };
 
 export default Namespace;
