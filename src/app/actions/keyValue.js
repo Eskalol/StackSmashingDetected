@@ -1,27 +1,14 @@
 import fetch from 'isomorphic-fetch';
 
-import {REQUEST_KEYVALUES, RECEIVE_KEYVALUES} from '../constants/keyValueTypes';
+import {REQUEST_KEYS, RECIEVE_KEYS, RECIEVE_VALUE} from '../constants/keyValueTypes';
 
-export function requestKeyValues() {
-  console.log("key value request");
-  return {
-    type: REQUEST_KEYVALUES
-  };
-}
+export function requestKeys = (namespace) => ({ type: REQUEST_KEYS, namespace})
+export function receiveKeys = (keys) => ({ type: RECEIVE_KEYS, keys, recievedAt: Date.now()})
+export function recieveValue = (value) => ({ type: RECIEVE_VALUE, value, recievedAt: Date.now()})
 
-export function receiveKeyValues(json) {
-  console.log(json);
-  return {
-    type: RECEIVE_KEYVALUES,
-    keyvalues: json,
-    receivedAt: Date.now()
-  };
-}
-
-export function fetchKeyValues(namespace) {
+export function getKeys = function(namespace){
   return dispatch => {
-    dispatch(requestKeyValues());
-
+    dispatch(requestKeys(namespace));
     return fetch(`https://play.dhis2.org/test/api/25/dataStore/${namespace}`, {
       method: "GET",
       mode: "cors",
@@ -33,9 +20,31 @@ export function fetchKeyValues(namespace) {
     }).then(response => {
       return response.json();
     }).then(json => {
-      dispatch(receiveKeyValues(json));
+      getValues(json, namespace);
+      dispatch(receiveKeys(json));
     }).catch(error => {
       console.log(error.message);
     });
-  };
+}
+
+export function getValues(keys, namespace) {
+  keys.map((key) => {
+    return dispatch => {
+      return fetch(`https://play.dhis2.org/test/api/25/dataStore/${namespace}/${key}`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Authorization": `Basic ${btoa("admin:district")}`,
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        }
+      }).then(response => {
+        return response.json();
+      }).then(json => {
+        dispatch(recieveValue(json));
+      }.catch(error => {
+        console.log(error.message);
+      });
+    }
+  }
 }

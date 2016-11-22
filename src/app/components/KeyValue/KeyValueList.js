@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Loading from '../Loading/Loading';
+import {KeyValue} from '../Key/KeyValue';
 
 class KeyValueList extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class KeyValueList extends Component {
         {this.props.isFetching && <Loading/>}
         {
           !this.props.isFetching &&
-          Cool
+          this.props.keyNames.map((value, i) => <KeyValue key={i} />)
         }
       </div>
     );
@@ -22,7 +23,7 @@ class KeyValueList extends Component {
 }
 
 KeyValueList.propTypes = {
-  items: React.PropTypes.array.isRequired,
+  keyNames: React.PropTypes.array.isRequired,
   isFetching: React.PropTypes.bool.isRequired
 };
 
