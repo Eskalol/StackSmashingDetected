@@ -19,7 +19,7 @@ class Namespace extends Component {
               </div>
               <div className="col-lg-4">
                 <div className="align-right">
-                  <i className="fa fa-times fa-2x" aria-hidden="true"></i>
+                  <i className="fa fa-times fa-2x fa-foreground" aria-hidden="true"></i>
                 </div>
               </div>
             </div>

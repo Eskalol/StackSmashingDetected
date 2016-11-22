@@ -13,6 +13,8 @@ import Dhis from './app/containers/Dhis';
 import Header from './app/components/Header/Header';
 import Footer from './app/components/Footer/Footer';
 import Menu from './app/components/Menu/Menu';
+import NamespaceList from './app/components/Namespace/NamespaceList';
+import KeyValueList from './app/components/KeyValue/KeyValueList';
 
 import './index.scss';
 import 'normalize.css';
@@ -29,7 +31,7 @@ class App extends Component {
         <Menu/>
         <main id="page-wrap">
           <Header/>
-          {this.props.children}
+            {this.props.children}
           <Footer/>
         </main>
       </div>
@@ -46,7 +48,10 @@ render(
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={Dhis}/>
-        <Route path="datastore" component={Datastore}/>
+        <Route path="datastore" component={Datastore}>
+          <IndexRoute component={NamespaceList}/>
+        </Route>
+        <Route path="namespace/:namespace" component={KeyValueList}/>
       </Route>
     </Router>
   </Provider>,
