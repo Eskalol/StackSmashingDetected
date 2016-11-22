@@ -2,9 +2,9 @@ import fetch from 'isomorphic-fetch';
 
 import {REQUEST_KEYS, RECIEVE_KEYS, RECIEVE_VALUE} from '../constants/keyValueTypes';
 
-export function requestKeys = (namespace) => ({ type: REQUEST_KEYS, namespace})
-export function receiveKeys = (keys) => ({ type: RECEIVE_KEYS, keys, recievedAt: Date.now()})
-export function recieveValue = (value) => ({ type: RECIEVE_VALUE, value, recievedAt: Date.now()})
+export const requestKeys = namespace => ({ type: REQUEST_KEYS, namespace})
+export const receiveKeys = keys => ({ type: RECEIVE_KEYS, keys, recievedAt: Date.now()})
+export const recieveValue = value => ({ type: RECIEVE_VALUE, value, recievedAt: Date.now()})
 
 export function getKeys = function(namespace){
   return dispatch => {
