@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import Loading from '../Loading/Loading';
 import {KeyValue} from '../Key/KeyValue';
+import * as KeyValueActions from '../../actions/keyValue';
 
 class KeyValueList extends Component {
   constructor(props) {
     super(props);
     console.log(props);
+    const {actions} = this.props;
+    actions.fetchKeys(this.props.namespace);
   }
 
   render() {
@@ -15,7 +19,7 @@ class KeyValueList extends Component {
         {this.props.isFetching && <Loading/>}
         {
           !this.props.isFetching &&
-          this.props.keyNames.map((value, i) => <KeyValue key={i} />)
+          this.props.keys.map((value, i) => <KeyValue key={i}/>)
         }
       </div>
     );
@@ -23,12 +27,20 @@ class KeyValueList extends Component {
 }
 
 KeyValueList.propTypes = {
-  keyNames: React.PropTypes.array.isRequired,
-  isFetching: React.PropTypes.bool.isRequired
+  namespace: React.PropTypes.object.isRequired,
+  isFetching: React.PropTypes.bool.isRequired,
+  actions: React.PropTypes.object.isRequired,
+  keys: React.PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) {
   return state.keyValues;
 }
 
-export default connect(mapStateToProps)(KeyValueList);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(Object.assign({}, KeyValueActions), dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(KeyValueList);
