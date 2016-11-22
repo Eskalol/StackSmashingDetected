@@ -6,7 +6,8 @@ import {Link} from 'react-router';
 const items = [
   <Link to="datastore" key="0"><i className="fa fa-database"/><span>Datastore</span></Link>,
   <a key="1" href=""><i className="fa fa-comment"/><span>Messages</span></a>,
-  <a key="2" href=""><i className="fa fa-calendar-o"/><span>Calendar</span></a>
+  <a key="2" href=""><i className="fa fa-calendar-o"/><span>Calendar</span></a>,
+  <a key="3" href=""><i className="fa fa-search fa" aria-hidden="true"/><input type="text" id="search" placeholder="Search..."/></a>
 ];
 
 class Menu extends Component {
