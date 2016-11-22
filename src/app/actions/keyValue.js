@@ -23,7 +23,13 @@ export function fetchKeyValues(namespace) {
     dispatch(requestKeyValues());
 
     return fetch(`https://play.dhis2.org/test/api/25/dataStore/${namespace}`, {
-
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Authorization": `Basic ${btoa("admin:district")}`,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      }
     }).then(response => {
       return response.json();
     }).then(json => {
