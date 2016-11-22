@@ -13,6 +13,7 @@ import Dhis from './app/containers/Dhis';
 import Header from './app/components/Header/Header';
 import Footer from './app/components/Footer/Footer';
 import Menu from './app/components/Menu/Menu';
+import Analysis from './app/components/Analysis/Analysis';
 
 import './index.scss';
 import 'normalize.css';
@@ -46,7 +47,10 @@ render(
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={Dhis}/>
-        <Route path="datastore" component={Datastore}/>
+        <Route path="datastore" component={Datastore}>
+          <Route path="analysis" component={Analysis}/>
+        </Route>
+        <Route path="analysis" component={Analysis}/>
       </Route>
     </Router>
   </Provider>,
