@@ -4,16 +4,8 @@
 
 
 .main-container {
-  display: flex;
   margin-top: #{$header-height+10}px;
   margin-bottom: #{$footer-height}px;
-}
-
-.center {
-  display: inline-block;
-  width: 95%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .flow {
@@ -21,7 +13,6 @@
 }
 
 .container {
-  display: flex;
   margin: 1rem;
   margin-top: 0rem;
   padding: 1rem;

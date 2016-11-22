@@ -17,7 +17,7 @@ class Datastore extends Component {
 
   render() {
     return (
-      <div className="main-container center">
+      <div className="main-container">
         <NamespaceList/>
       </div>
     );
