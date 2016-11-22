@@ -32,7 +32,6 @@
       border-bottom: solid 2px $foreground;
       outline: none;
     }
-
     @include status('bottom-border', 2px);
   }
 }

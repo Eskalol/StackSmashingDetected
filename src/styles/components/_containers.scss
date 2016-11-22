@@ -39,3 +39,11 @@
   @include status('border', 2px);
   @include status-bg();
 }
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}

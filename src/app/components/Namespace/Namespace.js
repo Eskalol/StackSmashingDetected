@@ -9,9 +9,20 @@ class Namespace extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col-md-12">
-          <div className="col container hover">
-            <span>{this.props.namespace}</span>
+        <div className="col-lg-12">
+          <div className="container hover">
+            <div className="row">
+              <div className="col-lg-8">
+                <div className="align-left">
+                  {this.props.namespace}
+                </div>
+              </div>
+              <div className="col-lg-4">
+                <div className="align-right">
+                  <i className="fa fa-times fa-2x" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
