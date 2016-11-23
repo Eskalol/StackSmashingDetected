@@ -2,26 +2,28 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as HeaderActions from '../actions/header';
-import NamespaceList from '../components/Namespace/NamespaceList';
+import KeyValueList from '../components/KeyValue/KeyValueList';
 
-class Datastore extends Component {
+class Namespace extends Component {
   constructor(props) {
     super(props);
+    console.log(this.props.params);
     const {actions} = this.props;
-    actions.changeText("Datastore");
+    actions.changeText("cool");
   }
 
   render() {
     return (
       <div>
-        <NamespaceList/>
+        <KeyValueList/>
       </div>
     );
   }
 }
 
-Datastore.propTypes = {
-  actions: React.PropTypes.object.isRequired
+Namespace.propTypes = {
+  actions: React.PropTypes.object.isRequired,
+  params: React.PropTypes.object.isRequired
 };
 
 /**
@@ -35,4 +37,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(Datastore);
+export default connect(null, mapDispatchToProps)(Namespace);

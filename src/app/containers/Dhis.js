@@ -12,7 +12,7 @@ class Dhis extends Component {
 
   render() {
     return (
-      <div className="main-container">
+      <div>
         <div className="row flow">
           <div className="col-md-2">
             <div className="container-header error">Something</div>
