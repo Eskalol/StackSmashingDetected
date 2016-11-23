@@ -1,6 +1,5 @@
 @import '../colors';
 
-
 .fa {
   &.fa-foreground {
     color: $foreground;
@@ -9,5 +8,12 @@
       color: $text-color;
     }
   }
-}
 
+  &.fa-background {
+    color: $background;
+    &:hover,
+    &.hover {
+      color: $text-color;
+    }
+  }
+}
