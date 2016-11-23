@@ -21,7 +21,6 @@ export function receiveNamespaces(json) {
 export function fetchNamespaces() {
   return dispatch => {
     dispatch(requestNamespaces());
-
     return fetch('https://play.dhis2.org/test/api/25/dataStore', {
       method: "GET",
       mode: "cors",

@@ -7,9 +7,8 @@ import KeyValueList from '../components/KeyValue/KeyValueList';
 class Namespace extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.params);
     const {actions} = this.props;
-    actions.changeText("cool");
+    actions.changeText(this.props.namespaceName);
   }
 
   render() {
@@ -23,8 +22,12 @@ class Namespace extends Component {
 
 Namespace.propTypes = {
   actions: React.PropTypes.object.isRequired,
-  params: React.PropTypes.object.isRequired
+  namespaceName: React.PropTypes.string.isRequired
 };
+
+function mapStateToProps(state) {
+  return {namespaceName: state.routing.locationBeforeTransitions.query.name};
+}
 
 /**
  * maps action to props
@@ -37,4 +40,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(Namespace);
+export default connect(mapStateToProps, mapDispatchToProps)(Namespace);

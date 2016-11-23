@@ -12,6 +12,8 @@ import Wrapper from './app/containers/Wrapper';
 import Dhis from './app/containers/Dhis';
 import Datastore from './app/containers/Datastore';
 import Namespace from './app/containers/Namespace';
+import DatastoreAnalysis from './app/containers/DatastoreAnalysis';
+import NamespaceAnalysis from './app/containers/NamespaceAnalysis';
 
 import './index.scss';
 import 'normalize.css';
@@ -26,8 +28,10 @@ render(
     <Router history={history}>
       <Route path="/" component={Wrapper}>
         <IndexRoute component={Dhis}/>
-        <Route name="datastore" path="/datastore" component={Datastore}/>
-        <Route name="namespace" path="/namespace(/:name)" component={Namespace}/>
+        <Route path="/datastore" component={Datastore}/>
+        <Route path="/namespace" component={Namespace}/>
+        <Route path="/datastore-analysis" component={DatastoreAnalysis}/>
+        <Route path="/namespace-analysis" component={NamespaceAnalysis}/>
       </Route>
     </Router>
   </Provider>,

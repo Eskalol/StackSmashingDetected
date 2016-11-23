@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import BurgerMenu from 'react-burger-menu';
 import {decorator} from 'redux-burger-menu';
-import {Link} from 'react-router';
 
 const items = [
-  <Link to="datastore" key="0"><i className="fa fa-database"/><span>Datastore</span></Link>,
+  <a href="/datastore" key="0"><i className="fa fa-database"/><span>Datastore</span></a>,
   <a key="1" href=""><i className="fa fa-comment"/><span>Messages</span></a>,
   <a key="2" href=""><i className="fa fa-calendar-o"/><span>Calendar</span></a>
 ];
