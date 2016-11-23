@@ -6,6 +6,10 @@ class Namespace extends Component {
     console.log(props);
   }
 
+  getNamespaceUrl() {
+    return `/namespace?name=${this.props.namespace}`;
+  }
+
   render() {
     return (
       <div className="row">
@@ -14,7 +18,7 @@ class Namespace extends Component {
             <div className="row">
               <div className="col-lg-8">
                 <div className="align-left">
-                  {this.props.namespace}
+                  <a href={this.getNamespaceUrl()}><h3>{this.props.namespace}</h3></a>
                 </div>
               </div>
               <div className="col-lg-4">

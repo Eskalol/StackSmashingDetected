@@ -174,3 +174,25 @@
     background: $info;
   }
 }
+
+@mixin link($text-color, $hover-color) {
+  a {
+    color: $text-color;
+    &:link {
+      text-decoration: none;
+    }
+
+    &:visited {
+      text-decoration: none;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: $hover-color;
+    }
+
+    &:active {
+      text-decoration: none;
+    }
+  }
+}
