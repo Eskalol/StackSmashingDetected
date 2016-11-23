@@ -4,7 +4,9 @@ import {Header} from './Header';
 
 function setup() {
   const props = {
-    ht: "Test header"
+    ht: "Test header",
+    analysisUrl: "/someUrl",
+    analysis: false
   };
 
   const renderer = TestUtils.createRenderer();
@@ -21,10 +23,13 @@ describe('components', () => {
       expect(output.type).toBe('header');
       expect(output.props.className).toBe('header');
 
-      expect(output.props.children.type).toBe('div');
-      expect(output.props.children.props.className).toBe('header-content');
+      const [headerChild1, headerChild2] = output.props.children;
 
-      const row = output.props.children.props.children;
+      // Tests for header child1
+      expect(headerChild1.type).toBe('div');
+      expect(headerChild1.props.className).toBe('header-content');
+
+      const row = headerChild1.props.children;
       expect(row.type).toBe('div');
       expect(row.props.className).toBe('row');
 
@@ -49,6 +54,20 @@ describe('components', () => {
       expect(input.props.className).toBe('input-box');
       expect(input.props.id).toBe('search');
       expect(input.props.placeholder).toBe('Search...');
+
+      // Test for header child2
+      expect(headerChild2.type).toBe('div');
+      expect(headerChild2.props.className).toBe('analysis-button');
+
+      const [a] = headerChild2.props.children;
+
+      expect(a.type).toBe('a');
+      expect(a.props.href).toBe('/someUrl');
+
+      const chartIcon = a.props.children;
+
+      expect(chartIcon.type).toBe('i');
+      expect(chartIcon.props.className).toBe('fa fa-bar-chart fa-2x fa-background');
     });
   });
 });
