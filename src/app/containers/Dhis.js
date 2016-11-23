@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as HeaderActions from '../actions/header';
-import {KeyValueList} from '../components/KeyValue/KeyValueList';
+import KeyValueList from '../components/KeyValue/KeyValueList';
 
 class Dhis extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class Dhis extends Component {
   render() {
     return (
       <div className="main-container">
-        <KeyValueList namespace=""/>
+        <KeyValueList namespace="METADATASTORE"/>
         <div className="row flow">
           <div className="col-md-2">
             <div className="container-header error">Something</div>

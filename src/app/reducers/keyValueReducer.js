@@ -1,4 +1,4 @@
-import {REQUEST_KEYS, RECIEVE_KEYS, RECIEVE_VALUE} from '../constants/keyValueTypes';
+import {REQUEST_KEYS, REQUEST_VALUE, RECEIVE_KEYS, RECEIVE_VALUE} from '../constants/keyValueTypes';
 
 const initialState = {
   loading: false,
@@ -11,20 +11,25 @@ export default function keyValues(state = initialState, action) {
     case REQUEST_KEYS:
       return Object.assign({}, state, {
         namespace: action.namespace,
-        loading: !state.loading
+        loading: true
       });
-    case RECIEVE_KEYS:
-      console.log(state.keys);
-      console.log(state.values);
+    case RECEIVE_KEYS:
       return Object.assign({}, state, {
         keys: action.keys,
         loading: !state.loading
       });
-    case RECIEVE_VALUE:
+    case REQUEST_VALUE:
+      return Object.assign({}, state, {
+        loading: true
+      });
+    case RECEIVE_VALUE:
+      console.log("Receiving value");
+      console.log(action.value);
       return Object.assign({}, state, {
         values: [...state.values, action.value]
       });
     default:
+      console.log("Default handler");
       return state;
   }
 }
