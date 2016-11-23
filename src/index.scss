@@ -40,3 +40,4 @@ main {
 @include input-box($background, $foreground);
 @include input-line($background, $foreground);
 @include text-area($background, $foreground);
+@include link($foreground, $text-color);

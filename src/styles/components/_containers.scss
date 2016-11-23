@@ -27,7 +27,13 @@
     }
   }
 
-  @include link($foreground, $text-color);
+  h3 {
+    color: $foreground;
+    &.hover,
+    &:hover {
+      color: $text-color;
+    }
+  }
 }
 
 .container-header {

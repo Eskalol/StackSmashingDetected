@@ -14,20 +14,13 @@ class Namespace extends Component {
     return (
       <div className="row">
         <div className="col-lg-12">
-          <div className="container hover">
-            <div className="row">
-              <div className="col-lg-8">
-                <div className="align-left">
-                  <a href={this.getNamespaceUrl()}><h3>{this.props.namespace}</h3></a>
-                </div>
-              </div>
-              <div className="col-lg-4">
-                <div className="align-right">
-                  <i className="fa fa-times fa-2x fa-foreground" aria-hidden="true"></i>
-                </div>
+          <a href={this.getNamespaceUrl()}>
+            <div className="container hover">
+              <div className="align-left">
+                <h3>{this.props.namespace}</h3>
               </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     );
