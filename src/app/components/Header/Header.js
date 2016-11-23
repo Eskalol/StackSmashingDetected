@@ -27,13 +27,13 @@ export class Header extends Component {
         </div>
         <div className="analysis-button">
           {
-          !this.props.analysis &&
+          !this.props.analysis && this.props.analysisButton &&
             <a href={this.props.analysisUrl}>
               <i className="fa fa-bar-chart fa-2x fa-background" aria-hidden="true"/>
             </a>
           }
           {
-          this.props.analysis &&
+          this.props.analysis && this.props.analysisButton &&
             <a href={this.props.analysisUrl}>
               <i className="fa fa-table fa-2x fa-background" aria-hidden="true"/>
             </a>
@@ -47,7 +47,8 @@ export class Header extends Component {
 Header.propTypes = {
   ht: React.PropTypes.string.isRequired,
   analysisUrl: React.PropTypes.string.isRequired,
-  analysis: React.PropTypes.bool.isRequired
+  analysis: React.PropTypes.bool.isRequired,
+  analysisButton: React.PropTypes.bool.isRequired
 };
 
 /**

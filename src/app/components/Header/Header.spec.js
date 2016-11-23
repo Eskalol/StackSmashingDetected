@@ -6,7 +6,8 @@ function setup() {
   const props = {
     ht: "Test header",
     analysisUrl: "/someUrl",
-    analysis: false
+    analysis: false,
+    analysisButton: true
   };
 
   const renderer = TestUtils.createRenderer();

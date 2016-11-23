@@ -8,6 +8,7 @@ class NamespaceAnalysis extends Component {
     super(props);
     const {actions} = this.props;
     actions.changeText(`${this.props.namespaceName} > Analysis`);
+    actions.analysisButton(true);
     actions.analysisListUrl(`/namespace?name=${this.props.namespaceName}`, true);
   }
 

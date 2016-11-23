@@ -8,6 +8,7 @@ class DatastoreAnalysis extends Component {
     super(props);
     const {actions} = this.props;
     actions.changeText("Datastore > Analysis");
+    actions.analysisButton(true);
     actions.analysisListUrl("/datastore", true);
   }
 
