@@ -6,6 +6,10 @@ class Namespace extends Component {
     console.log(props);
   }
 
+  getNamespaceUrl() {
+    return `/namespace?name=${this.props.namespace}`;
+  }
+
   render() {
     return (
       <div className="row">
@@ -14,12 +18,12 @@ class Namespace extends Component {
             <div className="row">
               <div className="col-lg-8">
                 <div className="align-left">
-                  {this.props.namespace}
+                  <a href={this.getNamespaceUrl()}><h3>{this.props.namespace}</h3></a>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="align-right">
-                  <i className="fa fa-times fa-2x" aria-hidden="true"></i>
+                  <i className="fa fa-times fa-2x fa-foreground" aria-hidden="true"></i>
                 </div>
               </div>
             </div>
@@ -31,7 +35,7 @@ class Namespace extends Component {
 }
 
 Namespace.propTypes = {
-  namespace: React.PropTypes.object.isRequired
+  namespace: React.PropTypes.string.isRequired
 };
 
 export default Namespace;

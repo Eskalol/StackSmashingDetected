@@ -1,18 +1,19 @@
 import 'babel-polyfill';
 
-import React, {Component} from 'react';
+import React from 'react';
 import {render} from 'react-dom';
 import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import {Provider} from 'react-redux';
-import {syncHistoryWithStore} from 'react-router-redux';
 
+import {syncHistoryWithStore} from 'react-router-redux';
 import configureStore from './app/store/configureStore';
 
-import Datastore from './app/containers/Datastore';
+import Wrapper from './app/containers/Wrapper';
 import Dhis from './app/containers/Dhis';
-import Header from './app/components/Header/Header';
-import Footer from './app/components/Footer/Footer';
-import Menu from './app/components/Menu/Menu';
+import Datastore from './app/containers/Datastore';
+import Namespace from './app/containers/Namespace';
+import DatastoreAnalysis from './app/containers/DatastoreAnalysis';
+import NamespaceAnalysis from './app/containers/NamespaceAnalysis';
 
 import './index.scss';
 import 'normalize.css';
@@ -22,31 +23,15 @@ const store = configureStore();
 
 const history = syncHistoryWithStore(browserHistory, store);
 
-class App extends Component {
-  render() {
-    return (
-      <div id="outer-container" style={{height: '100%'}}>
-        <Menu/>
-        <main id="page-wrap">
-          <Header/>
-          {this.props.children}
-          <Footer/>
-        </main>
-      </div>
-    );
-  }
-}
-
-App.propTypes = {
-  children: React.Component
-};
-
 render(
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={App}>
+      <Route path="/" component={Wrapper}>
         <IndexRoute component={Dhis}/>
-        <Route path="datastore" component={Datastore}/>
+        <Route path="/datastore" component={Datastore}/>
+        <Route path="/namespace" component={Namespace}/>
+        <Route path="/datastore-analysis" component={DatastoreAnalysis}/>
+        <Route path="/namespace-analysis" component={NamespaceAnalysis}/>
       </Route>
     </Router>
   </Provider>,

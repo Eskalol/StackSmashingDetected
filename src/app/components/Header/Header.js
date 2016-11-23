@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 export class Header extends Component {
@@ -26,14 +25,29 @@ export class Header extends Component {
             </div>
           </div>
         </div>
+        <div className="analysis-button">
+          {
+          !this.props.analysis &&
+            <a href={this.props.analysisUrl}>
+              <i className="fa fa-bar-chart fa-2x fa-background" aria-hidden="true"/>
+            </a>
+          }
+          {
+          this.props.analysis &&
+            <a href={this.props.analysisUrl}>
+              <i className="fa fa-table fa-2x fa-background" aria-hidden="true"/>
+            </a>
+          }
+        </div>
       </header>
     );
   }
-
 }
 
 Header.propTypes = {
-  ht: React.PropTypes.string.isRequired
+  ht: React.PropTypes.string.isRequired,
+  analysisUrl: React.PropTypes.string.isRequired,
+  analysis: React.PropTypes.bool.isRequired
 };
 
 /**

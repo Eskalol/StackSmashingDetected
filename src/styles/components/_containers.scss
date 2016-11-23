@@ -26,6 +26,8 @@
       background-color: adjust-hue($background, 50deg);
     }
   }
+
+  @include link($foreground, $text-color);
 }
 
 .container-header {

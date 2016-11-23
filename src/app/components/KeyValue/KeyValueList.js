@@ -8,10 +8,7 @@ import * as KeyValueActions from '../../actions/keyValue';
 class KeyValueList extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
-    console.log("In construcor");
     const {actions} = this.props;
-    console.log("GETTING KEYS");
     actions.getKeys(this.props.namespace);
   }
 
@@ -26,7 +23,7 @@ class KeyValueList extends Component {
 
 KeyValueList.propTypes = {
   namespace: React.PropTypes.string.isRequired,
-  // loading: React.PropTypes.bool.isRequired
+  loading: React.PropTypes.bool.isRequired,
   actions: React.PropTypes.object.isRequired,
   keys: React.PropTypes.array
 };
