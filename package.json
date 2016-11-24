@@ -2,6 +2,9 @@
   "name": "StackSmashingDetected",
   "version": "0.42.0",
   "description": "INF5750 project",
+  "engines": {
+    "node": "6.6.0"
+  },
   "keywords": [
     "React",
     "Redux",
@@ -98,7 +101,9 @@
     "serve": "gulp serve",
     "serve:dist": "gulp serve:dist",
     "test": "gulp test",
-    "test:auto": "gulp test:auto"
+    "test:auto": "gulp test:auto",
+    "postinstall": "npm run build",
+    "start": "node server.js"
   },
   "eslintConfig": {
     "root": true,
