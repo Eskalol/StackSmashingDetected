@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import * as HeaderActions from '../actions/header';
 import NamespaceList from '../components/Namespace/NamespaceList';
 
-class Datastore extends Component {
+export class Datastore extends Component {
   constructor(props) {
     super(props);
     const {actions} = this.props;
