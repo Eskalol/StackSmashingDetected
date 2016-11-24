@@ -6,6 +6,7 @@
 @import 'styles/components/containers';
 @import 'styles/components/fa';
 @import 'styles/components/analysisList';
+@import 'styles/components/loading';
 @import 'styles/mixins';
 @import url("http://fonts.googleapis.com/css?family=Raleway:400,700,800");
 
@@ -40,3 +41,4 @@ main {
 @include input-box($background, $foreground);
 @include input-line($background, $foreground);
 @include text-area($background, $foreground);
+@include link($foreground, $text-color);

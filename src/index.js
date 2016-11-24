@@ -18,6 +18,7 @@ import NamespaceAnalysis from './app/containers/NamespaceAnalysis';
 import './index.scss';
 import 'normalize.css';
 import 'font-awesome/css/font-awesome.css';
+import './assets/rolling.svg';
 
 const store = configureStore();
 

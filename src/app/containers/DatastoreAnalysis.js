@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as HeaderActions from '../actions/header';
 
-class DatastoreAnalysis extends Component {
+export class DatastoreAnalysis extends Component {
   constructor(props) {
     super(props);
     const {actions} = this.props;

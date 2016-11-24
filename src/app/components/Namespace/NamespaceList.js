@@ -5,10 +5,9 @@ import Namespace from './Namespace';
 import Loading from '../Loading/Loading';
 import * as NamespaceActions from '../../actions/namespace';
 
-class NamespaceList extends Component {
+export class NamespaceList extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     const {actions} = this.props;
     actions.fetchNamespaces();
   }

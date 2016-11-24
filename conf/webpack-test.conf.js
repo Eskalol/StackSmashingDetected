@@ -20,11 +20,19 @@ module.exports = {
         exclude: /node_modules/,
         loaders: [
           'babel'
-        ]
+        ],
+        query: {
+          presets: ['airbnb']
+        }
       }
     ]
   },
   plugins: [],
+  babelPreprocessor: {
+    options: {
+      presets: ['airbnb']
+    }
+  },
   debug: true,
   devtool: 'source-map',
   externals: {

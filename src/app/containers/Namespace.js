@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import * as HeaderActions from '../actions/header';
 import KeyValueList from '../components/KeyValue/KeyValueList';
 
-class Namespace extends Component {
+export class Namespace extends Component {
   constructor(props) {
     super(props);
     const {actions} = this.props;

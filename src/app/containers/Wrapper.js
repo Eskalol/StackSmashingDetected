@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import {connect} from 'react-redux';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Menu from '../components/Menu/Menu';
