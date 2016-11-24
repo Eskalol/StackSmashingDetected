@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class Namespace extends Component {
+export class Namespace extends Component {
   constructor(props) {
     super(props);
     console.log(props);
