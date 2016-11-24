@@ -102,7 +102,7 @@
     "serve:dist": "gulp serve:dist",
     "test": "gulp test",
     "test:auto": "gulp test:auto",
-    "start": "node server.js"
+    "start": "npm build && node server.js"
   },
   "eslintConfig": {
     "root": true,
