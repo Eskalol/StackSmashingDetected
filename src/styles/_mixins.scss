@@ -32,7 +32,6 @@
       border-bottom: solid 2px $foreground;
       outline: none;
     }
-
     @include status('bottom-border', 2px);
   }
 }
@@ -173,5 +172,27 @@
 
   &.info {
     background: $info;
+  }
+}
+
+@mixin link($text-color, $hover-color) {
+  a {
+    color: $text-color;
+    &:link {
+      text-decoration: none;
+    }
+
+    &:visited {
+      text-decoration: none;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: $hover-color;
+    }
+
+    &:active {
+      text-decoration: none;
+    }
   }
 }

@@ -2,11 +2,13 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as HeaderActions from '../actions/header';
+// import KeyValueList from '../components/KeyValue/KeyValueList';
 
 class Dhis extends Component {
   constructor(props) {
     super(props);
     const {actions} = this.props;
+    actions.analysisButton(false);
     actions.changeText("DHIS");
   }
 

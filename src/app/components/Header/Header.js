@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 export class Header extends Component {
@@ -19,21 +18,37 @@ export class Header extends Component {
         <div className="header-content">
           <div className="row">
             <div className="col-sm-3"></div>
-            <div className="col-sm-6"><h1>{this.getHeaderText()}</h1></div>
-
-            <div className="col-sm-1 analysis-button">
-              <i className="fa fa-bar-chart fa-2x hover-color" aria-hidden="true"/>
+            <div className="col-sm-5" id="header-text"><h1>{this.getHeaderText()}</h1></div>
+            <div className="col-sm-4">
+              <i className="fa fa-search fa-2x" aria-hidden="true"/>
+              <input type="text" id="search" className="input-box" placeholder="Search..."/>
             </div>
           </div>
+        </div>
+        <div className="analysis-button">
+          {
+          !this.props.analysis && this.props.analysisButton &&
+            <a href={this.props.analysisUrl}>
+              <i className="fa fa-bar-chart fa-2x fa-background" aria-hidden="true"/>
+            </a>
+          }
+          {
+          this.props.analysis && this.props.analysisButton &&
+            <a href={this.props.analysisUrl}>
+              <i className="fa fa-table fa-2x fa-background" aria-hidden="true"/>
+            </a>
+          }
         </div>
       </header>
     );
   }
-
 }
 
 Header.propTypes = {
-  ht: React.PropTypes.string.isRequired
+  ht: React.PropTypes.string.isRequired,
+  analysisUrl: React.PropTypes.string.isRequired,
+  analysis: React.PropTypes.bool.isRequired,
+  analysisButton: React.PropTypes.bool.isRequired
 };
 
 /**

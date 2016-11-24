@@ -27,6 +27,14 @@
       background-color: adjust-hue($background, 50deg);
     }
   }
+
+  h3 {
+    color: $foreground;
+    &.hover,
+    &:hover {
+      color: $text-color;
+    }
+  }
 }
 
 .container-header {
@@ -39,4 +47,12 @@
   text-align: middle;
   @include status('border', 2px);
   @include status-bg();
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
 }

@@ -1,54 +1,59 @@
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import {shallow} from 'enzyme';
 import {Header} from './Header';
 
-function setup() {
-  const props = {
-    ht: "Test header"
-  };
+const props = {
+  ht: "Test header",
+  analysisUrl: "/someUrl-analysis",
+  analysis: false,
+  analysisButton: true
+};
 
-  const renderer = TestUtils.createRenderer();
-  renderer.render(<Header {...props}/>);
-  const output = renderer.getRenderOutput();
+describe('Components', () => {
+  describe('<Header/>', () => {
+    it('should render header correctly', () => {
+      const wrapper = shallow(<Header {...props}/>);
+      expect(wrapper.is('.header')).toBe(true);
 
-  return output;
-}
-
-describe('components', () => {
-  describe('Header', () => {
-    it('should render correctly', () => {
-      const output = setup();
-      expect(output.type).toBe('header');
-      expect(output.props.className).toBe('header');
-
-      expect(output.props.children.type).toBe('div');
-      expect(output.props.children.props.className).toBe('header-content');
-
-      const row = output.props.children.props.children;
-      expect(row.type).toBe('div');
-      expect(row.props.className).toBe('row');
-
-      const [col1, col2, col3] = row.props.children;
-
-      expect(col1.type).toBe('div');
-      expect(col1.props.className).toBe('col-sm-3');
-
-      expect(col2.type).toBe('div');
-      expect(col2.props.className).toBe('col-sm-5');
-      expect(col2.props.children.type).toBe('h1');
-      expect(col2.props.children.props.children).toBe('Test header');
-
-      expect(col3.type).toBe('div');
-      expect(col3.props.className).toBe('col-sm-4');
-
-      const [i, input] = col3.props.children;
-
-      expect(i.type).toBe('i');
-      expect(i.props.className).toBe('fa fa-search fa-2x');
-      expect(input.type).toBe('input');
-      expect(input.props.className).toBe('input-box');
-      expect(input.props.id).toBe('search');
-      expect(input.props.placeholder).toBe('Search...');
+      expect(wrapper.find('div .header-content').length).toBe(1);
+      expect(wrapper.find('div .col-sm-5 > h1').text()).toBe(props.ht);
+      expect(wrapper.find('div .row').length).toBe(1);
+      expect(wrapper.find('div .col-sm-3').length).toBe(1);
+      expect(wrapper.find('div .col-sm-4').length).toBe(1);
+      expect(wrapper.find('div .col-sm-5 #header-text > h1').length).toBe(1);
+    });
+    it('should render serach correctly', () => {
+      const wrapper = shallow(<Header {...props}/>);
+      expect(wrapper.find('input #search').length).toBe(1);
+      expect(wrapper.find('i .fa .fa-search .fa-2x').length).toBe(1);
+    });
+    it('should render analysis button correctly', () => {
+      const wrapper = shallow(<Header {...props}/>);
+      expect(wrapper.find('div .analysis-button').length).toBe(1);
+      expect(wrapper.find('a[href="/someUrl-analysis"]').length).toBe(1);
+      expect(wrapper.find('i .fa .fa-bar-chart .fa-2x .fa-background').length).toBe(1);
+      expect(wrapper.find('i .fa .fa-table .fa-2x .fa-background').length).toBe(0);
+    });
+    it('should render table button correctly', () => {
+      const _props = Object.assign({}, props, {
+        analysis: true,
+        analysisUrl: "/someUrl"
+      });
+      const wrapper = shallow(<Header {..._props}/>);
+      expect(wrapper.find('div .analysis-button').length).toBe(1);
+      expect(wrapper.find('a[href="/someUrl"]').length).toBe(1);
+      expect(wrapper.find('i .fa .fa-bar-chart .fa-2x .fa-background').length).toBe(0);
+      expect(wrapper.find('i .fa .fa-table .fa-2x .fa-background').length).toBe(1);
+    });
+    it('should not render analysis or table button', () => {
+      const _props = Object.assign({}, props, {
+        analysisButton: false
+      });
+      const wrapper = shallow(<Header {..._props}/>);
+      expect(wrapper.find('div .analysis-button').length).toBe(1);
+      expect(wrapper.find('a[href="/someUrl-analysis"]').length).toBe(0);
+      expect(wrapper.find('i .fa .fa-bar-chart .fa-2x .fa-background').length).toBe(0);
+      expect(wrapper.find('i .fa .fa-table .fa-2x .fa-background').length).toBe(0);
     });
   });
 });

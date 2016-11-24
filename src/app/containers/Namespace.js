@@ -2,29 +2,34 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as HeaderActions from '../actions/header';
-import NamespaceList from '../components/Namespace/NamespaceList';
+import KeyValueList from '../components/KeyValue/KeyValueList';
 
-export class Datastore extends Component {
+export class Namespace extends Component {
   constructor(props) {
     super(props);
     const {actions} = this.props;
-    actions.changeText("Datastore");
+    actions.changeText(this.props.namespaceName);
     actions.analysisButton(true);
-    actions.analysisListUrl("/datastore-analysis", false);
+    actions.analysisListUrl(`/namespace-analysis?name=${this.props.namespaceName}`, false);
   }
 
   render() {
     return (
       <div>
-        <NamespaceList/>
+        <KeyValueList/>
       </div>
     );
   }
 }
 
-Datastore.propTypes = {
-  actions: React.PropTypes.object.isRequired
+Namespace.propTypes = {
+  actions: React.PropTypes.object.isRequired,
+  namespaceName: React.PropTypes.string.isRequired
 };
+
+function mapStateToProps(state) {
+  return {namespaceName: state.routing.locationBeforeTransitions.query.name};
+}
 
 /**
  * maps action to props
@@ -37,4 +42,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(Datastore);
+export default connect(mapStateToProps, mapDispatchToProps)(Namespace);
