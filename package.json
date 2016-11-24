@@ -102,7 +102,8 @@
     "serve:dist": "gulp serve:dist",
     "test": "gulp test",
     "test:auto": "gulp test:auto",
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "node node_modules/gulp/bin/gulp build"
   },
   "eslintConfig": {
     "root": true,
