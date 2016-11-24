@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as HeaderActions from '../actions/header';
 
-class NamespaceAnalysis extends Component {
+export class NamespaceAnalysis extends Component {
   constructor(props) {
     super(props);
     const {actions} = this.props;
