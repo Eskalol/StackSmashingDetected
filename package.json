@@ -102,7 +102,8 @@
     "serve:dist": "gulp serve:dist",
     "test": "gulp test",
     "test:auto": "gulp test:auto",
-    "start": "npm build && node server.js"
+    "postinstall": "gulp",
+    "start": "node server.js"
   },
   "cacheDirectories": ["node_modules", "dist"],
   "eslintConfig": {
