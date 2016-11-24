@@ -17,6 +17,10 @@ describe('Components', () => {
 
       expect(wrapper.find('.header-content').length).toBe(1);
       expect(wrapper.text()).toBe(props.ht);
+      expect(wrapper.find('.row').length).toBe(1);
+      expect(wrapper.find('.col-sm-3').length).toBe(1);
+      expect(wrapper.find('.col-sm-4').length).toBe(1);
+      expect(wrapper.find('div > h1').length).toBe(1);
     });
     it('should render serach correctly', () => {
       const wrapper = shallow(<Header {...props}/>);
