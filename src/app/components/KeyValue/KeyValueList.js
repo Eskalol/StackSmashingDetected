@@ -18,7 +18,7 @@ class KeyValueList extends Component {
         {this.props.loading && <Loading/>}
         {
           !this.props.loading &&
-          this.props.keys.map((value, i) => <KeyValue key={i} keyName={value} value="Test value"/>)
+          this.props.keys.map((value, i) => <KeyValue key={i} value={value} namespace={this.props.namespace}/>)
         }
       </div>
     );

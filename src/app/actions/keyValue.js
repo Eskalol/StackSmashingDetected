@@ -63,7 +63,7 @@ export function editValue() {
 
 }
 
-export function getMetadata(namespace, key) {
+export function getMetadata(namespace, key, id) {
   return dispatch => {
     return fetch(`https://play.dhis2.org/test/api/25/dataStore/${namespace}/${key}/metadata`, {
       method: "GET",
@@ -77,7 +77,7 @@ export function getMetadata(namespace, key) {
       return response.json();
     }).then(json => {
       console.log(json);
-      dispatch(receiveMetadata(json));
+      dispatch(receiveMetadata(json, id));
     }).catch(error => {
       console.log(error.message);
     });

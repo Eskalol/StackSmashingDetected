@@ -12,7 +12,6 @@ export default function namespaces(state = initialState, action) {
         isFetching: true
       });
     case RECEIVE_NAMESPACES:
-      console.log("SUper cool");
       console.log(state);
       console.log(action);
       return Object.assign({}, state, {

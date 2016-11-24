@@ -1,4 +1,4 @@
-import {REQUEST_KEYS, RECEIVE_KEYS, RECEIVE_VALUE} from '../constants/keyValueTypes';
+import {REQUEST_KEYS, RECEIVE_KEYS, RECEIVE_VALUE, RECEIVE_METADATA} from '../constants/keyValueTypes';
 
 const initialState = {
   loading: false,
@@ -16,7 +16,10 @@ export default function keyValues(state = initialState, action) {
     case RECEIVE_KEYS:
       console.log(`Got keys ${action.keys}`);
       return Object.assign({}, state, {
-        keys: action.keys,
+        keys: action.keys.map((key, id) => ({
+          key,
+          id
+        })),
         loading: false
       });
     case RECEIVE_VALUE:
@@ -24,6 +27,9 @@ export default function keyValues(state = initialState, action) {
       console.log(action.value);
       return Object.assign({}, state, {
         values: [...state.values, action.value]
+      });
+    case RECEIVE_METADATA:
+      return Object.assign({}, state, {
       });
     default:
       console.log("Default handler");
