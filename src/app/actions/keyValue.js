@@ -4,7 +4,7 @@ import {REQUEST_KEYS, RECEIVE_KEYS, RECEIVE_METADATA} from '../constants/keyValu
 
 export const requestKeys = namespace => ({type: REQUEST_KEYS, namespace});
 export const receiveKeys = keys => ({type: RECEIVE_KEYS, keys, receivedAt: Date.now()});
-export const receiveMetadata = metadata => ({type: RECEIVE_METADATA, metadata, receivedAt: Date.now()});
+export const receiveMetadata = (metadata, id) => ({type: RECEIVE_METADATA, metadata, id, receivedAt: Date.now()});
 // export const receiveValue = value => ({type: RECEIVE_VALUE, value, receivedAt: Date.now()});
 
 /*
@@ -55,17 +55,17 @@ export function getKeys(namespace) {
   };
 }
 
-export function deleteKeyValuePair() {
+// export function deleteKeyValuePair() {
 
-}
+// }
 
-export function editValue() {
+// export function editValue() {
 
-}
+// }
 
 export function getMetadata(namespace, key, id) {
   return dispatch => {
-    return fetch(`https://play.dhis2.org/test/api/25/dataStore/${namespace}/${key}/metadata`, {
+    return fetch(`https://play.dhis2.org/test/api/25/dataStore/${namespace}/${key}/metaData`, {
       method: "GET",
       mode: "cors",
       headers: {
@@ -76,9 +76,11 @@ export function getMetadata(namespace, key, id) {
     }).then(response => {
       return response.json();
     }).then(json => {
+      console.log("METADATA GET");
       console.log(json);
       dispatch(receiveMetadata(json, id));
     }).catch(error => {
+      console.log("METADATA FAIL");
       console.log(error.message);
     });
   };

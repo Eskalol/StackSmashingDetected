@@ -29,8 +29,11 @@ export default function keyValues(state = initialState, action) {
         values: [...state.values, action.value]
       });
     case RECEIVE_METADATA:
-      return Object.assign({}, state, {
-      });
+      console.log("Received metadata");
+      return state;
+      // return Object.assign({}, state, {
+
+      // });
     default:
       console.log("Default handler");
       return state;
