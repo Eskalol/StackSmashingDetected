@@ -1,8 +1,9 @@
-import {REQUEST_KEYS, RECEIVE_KEYS, RECEIVE_VALUE, RECEIVE_METADATA, REQUEST_VALUE} from '../constants/keyValueTypes';
+import {REQUEST_KEYS, RECEIVE_KEYS, RECEIVE_VALUE, RECEIVE_METADATA, REQUEST_VALUE, TOGGLE_ADD} from '../constants/keyValueTypes';
 
 const initialState = {
   items: [],
-  loading: false
+  loading: false,
+  add: false
 };
 
 export default function keyValues(state = initialState, action) {
@@ -40,6 +41,11 @@ export default function keyValues(state = initialState, action) {
           Object.assign({}, key, {metaData: action.metaData}) :
           key
         );
+
+    case TOGGLE_ADD:
+      return Object.assign({}, state, {
+        add: !state.add
+      });
     case REQUEST_VALUE:
       return state;
 

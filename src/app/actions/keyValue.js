@@ -1,12 +1,13 @@
 import fetch from 'isomorphic-fetch';
 
-import {REQUEST_KEYS, RECEIVE_KEYS, RECEIVE_METADATA, RECEIVE_VALUE, REQUEST_VALUE} from '../constants/keyValueTypes';
+import {REQUEST_KEYS, RECEIVE_KEYS, RECEIVE_METADATA, RECEIVE_VALUE, REQUEST_VALUE, TOGGLE_ADD} from '../constants/keyValueTypes';
 
 export const requestKeys = () => ({type: REQUEST_KEYS});
 export const receiveKeys = keys => ({type: RECEIVE_KEYS, keys, receivedAt: Date.now()});
 export const requestValue = () => ({type: REQUEST_VALUE});
 export const receiveMetadata = (metaData, id) => ({type: RECEIVE_METADATA, metaData, id, receivedAt: Date.now()});
 export const receiveValue = (value, id) => ({type: RECEIVE_VALUE, value, id, receivedAt: Date.now()});
+export const toggleAdd = () => ({type: TOGGLE_ADD});
 
 export const getValue = (key, namespace, id) => {
   return dispatch => {
