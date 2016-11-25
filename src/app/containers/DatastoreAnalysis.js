@@ -18,8 +18,8 @@ export class DatastoreAnalysis extends Component {
     this.props.actions.fetchNamespaces();
 
     this.state = {
-      chart: "Line",
-      dataset: [null]
+      chart: "Bar",
+      dataset: null
     };
   }
 
@@ -68,7 +68,7 @@ export class DatastoreAnalysis extends Component {
           pointStrokeColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(151,187,205,1)",
-          data: [1, 2, 3, 4]
+          data: [1, 2, 3]
         }
       ]
     };
@@ -90,7 +90,7 @@ export class DatastoreAnalysis extends Component {
             "#30A0EB",
             "#FFCE50"
           ],
-          data: [1, 2, 3, 4]
+          data: [1, 2, 3]
         }]
     };
   }
