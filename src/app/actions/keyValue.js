@@ -1,10 +1,11 @@
 import fetch from 'isomorphic-fetch';
 
-import {REQUEST_KEYS, RECEIVE_KEYS, RECEIVE_METADATA} from '../constants/keyValueTypes';
+import {REQUEST_KEYS, RECEIVE_KEYS, RECEIVE_METADATA, UPDATE_KEY} from '../constants/keyValueTypes';
 
 export const requestKeys = namespace => ({type: REQUEST_KEYS, namespace});
 export const receiveKeys = keys => ({type: RECEIVE_KEYS, keys, receivedAt: Date.now()});
 export const receiveMetadata = (metadata, id) => ({type: RECEIVE_METADATA, metadata, id, receivedAt: Date.now()});
+export const updateKey = (key, value, id) => ({type: UPDATE_KEY, key, value, id, receivedAt: Date.now()});
 // export const receiveValue = value => ({type: RECEIVE_VALUE, value, receivedAt: Date.now()});
 
 /*
@@ -59,9 +60,25 @@ export function getKeys(namespace) {
 
 // }
 
-// export function editValue() {
-
-// }
+export function editValue(namespace, key, value) {
+  return dispatch => {
+    return fetch(`https://play.dhis2.org/test/api/25/dataStore/${namespace}/${key}`, {
+      method: "PUT",
+      body: JSON.stringify(value),
+      mode: "cors",
+      headers: {
+        "Authorization": `Basic ${btoa("admin:district")}`,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      }
+    }).then(response => {
+      if(response.ok) dispatch(updateKey(key, value));
+    }).catch(error => {
+      console.log("Value post fail");
+      console.log(error.message);
+    });
+  }
+}
 
 export function getMetadata(namespace, key, id) {
   return dispatch => {

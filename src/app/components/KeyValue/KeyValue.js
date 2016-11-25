@@ -9,10 +9,6 @@ class KeyValue extends Component {
     console.log(props);
   }
 
-  handleMetadata(context) {
-    context.props.actions.getMetadata(context.props.namespace, context.props.value.key, context.props.value.id);
-  }
-
   render() {
     return (
       <div className="row center">
@@ -28,7 +24,7 @@ class KeyValue extends Component {
               <div className="align-right">
                 <i className="fa fa-times fa-2x fa-foreground" aria-hidden="true"/>
                 <i className="fa fa-pencil fa-2x fa-foreground" aria-hidden="true"/>
-                <i className="fa fa-tag fa-2x fa-foreground" aria-hidden="true" onClick={ this.handleMetadata.bind(this) }/>
+                <i className="fa fa-tag fa-2x fa-foreground" aria-hidden="true"/>
               </div>
             </div>
           </div>
