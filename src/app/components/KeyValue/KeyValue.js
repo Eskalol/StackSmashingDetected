@@ -7,33 +7,36 @@ import * as KeyValueActions from '../../actions/keyValue';
 class KeyValue extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     const {actions} = this.props;
     actions.getValue(this.props.keyObject.key, this.props.namespace, this.props.keyObject.id);
   }
 
   render() {
     return (
-      <div className="row center">
+      <div className="row">
         <div className="col-lg-12">
           <div className="container">
-            <div className="col-lg-6">
-              <div className="align-left">
-                {this.props.keyObject.key}
+            <div className="row">
+              <div className="col-sm-3">
+                <div className="align-left">
+                  {this.props.keyObject.key}
+                </div>
               </div>
-            </div>
-            <div className="col-lg-6">
-              <div>
-                {this.props.items[this.props.keyObject.id].loading && <Loading/>}
-                {
-                  !this.props.items[this.props.keyObject.id] &&
-                    <input className="input-line" value={this.props.items[this.props.keyObject.id].value} disabled/>
-                }
+              <div className="col-sm-8">
+                <div className="align-left">
+                  {this.props.keyObject.loading && <Loading/>}
+                  {
+                    !this.props.keyObject.loading &&
+                      <input className="input-line" value={this.props.keyObject.value} disabled/>
+                  }
+                </div>
               </div>
-              <div className="align-right">
-                <i className="fa fa-times fa-2x fa-foreground" aria-hidden="true"/>
-                <i className="fa fa-pencil fa-2x fa-foreground" aria-hidden="true"/>
-                <i className="fa fa-tag fa-2x fa-foreground" aria-hidden="true"/>
+              <div className="col-sm-1">
+                <div className="align-right">
+                  <i className="fa fa-times fa-2x fa-foreground" aria-hidden="true"/>
+                  <i className="fa fa-pencil fa-2x fa-foreground" aria-hidden="true"/>
+                  <i className="fa fa-tag fa-2x fa-foreground" aria-hidden="true"/>
+                </div>
               </div>
             </div>
           </div>
@@ -46,12 +49,8 @@ class KeyValue extends Component {
 KeyValue.propTypes = {
   keyObject: React.PropTypes.object.isRequired,
   namespace: React.PropTypes.string.isRequired,
-  actions: React.PropTypes.object.isRequired,
-  items: React.PropTypes.array.isRequired
+  actions: React.PropTypes.object.isRequired
 };
-function mapStateToProps(state) {
-  return {items: state.keyValues};
-}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -59,4 +58,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(KeyValue);
+export default connect(null, mapDispatchToProps)(KeyValue);

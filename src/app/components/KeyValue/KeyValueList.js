@@ -15,25 +15,22 @@ class KeyValueList extends Component {
   render() {
     return (
       <div>
-        {this.props.loading && <Loading/>}
-        {
-          !this.props.loading &&
-          this.props.items.map((value, i) => <KeyValue key={i} keyObject={value} namespace={this.props.namespace}/>)
-        }
+      {this.props.loading && <Loading/>}
+      {!this.props.loading && this.props.items.map((value, i) => <KeyValue key={i} keyObject={value} namespace={this.props.namespace}/>)}
       </div>
     );
   }
 }
 
 KeyValueList.propTypes = {
-  items: React.PropTypes.array,
   loading: React.PropTypes.bool.isRequired,
+  items: React.PropTypes.array.isRequired,
   namespace: React.PropTypes.string.isRequired,
   actions: React.PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
-  return {items: state.keyValues};
+  return state.keyValues;
 }
 
 function mapDispatchToProps(dispatch) {

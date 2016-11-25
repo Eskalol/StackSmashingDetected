@@ -1,7 +1,7 @@
-export const SEND_KEYVALUE_PAIR = 'send_keyvalue_pair';
-export const GET_METADATA = 'get_metadata';
-export const UPDATE_KEY = 'update_key';
-export const REQUEST_KEYS = 'request_keys';
-export const RECEIVE_KEYS = 'receive_value';
-export const REQUEST_VALUE = 'request_value';
-export const RECEIVE_VALUE = 'receive_value';
+export const SEND_KEYVALUE_PAIR = 'SEND_KEYVALUE_PAIR';
+export const GET_METADATA = 'GET_METADATA';
+export const UPDATE_KEY = 'UPDATE_KEY';
+export const REQUEST_KEYS = 'REQUEST_KEYS';
+export const RECEIVE_KEYS = 'RECEIVE_KEYS';
+export const REQUEST_VALUE = 'REQUEST_VALUE';
+export const RECEIVE_VALUE = 'RECEIVE_VALUE';
