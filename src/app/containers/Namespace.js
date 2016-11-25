@@ -16,7 +16,7 @@ export class Namespace extends Component {
   render() {
     return (
       <div>
-        <KeyValueList/>
+        <KeyValueList namespace={this.props.namespaceName}/>
       </div>
     );
   }
