@@ -1,6 +1,12 @@
 import fetch from 'isomorphic-fetch';
 
-import {RECEIVE_NAMESPACES} from '../constants/namespaceTypes';
+import {REQUEST_NAMESPACES, RECEIVE_NAMESPACES} from '../constants/namespaceTypes';
+
+export function requestNamespaces() {
+  return {
+    type: REQUEST_NAMESPACES
+  };
+}
 
 export function receiveNamespaces(json) {
   return {
@@ -23,6 +29,7 @@ function getKeyCountForEach(namespaces){
 
 export function fetchNamespaces() {
   return dispatch => {
+    dispatch(requestNamespaces());
     return fetch('https://play.dhis2.org/test/api/25/dataStore', {
       method: "GET",
       mode: "cors",

@@ -3,6 +3,8 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Line, Bar, Radar, Pie, Doughnut} from 'react-chartjs';
 
+import Loading from '../components/Loading/Loading';
+
 import * as HeaderActions from '../actions/header';
 import * as NamespaceActions from '../actions/analysis';
 
@@ -57,6 +59,7 @@ export class DatastoreAnalysis extends Component {
     actions.changeText("Datastore > Analysis");
     actions.analysisButton(true);
     actions.analysisListUrl("/datastore", true);
+    this.props.actions.fetchNamespaces();
 
     this.state = {
       chart: "Line",
@@ -75,7 +78,7 @@ export class DatastoreAnalysis extends Component {
 
   // Return the JSX graph type specified by the state.
   getStateGraph(data) {
-    // const data = this.state.dataset;
+    console.log();
     switch (this.state.chart) {
       case "Line":
         return <Line data={data} options={null} width="550" height="250"/>;
@@ -102,7 +105,7 @@ export class DatastoreAnalysis extends Component {
       labels: namespaces,
       datasets: [
         {
-          label: "My First dataset",
+          label: "Namespaces",
           fillColor: "rgba(151,187,205,0.2)",
           strokeColor: "rgba(151,187,205,1)",
           pointColor: "rgba(151,187,205,1)",
@@ -115,16 +118,18 @@ export class DatastoreAnalysis extends Component {
     };
   }
 
-  componentWillMount() {
-    this.props.actions.fetchNamespaces();
-  }
+  // componentWillMount() {
+  //   this.props.actions.fetchNamespaces();
+  // }
 
   render() {
     return (
       <div>
-        {this.getStateGraph(
-          this.createDataSet(this.props.items)
-        )}
+      {this.props.isFetching && <Loading/>}
+      {
+        !this.props.isFetching &&
+        this.getStateGraph(this.createDataSet(this.props.items))
+      }
       </div>
     );
   }
@@ -132,6 +137,7 @@ export class DatastoreAnalysis extends Component {
 
 DatastoreAnalysis.propTypes = {
   items: React.PropTypes.array.isRequired,
+  isFetching: React.PropTypes.bool.isRequired,
   actions: React.PropTypes.object.isRequired
 };
 
