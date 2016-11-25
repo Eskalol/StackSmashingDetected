@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as HeaderActions from '../actions/header';
-
-// import * as NamespaceActions from '../actions/analysis';
-
 import {Line, Bar, Radar, Pie, Doughnut} from 'react-chartjs';
+
+import * as HeaderActions from '../actions/header';
+import * as NamespaceActions from '../actions/analysis';
 
 const mockData = {
   labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -58,6 +57,7 @@ export class DatastoreAnalysis extends Component {
     actions.changeText("Datastore > Analysis");
     actions.analysisButton(true);
     actions.analysisListUrl("/datastore", true);
+    actions.fetchNamespaces();
     // this.state = {chart: "Line"};
   }
 
@@ -94,7 +94,7 @@ export class DatastoreAnalysis extends Component {
   }
 
   componentWillMount() {
-    // actions.fetchNamespaces();
+
   }
 
   render() {
@@ -118,7 +118,7 @@ DatastoreAnalysis.propTypes = {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(Object.assign({}, HeaderActions), dispatch)
+    actions: bindActionCreators(Object.assign({}, HeaderActions, NamespaceActions), dispatch)
   };
 }
 
