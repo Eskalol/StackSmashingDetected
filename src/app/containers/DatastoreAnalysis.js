@@ -6,7 +6,7 @@ import {Line, Bar, Radar, Pie, Doughnut} from 'react-chartjs';
 import * as HeaderActions from '../actions/header';
 import * as NamespaceActions from '../actions/analysis';
 
-const mockData = {
+/* const mockData = {
   labels: ["January", "February", "March", "April", "May", "June", "July"],
   datasets: [
     {
@@ -30,7 +30,7 @@ const mockData = {
       data: [0, 4, 1, 4, 6, 5, 1]
     }
   ]
-};
+};*/
 
 const mockData2 = {
   labels: ["One", "Two", "Three"],
@@ -57,8 +57,11 @@ export class DatastoreAnalysis extends Component {
     actions.changeText("Datastore > Analysis");
     actions.analysisButton(true);
     actions.analysisListUrl("/datastore", true);
-    actions.fetchNamespaces();
-    // this.state = {chart: "Line"};
+
+    this.state = {
+      chart: "Line",
+      dataset: this.createDataSet([1, 2, 3, 4])
+    };
   }
 
   // Change graph type, typically called from outside this class.
@@ -71,16 +74,17 @@ export class DatastoreAnalysis extends Component {
   }
 
   // Return the JSX graph type specified by the state.
-  getStateGraph() {
-    switch ("Line") { // this.state.chart) {
+  getStateGraph(data) {
+    // const data = this.state.dataset;
+    switch (this.state.chart) {
       case "Line":
-        return <Line data={mockData} options={null} width="550" height="250"/>;
+        return <Line data={data} options={null} width="550" height="250"/>;
 
       case "Bar":
-        return <Bar data={mockData} options={null} width="550" height="250"/>;
+        return <Bar data={data} options={null} width="550" height="250"/>;
 
       case "Radar":
-        return <Radar data={mockData} options={null} width="550" height="250"/>;
+        return <Radar data={data} options={null} width="550" height="250"/>;
 
       case "Pie":
         return <Pie data={mockData2} options={null} width="550" height="250"/>;
@@ -89,18 +93,38 @@ export class DatastoreAnalysis extends Component {
         return <Doughnut data={mockData2} options={null} width="550" height="250"/>;
 
       default:
-        return <Line data={mockData} options={null} width="550" height="250"/>;
+        return <Line data={data} options={null} width="550" height="250"/>;
     }
   }
 
-  componentWillMount() {
+  createDataSet(namespaces) {
+    return {
+      labels: namespaces,
+      datasets: [
+        {
+          label: "My First dataset",
+          fillColor: "rgba(151,187,205,0.2)",
+          strokeColor: "rgba(151,187,205,1)",
+          pointColor: "rgba(151,187,205,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(151,187,205,1)",
+          data: [1, 2, 3, 4]
+        }
+      ]
+    };
+  }
 
+  componentWillMount() {
+    this.props.actions.fetchNamespaces();
   }
 
   render() {
     return (
       <div>
-        {this.getStateGraph()}
+        {this.getStateGraph(
+          this.createDataSet(this.props.items)
+        )}
       </div>
     );
   }

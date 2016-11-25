@@ -9,6 +9,17 @@ export function receiveNamespaces(json) {
     receivedAt: Date.now()
   };
 }
+/*
+// Fetch key count for a namespace
+function getKeyCount(namespace){
+
+}
+
+// Build an array with entries containing namespace and key count
+function getKeyCountForEach(namespaces){
+  // return namespaces.map();
+}
+*/
 
 export function fetchNamespaces() {
   return dispatch => {
@@ -23,11 +34,14 @@ export function fetchNamespaces() {
     }).then(response => {
       return response.json();
     }).then(json => {
-      console.log("Got:");
-      console.log(json);
+      // console.log("Got:");
+      // console.log(json);
       dispatch(receiveNamespaces(json));
+      return json;
     }).then(namespaces => {
       // Fetch keys here
+      // For each namespace, fetch keys
+      //
       console.log("Namespaces:");
       console.log(namespaces);
     }).catch(error => {
