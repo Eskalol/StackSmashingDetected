@@ -157,5 +157,7 @@ export default class AnalyseNamespaces extends Component {
 
 // Define possible values in prop
 AnalyseNamespaces.propTypes = {
-  name: React.PropTypes.string.isRequired
+  items: React.PropTypes.array.isRequired,
+  isFetching: React.PropTypes.bool.isRequired,
+  actions: React.PropTypes.object.isRequired
 };

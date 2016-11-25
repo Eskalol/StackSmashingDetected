@@ -3,6 +3,8 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as HeaderActions from '../actions/header';
 
+// import * as NamespaceActions from '../actions/analysis';
+
 import {Line, Bar, Radar, Pie, Doughnut} from 'react-chartjs';
 
 const mockData = {
@@ -56,7 +58,7 @@ export class DatastoreAnalysis extends Component {
     actions.changeText("Datastore > Analysis");
     actions.analysisButton(true);
     actions.analysisListUrl("/datastore", true);
-    this.state = {chart: "Line"};
+    // this.state = {chart: "Line"};
   }
 
   // Change graph type, typically called from outside this class.
@@ -70,7 +72,7 @@ export class DatastoreAnalysis extends Component {
 
   // Return the JSX graph type specified by the state.
   getStateGraph() {
-    switch (this.state.chart) {
+    switch ("Line") { // this.state.chart) {
       case "Line":
         return <Line data={mockData} options={null} width="550" height="250"/>;
 
@@ -91,17 +93,21 @@ export class DatastoreAnalysis extends Component {
     }
   }
 
+  componentWillMount() {
+    // actions.fetchNamespaces();
+  }
+
   render() {
     return (
       <div>
-        <h1>Test</h1>
-          {this.getStateGraph()}
+        {this.getStateGraph()}
       </div>
     );
   }
 }
 
 DatastoreAnalysis.propTypes = {
+  items: React.PropTypes.array.isRequired,
   actions: React.PropTypes.object.isRequired
 };
 
@@ -116,4 +122,8 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(DatastoreAnalysis);
+function mapStateToProps(state) {
+  return state.namespaces;
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DatastoreAnalysis);
