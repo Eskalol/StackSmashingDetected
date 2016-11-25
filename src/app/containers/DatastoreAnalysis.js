@@ -95,16 +95,16 @@ export class DatastoreAnalysis extends Component {
     };
   }
 
-  createDataSet(namespaces) {
+  createDataSet(namespacesAndKeyCount) {
     switch (this.state.chart) {
       case "Line":
       case "Bar":
       case "Radar":
       default:
-        return this.createDataSetType1(namespaces);
+        return this.createDataSetType1(namespacesAndKeyCount);
       case "Pie":
       case "Doughnut":
-        return this.createDataSetType2(namespaces);
+        return this.createDataSetType2(namespacesAndKeyCount);
     }
   }
 

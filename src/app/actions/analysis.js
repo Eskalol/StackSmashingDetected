@@ -27,6 +27,22 @@ function getKeyCountForEach(namespaces){
 }
 */
 
+function getKeyCount(namespace) {
+  return fetch(`https://play.dhis2.org/test/api/25/dataStore/${namespace}`, {
+    method: "GET",
+    mode: "cors",
+    headers: {
+      "Authorization": `Basic ${btoa("admin:district")}`,
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    }
+  }).then(response => {
+    return response.json();
+  }).then(json => {
+    return json.length;
+  });
+}
+
 export function fetchNamespaces() {
   return dispatch => {
     dispatch(requestNamespaces());
@@ -43,14 +59,23 @@ export function fetchNamespaces() {
     }).then(json => {
       // console.log("Got:");
       // console.log(json);
-      dispatch(receiveNamespaces(json));
+      // dispatch(receiveNamespaces(json));
       return json;
     }).then(namespaces => {
       // Fetch keys here
       // For each namespace, fetch keys
       //
-      console.log("Namespaces:");
-      console.log(namespaces);
+      // console.log("Namespaces:");
+      // console.log(namespaces);
+
+      const keyCounts = namespaces.map(getKeyCount);
+
+      const returnObject = [
+        namespaces,
+        keyCounts
+      ];
+      dispatch(receiveNamespaces(returnObject));
+      // console.log(returnObject);
     }).catch(error => {
       console.log("Error:");
       console.log(error.message);
