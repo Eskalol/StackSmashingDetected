@@ -6,7 +6,7 @@ import {Line, Bar, Radar, Pie, Doughnut} from 'react-chartjs';
 import Loading from '../components/Loading/Loading';
 
 import * as HeaderActions from '../actions/header';
-import * as NamespaceActions from '../actions/analysis';
+import * as AnalysisReducer from '../actions/analysis';
 
 export class DatastoreAnalysis extends Component {
   constructor(props) {
@@ -134,7 +134,7 @@ DatastoreAnalysis.propTypes = {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(Object.assign({}, HeaderActions, NamespaceActions), dispatch)
+    actions: bindActionCreators(Object.assign({}, HeaderActions, AnalysisReducer), dispatch)
   };
 }
 
