@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import Loading from '../Loading/Loading';
 import * as KeyValueActions from '../../actions/keyValue';
 
 class KeyValue extends Component {
   constructor(props) {
     super(props);
     console.log(props);
-  }
-
-  handleMetadata(context) {
-    context.props.actions.getMetadata(context.props.namespace, context.props.value.key, context.props.value.id);
+    const {actions} = this.props;
+    actions.getValue(this.props.keyObject.key, this.props.namespace, this.props.keyObject.id);
   }
 
   render() {
@@ -20,15 +19,21 @@ class KeyValue extends Component {
           <div className="container">
             <div className="col-lg-6">
               <div className="align-left">
-                {this.props.value.key}
+                {this.props.keyObject.key}
               </div>
             </div>
             <div className="col-lg-6">
-              <input className="input-line" value="Swanky" disabled/>
+              <div>
+                {this.props.items[this.props.keyObject.id].loading && <Loading/>}
+                {
+                  !this.props.items[this.props.keyObject.id] &&
+                    <input className="input-line" value={this.props.items[this.props.keyObject.id].value} disabled/>
+                }
+              </div>
               <div className="align-right">
                 <i className="fa fa-times fa-2x fa-foreground" aria-hidden="true"/>
                 <i className="fa fa-pencil fa-2x fa-foreground" aria-hidden="true"/>
-                <i className="fa fa-tag fa-2x fa-foreground" aria-hidden="true" onClick={ this.handleMetadata.bind(this) }/>
+                <i className="fa fa-tag fa-2x fa-foreground" aria-hidden="true"/>
               </div>
             </div>
           </div>
@@ -39,13 +44,13 @@ class KeyValue extends Component {
 }
 
 KeyValue.propTypes = {
-  value: React.PropTypes.object.isRequired,
+  keyObject: React.PropTypes.object.isRequired,
   namespace: React.PropTypes.string.isRequired,
-  actions: React.PropTypes.object.isRequired
+  actions: React.PropTypes.object.isRequired,
+  items: React.PropTypes.array.isRequired
 };
-
 function mapStateToProps(state) {
-  return state.keyValues;
+  return {items: state.keyValues};
 }
 
 function mapDispatchToProps(dispatch) {

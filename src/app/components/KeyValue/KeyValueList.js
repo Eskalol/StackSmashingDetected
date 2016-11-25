@@ -18,7 +18,7 @@ class KeyValueList extends Component {
         {this.props.loading && <Loading/>}
         {
           !this.props.loading &&
-          this.props.keys.map((value, i) => <KeyValue key={i} value={value} namespace={this.props.namespace}/>)
+          this.props.items.map((value, i) => <KeyValue key={i} keyObject={value} namespace={this.props.namespace}/>)
         }
       </div>
     );
@@ -26,14 +26,14 @@ class KeyValueList extends Component {
 }
 
 KeyValueList.propTypes = {
-  namespace: React.PropTypes.string.isRequired,
+  items: React.PropTypes.array,
   loading: React.PropTypes.bool.isRequired,
-  actions: React.PropTypes.object.isRequired,
-  keys: React.PropTypes.array
+  namespace: React.PropTypes.string.isRequired,
+  actions: React.PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
-  return state.keyValues;
+  return {items: state.keyValues};
 }
 
 function mapDispatchToProps(dispatch) {
