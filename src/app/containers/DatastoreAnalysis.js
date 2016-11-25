@@ -8,50 +8,6 @@ import Loading from '../components/Loading/Loading';
 import * as HeaderActions from '../actions/header';
 import * as NamespaceActions from '../actions/analysis';
 
-/* const mockData = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
-  datasets: [
-    {
-      label: "My First dataset",
-      fillColor: "rgba(220,220,220,0.2)",
-      strokeColor: "rgba(220,220,220,1)",
-      pointColor: "rgba(220,220,220,1)",
-      pointStrokeColor: "#fff",
-      pointHighlightFill: "#fff",
-      pointHighlightStroke: "rgba(220,220,220,1)",
-      data: [2, 1, 2, 3, 5, 2, 2]
-    },
-    {
-      label: "My Second dataset",
-      fillColor: "rgba(151,187,205,0.2)",
-      strokeColor: "rgba(151,187,205,1)",
-      pointColor: "rgba(151,187,205,1)",
-      pointStrokeColor: "#fff",
-      pointHighlightFill: "#fff",
-      pointHighlightStroke: "rgba(151,187,205,1)",
-      data: [0, 4, 1, 4, 6, 5, 1]
-    }
-  ]
-};*/
-
-const mockData2 = {
-  labels: ["One", "Two", "Three"],
-  datasets: [
-    {
-      data: [1, 2, 3],
-      backgroundColor: [
-        "#FF6080",
-        "#30A0EB",
-        "#FFCE50"
-      ],
-      hoverBackgroundColor: [
-        "#FF6080",
-        "#30A0EB",
-        "#FFCE50"
-      ]
-    }]
-};
-
 export class DatastoreAnalysis extends Component {
   constructor(props) {
     super(props);
@@ -63,11 +19,11 @@ export class DatastoreAnalysis extends Component {
 
     this.state = {
       chart: "Line",
-      dataset: this.createDataSet([1, 2, 3, 4])
+      dataset: [null]
     };
   }
 
-  // Change graph type, typically called from outside this class.
+  // Change graph type
   setGraph(type) {
     if (!type) {
       this.setState({chart: "Line"});
@@ -78,7 +34,6 @@ export class DatastoreAnalysis extends Component {
 
   // Return the JSX graph type specified by the state.
   getStateGraph(data) {
-    console.log();
     switch (this.state.chart) {
       case "Line":
         return <Line data={data} options={null} width="550" height="250"/>;
@@ -90,17 +45,18 @@ export class DatastoreAnalysis extends Component {
         return <Radar data={data} options={null} width="550" height="250"/>;
 
       case "Pie":
-        return <Pie data={mockData2} options={null} width="550" height="250"/>;
+        return <Pie data={data} options={null} width="550" height="250"/>;
 
       case "Doughnut":
-        return <Doughnut data={mockData2} options={null} width="550" height="250"/>;
+        return <Doughnut data={data} options={null} width="550" height="250"/>;
 
       default:
         return <Line data={data} options={null} width="550" height="250"/>;
     }
   }
 
-  createDataSet(namespaces) {
+  // Create dataset for line, bar and radar chart
+  createDataSetType1(namespaces) {
     return {
       labels: namespaces,
       datasets: [
@@ -118,9 +74,39 @@ export class DatastoreAnalysis extends Component {
     };
   }
 
-  // componentWillMount() {
-  //   this.props.actions.fetchNamespaces();
-  // }
+  // Create dataset for pie and doughnut chart
+  createDataSetType2(namespaces) {
+    return {
+      labels: namespaces,
+      datasets: [
+        {
+          backgroundColor: [
+            "#FF6080",
+            "#30A0EB",
+            "#FFCE50"
+          ],
+          hoverBackgroundColor: [
+            "#FF6080",
+            "#30A0EB",
+            "#FFCE50"
+          ],
+          data: [1, 2, 3, 4]
+        }]
+    };
+  }
+
+  createDataSet(namespaces) {
+    switch (this.state.chart) {
+      case "Line":
+      case "Bar":
+      case "Radar":
+      default:
+        return this.createDataSetType1(namespaces);
+      case "Pie":
+      case "Doughnut":
+        return this.createDataSetType2(namespaces);
+    }
+  }
 
   render() {
     return (
