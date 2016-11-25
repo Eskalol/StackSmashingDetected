@@ -28,7 +28,7 @@ class KeyValue extends Component {
               <div className="align-right">
                 <i className="fa fa-times fa-2x fa-foreground" aria-hidden="true"/>
                 <i className="fa fa-pencil fa-2x fa-foreground" aria-hidden="true"/>
-                <i className="fa fa-tag fa-2x fa-foreground" aria-hidden="true" onClick={ this.handleMetadata.bind(this) }/>
+                <i className="fa fa-tag fa-2x fa-foreground" aria-hidden="true"/>
               </div>
             </div>
           </div>
