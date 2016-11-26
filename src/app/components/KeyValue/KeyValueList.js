@@ -28,8 +28,8 @@ class KeyValueList extends Component {
           </div>
         </div>
       )}
+      {this.props.items.map((value, i) => <KeyValue key={i} keyObject={value} namespace={this.props.namespace}/>)}
       {this.props.loading && <Loading/>}
-      {!this.props.loading && this.props.items.map((value, i) => <KeyValue key={i} keyObject={value} namespace={this.props.namespace}/>)}
       </div>
     );
   }

@@ -14,7 +14,8 @@ import {REQUEST_KEYS,
 const initialState = {
   items: [],
   loading: false,
-  add: false
+  add: false,
+  keyCnt: 0
 };
 
 /*
@@ -40,7 +41,7 @@ export default function keyValues(state = initialState, action) {
           overflow: false,
           showValue: true
         })),
-        loading: false
+        keyCnt: action.keys.length
       });
 
     case RECEIVE_VALUE:
@@ -49,7 +50,9 @@ export default function keyValues(state = initialState, action) {
           key.id === action.id ?
             Object.assign({}, key, {value: JSON.stringify(action.value), loading: false}) :
             key
-          )
+          ),
+        keyCnt: state.keyCnt - 1,
+        loading: state.keyCnt - 1 !== 0
       });
 
     case RECEIVE_METADATA:
@@ -79,7 +82,6 @@ export default function keyValues(state = initialState, action) {
       });
 
     case TOGGLE_EDIT:
-      console.log("toggle edit handle");
       return Object.assign({}, state, {
         items: state.items.map(key =>
           key.id === action.id ?

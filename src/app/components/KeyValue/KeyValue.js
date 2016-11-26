@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import Loading from '../Loading/Loading';
 import Value from './Value';
 import EditValue from './EditValue';
 import * as KeyValueActions from '../../actions/keyValue';
@@ -15,14 +14,17 @@ class KeyValue extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-lg-12">
-          <div className="container">
-            {this.props.keyObject.loading && <Loading/>}
-            {!this.props.keyObject.loading && this.props.keyObject.edit && (<EditValue keyObject={this.props.keyObject} namespace={this.props.namespace}/>)}
-            {!this.props.keyObject.loading && !this.props.keyObject.edit && (<Value keyObject={this.props.keyObject} namespace={this.props.namespace}/>)}
+      <div>
+        {!this.props.keyObject.loading && (
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="container">
+                {this.props.keyObject.edit && (<EditValue keyObject={this.props.keyObject} namespace={this.props.namespace}/>)}
+                {!this.props.keyObject.edit && (<Value keyObject={this.props.keyObject} namespace={this.props.namespace}/>)}
+              </div>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
