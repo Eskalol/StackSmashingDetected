@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as KeyValueActions from '../../actions/keyValue';
 
-class Value extends Component {
+export class Value extends Component {
   constructor(props) {
     super(props);
 
