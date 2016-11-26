@@ -116,6 +116,11 @@ export class DatastoreAnalysis extends Component {
         !this.props.isFetchingNamespaces &&
         this.getStateGraph(this.createDataSet(this.props.items))
       }
+      {this.props.isFetchingKeys && <Loading/>}
+      {
+        !this.props.isFetchingKeys &&
+        console.log("KEYS:", this.props.keys)
+      }
       </div>
     );
   }
