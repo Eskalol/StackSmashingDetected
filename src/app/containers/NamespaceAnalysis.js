@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import Loading from '../components/Loading/Loading';
 
 import * as HeaderActions from '../actions/header';
-import * as AnalysisNamespaceReducer from '../actions/analysis';
+import * as AnalysisNamespaceAction from '../actions/analysis';
 
 export class NamespaceAnalysis extends Component {
   constructor(props) {
@@ -49,7 +49,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(Object.assign({}, HeaderActions, AnalysisNamespaceReducer), dispatch)
+    actions: bindActionCreators(Object.assign({}, HeaderActions, AnalysisNamespaceAction), dispatch)
   };
 }
 

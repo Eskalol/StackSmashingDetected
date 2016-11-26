@@ -13,12 +13,11 @@ export default function namespaces(state = initialState, action) {
       return state;
 
     case RECEIVE_KEYS:
-      console.log(action);
       return Object.assign({}, state, {
-        items: state.items.map(n =>
-          n.namespace === action.namespace ?
-            Object.assign({}, n, {keyCnt: action.keyCnt}) :
-            n
+        items: state.items.map(() =>
+          // n.namespace === action.namespace ?
+            // Object.assign({}, n, {keyCnt: action.keyCnt}) :
+            1
           ),
         namespaceCnt: state.namespaceCnt + 1,
         itemCnt: state.itemCnt - 1,
@@ -35,8 +34,10 @@ export default function namespaces(state = initialState, action) {
       return Object.assign({}, state, {
         itemCnt: action.itemCnt,
         items: action.namespaces.map(namespace => {
-          namespace
-        })
+          console.log(namespace);
+          return namespace;
+        }),
+        loading: false
       });
 
     default:
