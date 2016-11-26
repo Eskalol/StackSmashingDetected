@@ -35,6 +35,7 @@ class KeyValue extends Component {
   handleSubmit(e) {
     if (e.which === 13) {
       this.props.actions.putValue(this.props.namespace, this.props.keyObject.key, this.props.keyObject.id, e.target.value);
+      this.handleEdit();
     }
   }
 
