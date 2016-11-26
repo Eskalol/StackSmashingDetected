@@ -111,10 +111,15 @@ export class DatastoreAnalysis extends Component {
   render() {
     return (
       <div>
-      {this.props.isFetching && <Loading/>}
+      {this.props.isFetchingNamespaces && <Loading/>}
       {
-        !this.props.isFetching &&
+        !this.props.isFetchingNamespaces &&
         this.getStateGraph(this.createDataSet(this.props.items))
+      }
+      {this.props.isFetchingKeys && <Loading/>}
+      {
+        !this.props.isFetchingKeys &&
+        console.log("KEYS:", this.props.keys)
       }
       </div>
     );
@@ -123,7 +128,9 @@ export class DatastoreAnalysis extends Component {
 
 DatastoreAnalysis.propTypes = {
   items: React.PropTypes.array.isRequired,
-  isFetching: React.PropTypes.bool.isRequired,
+  keys: React.PropTypes.array.isRequired,
+  isFetchingNamespaces: React.PropTypes.bool.isRequired,
+  isFetchingKeys: React.PropTypes.bool.isRequired,
   actions: React.PropTypes.object.isRequired
 };
 
@@ -139,7 +146,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return state.namespaces;
+  return state.analysis;
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DatastoreAnalysis);

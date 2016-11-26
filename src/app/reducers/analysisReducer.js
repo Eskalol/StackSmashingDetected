@@ -1,22 +1,38 @@
-import {REQUEST_NAMESPACES, RECEIVE_NAMESPACES} from '../constants/namespaceTypes';
+import {REQUEST_KEYS, RECEIVE_KEYS, REQUEST_NAMESPACES, RECEIVE_NAMESPACES} from '../constants/namespaceTypes';
 
 const initialState = {
-  isFetching: false,
-  items: []
+  isFetchingNamespaces: false,
+  isFetchingKeys: false,
+  items: [],
+  keys: []
 };
 
 export default function namespaces(state = initialState, action) {
   switch (action.type) {
+    case REQUEST_KEYS:
+      return Object.assign({}, state, {
+        isFetchingKeys: true
+      });
+
+    case RECEIVE_KEYS:
+      return {
+        keys: action.keys.map((key, id) => ({
+          key,
+          id,
+          edit: false,
+          metaData: {},
+          value: {},
+          isFetchingKeys: true
+        })),
+        isFetchingKeys: false
+      };
     case REQUEST_NAMESPACES:
       return Object.assign({}, state, {
-        isFetching: true
+        isFetchingNamespaces: true
       });
     case RECEIVE_NAMESPACES:
-      // console.log("Got namespaces!");
-      // console.log(state);
-      // console.log(action);
       return Object.assign({}, state, {
-        isFetching: false,
+        isFetchingNamespaces: false,
         items: action.namespaces
       });
     default:
