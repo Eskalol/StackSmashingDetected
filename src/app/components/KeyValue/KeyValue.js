@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import Loading from '../Loading/Loading';
 import * as KeyValueActions from '../../actions/keyValue';
 
-class KeyValue extends Component {
+export class KeyValue extends Component {
   constructor(props) {
     super(props);
 
