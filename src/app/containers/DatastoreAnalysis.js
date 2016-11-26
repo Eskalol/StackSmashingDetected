@@ -96,7 +96,6 @@ export class DatastoreAnalysis extends Component {
   }
 
   createDataSet(namespaces) {
-    console.log("Checking content");
     switch (this.state.chart) {
       case "Line":
       case "Bar":
@@ -117,7 +116,6 @@ export class DatastoreAnalysis extends Component {
         !this.props.isFetchingNamespaces &&
         this.getStateGraph(this.createDataSet(this.props.items))
       }
-      {console.log(this.props.keys)}
       </div>
     );
   }
@@ -143,7 +141,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return state.namespaces;
+  return state.analysis;
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DatastoreAnalysis);
