@@ -7,7 +7,7 @@ const initialState = {
   namespaceCnt: 0
 };
 
-export default function namespaces(state = initialState, action) {
+export default function analysis(state = initialState, action) {
   switch (action.type) {
     case REQUEST_KEYS:
       return Object.assign({}, state, {
