@@ -7,7 +7,7 @@ const props = {
     id: 1,
     value: "Test value",
     key: "Test key",
-    metaData: {
+    metadata: {
       created: "2015",
       id: "3",
       lastUpdated: "2000",

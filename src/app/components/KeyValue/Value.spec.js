@@ -15,7 +15,7 @@ const props = {
   actions: {
     toggleShowValueWrapper: jasmine.createSpy(),
     toggleEditWrapper: jasmine.createSpy(),
-    getMetaData: jasmine.createSpy(),
+    getMetadata: jasmine.createSpy(),
     deleteKeyValuePair: jasmine.createSpy()
   },
   namespace: "Namespace name"
@@ -42,7 +42,7 @@ describe('Components', () => {
     it('should handle delete', () => {
       const wrapper = mount(<Value {...props}/>);
       wrapper.find('i .fa-tag').simulate('click');
-      expect(wrapper.props().actions.getMetaData).toHaveBeenCalled();
+      expect(wrapper.props().actions.getMetadata).toHaveBeenCalled();
     });
     it('should handle edit', () => {
       const wrapper = mount(<Value {...props}/>);

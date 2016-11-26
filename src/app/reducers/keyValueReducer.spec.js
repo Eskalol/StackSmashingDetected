@@ -32,23 +32,23 @@ describe('keyvalue reducer', () => {
           key: "KEY1",
           id: 0,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         },
         {
           key: "KEY2",
           id: 1,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         }
       ],
       keyCnt: 2
@@ -61,23 +61,23 @@ describe('keyvalue reducer', () => {
           key: "KEY1",
           id: 0,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         },
         {
           key: "KEY2",
           id: 1,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         }
       ],
       keyCnt: 2
@@ -91,23 +91,23 @@ describe('keyvalue reducer', () => {
           key: "KEY1",
           id: 0,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         },
         {
           key: "KEY2",
           id: 1,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: JSON.stringify("Cheese"),
           loading: false,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         }
       ],
       keyCnt: 1,
@@ -121,23 +121,23 @@ describe('keyvalue reducer', () => {
           key: "KEY1",
           id: 0,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         },
         {
           key: "KEY2",
           id: 1,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         }
       ],
       keyCnt: 2
@@ -145,30 +145,30 @@ describe('keyvalue reducer', () => {
       {
         type: types.RECEIVE_METADATA,
         id: 0,
-        metaData: "Cheese"
+        metadata: "Cheese"
       })).toEqual({
         items: [
           {
             key: "KEY1",
             id: 0,
             edit: false,
-            metaData: "Cheese",
+            metadata: "Cheese",
             value: {},
             loading: true,
             overflow: false,
             showValue: true,
-            metaDataShow: true
+            metadataShow: true
           },
           {
             key: "KEY2",
             id: 1,
             edit: false,
-            metaData: {},
+            metadata: {},
             value: {},
             loading: true,
             overflow: false,
             showValue: true,
-            metaDataShow: false
+            metadataShow: false
           }
         ],
         keyCnt: 2
@@ -194,7 +194,7 @@ describe('keyvalue reducer', () => {
           key: "Test key",
           id: 0,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: false
         }
@@ -208,23 +208,23 @@ describe('keyvalue reducer', () => {
           key: "KEY1",
           id: 0,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         },
         {
           key: "KEY2",
           id: 1,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         }
       ]
     }, {
@@ -237,23 +237,23 @@ describe('keyvalue reducer', () => {
           key: "KEY1",
           id: 0,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         },
         {
           key: "KEY2",
           id: 1,
           edit: true,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         }
       ]
     });
@@ -265,12 +265,12 @@ describe('keyvalue reducer', () => {
           key: "KEY1",
           id: 0,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         }
       ]
     }, {
@@ -294,7 +294,7 @@ describe('keyvalue reducer', () => {
           key: "Test key",
           id: 0,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: "Test value",
           loading: false
         }
@@ -308,12 +308,12 @@ describe('keyvalue reducer', () => {
           key: "KEY1",
           id: 0,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         }
       ]
     }, {
@@ -326,12 +326,12 @@ describe('keyvalue reducer', () => {
           key: "KEY1",
           id: 0,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: true,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         }
       ]
     });
@@ -343,12 +343,12 @@ describe('keyvalue reducer', () => {
           key: "KEY1",
           id: 0,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         }
       ]
     }, {
@@ -361,12 +361,12 @@ describe('keyvalue reducer', () => {
           key: "KEY1",
           id: 0,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: false,
-          metaDataShow: false
+          metadataShow: false
         }
       ]
     });
@@ -378,37 +378,32 @@ describe('keyvalue reducer', () => {
           key: "KEY1",
           id: 0,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         }
       ]
     }, {
       type: types.TOGGLE_METADATA,
       id: 0,
-      metaDataShow: false
+      metadataShow: false
     })).toEqual({
       items: [
         {
           key: "KEY1",
           id: 0,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: true
+          metadataShow: true
         }
       ]
     });
-  });
-  it('should handle REQUEST_VALUE correctly', () => {
-    expect(keyValues({}, {
-      type: types.REQUEST_VALUE
-    })).toEqual({});
   });
 });

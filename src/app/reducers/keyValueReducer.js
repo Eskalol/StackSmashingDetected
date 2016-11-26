@@ -20,12 +20,12 @@ export default function keyValues(state = initialState, action) {
           key,
           id,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         })),
         keyCnt: action.keys.length
       });
@@ -45,7 +45,7 @@ export default function keyValues(state = initialState, action) {
       return Object.assign({}, state, {
         items: state.items.map(key =>
           key.id === action.id ?
-          Object.assign({}, key, {metaData: action.metaData, metaDataShow: true}) :
+          Object.assign({}, key, {metadata: action.metadata, metadataShow: true}) :
           key
         )
       });
@@ -61,7 +61,7 @@ export default function keyValues(state = initialState, action) {
           key: action.key,
           id: action.id,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: false
         }]
@@ -89,7 +89,7 @@ export default function keyValues(state = initialState, action) {
           key: action.key,
           id: state.items.length,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: action.value,
           loading: false
         }]
@@ -117,13 +117,10 @@ export default function keyValues(state = initialState, action) {
       return Object.assign({}, state, {
         items: state.items.map(key =>
           key.id === action.id ?
-          Object.assign({}, key, {metaDataShow: !key.metaDataShow}) :
+          Object.assign({}, key, {metadataShow: !key.metadataShow}) :
           key
         )
       });
-
-    case types.REQUEST_VALUE:
-      return state;
 
     default:
       return state;
