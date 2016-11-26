@@ -1,9 +1,14 @@
-import {REQUEST_KEYS, RECEIVE_KEYS, RECEIVE_VALUE, RECEIVE_METADATA, REQUEST_VALUE} from '../constants/keyValueTypes';
+import {REQUEST_KEYS, RECEIVE_KEYS, RECEIVE_VALUE, RECEIVE_METADATA, REQUEST_VALUE, TOGGLE_ADD, ADD_KEY, TOGGLE_EDIT, DELETE_KEY_VALUE, ADD_KEY_VALUE} from '../constants/keyValueTypes';
 
 const initialState = {
   items: [],
-  loading: false
+  loading: false,
+  add: false
 };
+
+/*
+ TODO: fix unique identifier for key
+*/
 
 export default function keyValues(state = initialState, action) {
   switch (action.type) {
@@ -13,7 +18,7 @@ export default function keyValues(state = initialState, action) {
       });
 
     case RECEIVE_KEYS:
-      return {
+      return Object.assign({}, state, {
         items: action.keys.map((key, id) => ({
           key,
           id,
@@ -23,7 +28,7 @@ export default function keyValues(state = initialState, action) {
           loading: true
         })),
         loading: false
-      };
+      });
 
     case RECEIVE_VALUE:
       return Object.assign({}, state, {
@@ -35,11 +40,59 @@ export default function keyValues(state = initialState, action) {
       });
 
     case RECEIVE_METADATA:
-      return state.items.map(key =>
-        key.id === action.id ?
+      return Object.assign({}, state, {
+        items: state.items.map(key =>
+          key.id === action.id ?
           Object.assign({}, key, {metaData: action.metaData}) :
           key
-        );
+        )
+      });
+
+    case TOGGLE_ADD:
+      return Object.assign({}, state, {
+        add: !state.add
+      });
+
+    case ADD_KEY:
+      return Object.assign({}, state, {
+        items: [...state, {
+          key: action.key,
+          id: action.id,
+          edit: false,
+          metaData: {},
+          value: {},
+          loading: false
+        }]
+      });
+
+    case TOGGLE_EDIT:
+      return Object.assign({}, state, {
+        items: state.items.map(key =>
+          key.id === action.id ?
+          Object.assign({}, key, {edit: !key.edit}) :
+          key
+        )
+      });
+
+    case DELETE_KEY_VALUE:
+      return Object.assign({}, state, {
+        items: state.items.filter(key =>
+          key.id !== action.id
+        )
+      });
+
+    case ADD_KEY_VALUE:
+      return Object.assign({}, state, {
+        items: [...state.items, {
+          key: action.key,
+          id: state.items.length,
+          edit: false,
+          metaData: {},
+          value: action.value,
+          loading: false
+        }]
+      });
+
     case REQUEST_VALUE:
       return state;
 
