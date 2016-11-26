@@ -5,7 +5,7 @@ import Value from './Value';
 import EditValue from './EditValue';
 import * as KeyValueActions from '../../actions/keyValue';
 
-class KeyValue extends Component {
+export class KeyValue extends Component {
 
   componentWillMount() {
     const {actions} = this.props;
