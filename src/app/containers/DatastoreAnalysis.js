@@ -125,7 +125,7 @@ export class DatastoreAnalysis extends Component {
         {!this.props.loading && (
           <span>{this.props.items}</span>
         )}
-        {console.log("HERE:", this.props.items[0])}
+        {console.log("items[0]:", this.props.items[0])}
       </div>
     );
   }

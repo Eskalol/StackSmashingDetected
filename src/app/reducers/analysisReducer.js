@@ -10,14 +10,17 @@ const initialState = {
 export default function namespaces(state = initialState, action) {
   switch (action.type) {
     case REQUEST_KEYS:
-      return state;
+      return Object.assign({}, state, {
+        loading: true
+      });
 
     case RECEIVE_KEYS:
+      console.log("CHECK");
       return Object.assign({}, state, {
-        items: state.items.map(() =>
-          // n.namespace === action.namespace ?
-            // Object.assign({}, n, {keyCnt: action.keyCnt}) :
-            1
+        items: state.items.map(n =>
+          n.namespace === action.namespace ?
+            Object.assign({}, n, {keyCnt: action.keyCnt}) :
+            n
           ),
         namespaceCnt: state.namespaceCnt + 1,
         itemCnt: state.itemCnt - 1,
@@ -34,7 +37,7 @@ export default function namespaces(state = initialState, action) {
       return Object.assign({}, state, {
         itemCnt: action.itemCnt,
         items: action.namespaces.map(namespace => {
-          console.log(namespace);
+          // console.log("Got namespaces: ", namespace);
           return namespace;
         }),
         loading: false
