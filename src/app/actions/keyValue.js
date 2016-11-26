@@ -10,7 +10,8 @@ import {REQUEST_KEYS,
         DELETE_KEY_VALUE,
         ADD_KEY_VALUE,
         TOGGLE_OVERFLOW,
-        TOGGLE_SHOW_VALUE} from '../constants/keyValueTypes';
+        TOGGLE_SHOW_VALUE,
+        TOGGLE_METADATA} from '../constants/keyValueTypes';
 
 export const requestKeys = () => ({type: REQUEST_KEYS});
 export const receiveKeys = keys => ({type: RECEIVE_KEYS, keys, receivedAt: Date.now()});
@@ -23,6 +24,7 @@ export const deleteKeyValue = id => ({type: DELETE_KEY_VALUE, id});
 export const addKeyValue = (key, value) => ({type: ADD_KEY_VALUE, key, value});
 export const toggleOverflow = id => ({type: TOGGLE_OVERFLOW, id});
 export const toggleShowValue = id => ({type: TOGGLE_SHOW_VALUE, id});
+export const toggleMetadata = id => ({type: TOGGLE_METADATA, id});
 
 /* GET
   TODO: Fix parameter sequence
@@ -175,5 +177,11 @@ export const toggleShowValueWrapper = id => {
 export const toggleEditWrapper = id => {
   return dispatch => {
     dispatch(toggleEdit(id));
+  };
+};
+
+export const toggleMetadataWrapper = id => {
+  return dispatch => {
+    dispatch(toggleMetadata(id));
   };
 };

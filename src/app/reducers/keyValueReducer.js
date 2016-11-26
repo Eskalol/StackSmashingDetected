@@ -9,7 +9,8 @@ import {REQUEST_KEYS,
         DELETE_KEY_VALUE,
         ADD_KEY_VALUE,
         TOGGLE_OVERFLOW,
-        TOGGLE_SHOW_VALUE} from '../constants/keyValueTypes';
+        TOGGLE_SHOW_VALUE,
+        TOGGLE_METADATA} from '../constants/keyValueTypes';
 
 const initialState = {
   items: [],
@@ -17,10 +18,6 @@ const initialState = {
   add: false,
   keyCnt: 0
 };
-
-/*
- TODO: fix unique identifier for key
-*/
 
 export default function keyValues(state = initialState, action) {
   switch (action.type) {
@@ -39,7 +36,8 @@ export default function keyValues(state = initialState, action) {
           value: {},
           loading: true,
           overflow: false,
-          showValue: true
+          showValue: true,
+          metaDataShow: false
         })),
         keyCnt: action.keys.length
       });
@@ -59,7 +57,7 @@ export default function keyValues(state = initialState, action) {
       return Object.assign({}, state, {
         items: state.items.map(key =>
           key.id === action.id ?
-          Object.assign({}, key, {metaData: action.metaData}) :
+          Object.assign({}, key, {metaData: action.metaData, metaDataShow: true}) :
           key
         )
       });
@@ -123,6 +121,15 @@ export default function keyValues(state = initialState, action) {
         items: state.items.map(key =>
           key.id === action.id ?
           Object.assign({}, key, {showValue: !key.showValue}) :
+          key
+        )
+      });
+
+    case TOGGLE_METADATA:
+      return Object.assign({}, state, {
+        items: state.items.map(key =>
+          key.id === action.id ?
+          Object.assign({}, key, {metaDataShow: !key.metaDataShow}) :
           key
         )
       });

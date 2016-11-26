@@ -39,7 +39,7 @@ class EditValue extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="container">
         <div className="col-sm-3">
           <div className="align-left">
             <h4>{this.props.keyObject.key}</h4>

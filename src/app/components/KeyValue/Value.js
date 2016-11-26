@@ -41,32 +41,34 @@ class Value extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-sm-3">
-          <div className="align-left">
-            <h4>{this.props.keyObject.key}</h4>
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-3">
+            <div className="align-left">
+              <h4>{this.props.keyObject.key}</h4>
+            </div>
           </div>
-        </div>
-        <div className="col-sm-8">
-          <div className="align-left">
-            {
-            this.props.keyObject.overflow && !this.props.keyObject.showValue &&
-              (<div><i className="fa fa-chevron-circle-down fa-2x fa-foreground" onClick={this.handleShowValue}/>
-                <span>Data length: {this.props.keyObject.value.length}</span></div>)
-            }
-            {
-            this.props.keyObject.overflow && this.props.keyObject.showValue &&
-              (<div><textarea className="text-area" rows="10" cols="30" value={this.props.keyObject.value} disabled/>
-                <i className="fa fa-chevron-circle-up fa-2x fa-foreground" onClick={this.handleShowValue}/></div>)
-            }
-            {!this.props.keyObject.overflow && (<p>{this.props.keyObject.value}</p>)}
+          <div className="col-sm-8">
+            <div className="align-left">
+              {
+              this.props.keyObject.overflow && !this.props.keyObject.showValue &&
+                (<div><i className="fa fa-chevron-circle-down fa-2x fa-foreground" onClick={this.handleShowValue}/>
+                  <span>Data length: {this.props.keyObject.value.length}</span></div>)
+              }
+              {
+              this.props.keyObject.overflow && this.props.keyObject.showValue &&
+                (<div><textarea className="text-area" rows="10" cols="30" value={this.props.keyObject.value} disabled/>
+                  <i className="fa fa-chevron-circle-up fa-2x fa-foreground" onClick={this.handleShowValue}/></div>)
+              }
+              {!this.props.keyObject.overflow && (<p>{this.props.keyObject.value}</p>)}
+            </div>
           </div>
-        </div>
-        <div className="col-sm-1">
-          <div className="align-right">
-            <i className="fa fa-pencil fa-2x fa-foreground fa-padding" aria-hidden="true" onClick={this.handleEdit}/>
-            <i className="fa fa-tag fa-2x fa-foreground fa-padding" aria-hidden="true" onClick={this.handleMetaData}/>
-            <i className="fa fa-times fa-2x fa-foreground fa-padding" aria-hidden="true" onClick={this.handleDelete}/>
+          <div className="col-sm-1">
+            <div className="align-right">
+              <i className="fa fa-pencil fa-2x fa-foreground fa-padding" aria-hidden="true" onClick={this.handleEdit}/>
+              <i className="fa fa-tag fa-2x fa-foreground fa-padding" aria-hidden="true" onClick={this.handleMetaData}/>
+              <i className="fa fa-times fa-2x fa-foreground fa-padding" aria-hidden="true" onClick={this.handleDelete}/>
+            </div>
           </div>
         </div>
       </div>
