@@ -44,7 +44,7 @@ class Value extends Component {
       <div className="row">
         <div className="col-sm-3">
           <div className="align-left">
-            {this.props.keyObject.key}
+            <h4>{this.props.keyObject.key}</h4>
           </div>
         </div>
         <div className="col-sm-8">
