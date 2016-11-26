@@ -9,3 +9,5 @@ export const RECEIVE_VALUE = 'RECEIVE_VALUE';
 export const TOGGLE_ADD = 'TOGGLE_ADD';
 export const DELETE_KEY_VALUE = 'DELETE_KEY_VALUE';
 export const ADD_KEY_VALUE = 'ADD_KEY_VALUE';
+export const TOGGLE_OVERFLOW = 'TOGGLE_OVERFLOW';
+export const TOGGLE_SHOW_VALUE = 'TOGGLE_SHOW_VALUE';

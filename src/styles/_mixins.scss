@@ -151,7 +151,7 @@
       @content
     }
     &.info {
-      border-bottom: solid $size $error;
+      border-bottom: solid $size $info;
       @content
     }
   }

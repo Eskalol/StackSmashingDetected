@@ -1,4 +1,15 @@
-import {REQUEST_KEYS, RECEIVE_KEYS, RECEIVE_VALUE, RECEIVE_METADATA, REQUEST_VALUE, TOGGLE_ADD, ADD_KEY, TOGGLE_EDIT, DELETE_KEY_VALUE, ADD_KEY_VALUE} from '../constants/keyValueTypes';
+import {REQUEST_KEYS,
+        RECEIVE_KEYS,
+        RECEIVE_VALUE,
+        RECEIVE_METADATA,
+        REQUEST_VALUE,
+        TOGGLE_ADD,
+        ADD_KEY,
+        TOGGLE_EDIT,
+        DELETE_KEY_VALUE,
+        ADD_KEY_VALUE,
+        TOGGLE_OVERFLOW,
+        TOGGLE_SHOW_VALUE} from '../constants/keyValueTypes';
 
 const initialState = {
   items: [],
@@ -25,7 +36,9 @@ export default function keyValues(state = initialState, action) {
           edit: false,
           metaData: {},
           value: {},
-          loading: true
+          loading: true,
+          overflow: false,
+          showValue: true
         })),
         loading: false
       });
@@ -91,6 +104,25 @@ export default function keyValues(state = initialState, action) {
           value: action.value,
           loading: false
         }]
+      });
+
+    case TOGGLE_OVERFLOW:
+      return Object.assign({}, state, {
+        items: state.items.map(key =>
+          key.id === action.id ?
+          Object.assign({}, key, {overflow: !key.overflow}) :
+          key
+        )
+      });
+
+    case TOGGLE_SHOW_VALUE:
+      console.log("key value toggled");
+      return Object.assign({}, state, {
+        items: state.items.map(key =>
+          key.id === action.id ?
+          Object.assign({}, key, {showValue: !key.showValue}) :
+          key
+        )
       });
 
     case REQUEST_VALUE:

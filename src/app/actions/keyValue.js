@@ -1,6 +1,16 @@
 import fetch from 'isomorphic-fetch';
 
-import {REQUEST_KEYS, RECEIVE_KEYS, RECEIVE_METADATA, RECEIVE_VALUE, REQUEST_VALUE, TOGGLE_ADD, TOGGLE_EDIT, DELETE_KEY_VALUE, ADD_KEY_VALUE} from '../constants/keyValueTypes';
+import {REQUEST_KEYS,
+        RECEIVE_KEYS,
+        RECEIVE_METADATA,
+        RECEIVE_VALUE,
+        REQUEST_VALUE,
+        TOGGLE_ADD,
+        TOGGLE_EDIT,
+        DELETE_KEY_VALUE,
+        ADD_KEY_VALUE,
+        TOGGLE_OVERFLOW,
+        TOGGLE_SHOW_VALUE} from '../constants/keyValueTypes';
 
 export const requestKeys = () => ({type: REQUEST_KEYS});
 export const receiveKeys = keys => ({type: RECEIVE_KEYS, keys, receivedAt: Date.now()});
@@ -11,6 +21,8 @@ export const toggleEdit = id => ({type: TOGGLE_EDIT, id});
 export const handleToggleAdd = () => ({type: TOGGLE_ADD});
 export const deleteKeyValue = id => ({type: DELETE_KEY_VALUE, id});
 export const addKeyValue = (key, value) => ({type: ADD_KEY_VALUE, key, value});
+export const toggleOverflow = id => ({type: TOGGLE_OVERFLOW, id});
+export const toggleShowValue = id => ({type: TOGGLE_SHOW_VALUE, id});
 
 /* GET
   TODO: Fix parameter sequence
@@ -145,5 +157,17 @@ export const deleteKeyValuePair = (namespace, key, id) => {
     }).catch(error => {
       console.log(error.message);
     });
+  };
+};
+
+export const toggleOverflowWrapper = id => {
+  return dispatch => {
+    dispatch(toggleOverflow(id));
+  };
+};
+
+export const toggleShowValueWrapper = id => {
+  return dispatch => {
+    dispatch(toggleShowValue(id));
   };
 };
