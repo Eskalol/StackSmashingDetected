@@ -106,7 +106,6 @@
     "postinstall": "gulp",
     "start": "node server.js"
   },
-  "cacheDirectories": ["node_modules", "dist"],
   "eslintConfig": {
     "root": true,
     "env": {
