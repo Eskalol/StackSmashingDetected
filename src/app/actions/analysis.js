@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-import {REQUEST_NAMESPACES, RECEIVE_NAMESPACES} from '../constants/namespaceTypes';
+import {REQUEST_KEYS, RECEIVE_KEYS, REQUEST_NAMESPACES, RECEIVE_NAMESPACES} from '../constants/namespaceTypes';
 
 export function requestNamespaces() {
   return {
@@ -15,6 +15,10 @@ export function receiveNamespaces(json) {
     receivedAt: Date.now()
   };
 }
+
+export const requestKeys = () => ({type: REQUEST_KEYS});
+export const receiveKeys = keys => ({type: RECEIVE_KEYS, keys, receivedAt: Date.now()});
+
 /*
 // Fetch key count for a namespace
 function getKeyCount(namespace){
@@ -27,7 +31,7 @@ function getKeyCountForEach(namespaces){
 }
 */
 
-function getKeyCount(namespace) {
+/* function getKeyCount(namespace) {
   return fetch(`https://play.dhis2.org/test/api/25/dataStore/${namespace}`, {
     method: "GET",
     mode: "cors",
@@ -39,8 +43,33 @@ function getKeyCount(namespace) {
   }).then(response => {
     return response.json();
   }).then(json => {
+    console.log(json.length);
     return json.length;
+  }).catch(error => {
+    console.log(error);
+    return -1;
   });
+}*/
+
+export function getKeys(namespace) {
+  return dispatch => {
+    dispatch(requestKeys());
+    return fetch(`https://play.dhis2.org/test/api/25/dataStore/${namespace}`, {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Authorization": `Basic ${btoa("admin:district")}`,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      }
+    }).then(response => {
+      return response.json();
+    }).then(json => {
+      dispatch(receiveKeys(json));
+    }).catch(error => {
+      console.log(error.message);
+    });
+  };
 }
 
 export function fetchNamespaces() {
@@ -64,17 +93,14 @@ export function fetchNamespaces() {
     }).then(namespaces => {
       // Fetch keys here
       // For each namespace, fetch keys
-      //
-      // console.log("Namespaces:");
-      // console.log(namespaces);
 
-      const keyCounts = namespaces.map(getKeyCount);
+      // dispatch ny action her
+      namespaces.forEach(namespace => {
+        console.log("Getting keys for namespace:", namespace);
+        getKeys(namespace);
+      });
 
-      const returnObject = [
-        namespaces,
-        keyCounts
-      ];
-      dispatch(receiveNamespaces(returnObject));
+      dispatch(receiveNamespaces(namespaces));
       // console.log(returnObject);
     }).catch(error => {
       console.log("Error:");

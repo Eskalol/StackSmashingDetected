@@ -95,16 +95,17 @@ export class DatastoreAnalysis extends Component {
     };
   }
 
-  createDataSet(namespacesAndKeyCount) {
+  createDataSet(namespaces) {
+    console.log("Checking content");
     switch (this.state.chart) {
       case "Line":
       case "Bar":
       case "Radar":
       default:
-        return this.createDataSetType1(namespacesAndKeyCount);
+        return this.createDataSetType1(namespaces);
       case "Pie":
       case "Doughnut":
-        return this.createDataSetType2(namespacesAndKeyCount);
+        return this.createDataSetType2(namespaces);
     }
   }
 
@@ -116,6 +117,7 @@ export class DatastoreAnalysis extends Component {
         !this.props.isFetching &&
         this.getStateGraph(this.createDataSet(this.props.items))
       }
+      {console.log(this.props.keys)}
       </div>
     );
   }
@@ -123,6 +125,7 @@ export class DatastoreAnalysis extends Component {
 
 DatastoreAnalysis.propTypes = {
   items: React.PropTypes.array.isRequired,
+  keys: React.PropTypes.array.isRequired,
   isFetching: React.PropTypes.bool.isRequired,
   actions: React.PropTypes.object.isRequired
 };
