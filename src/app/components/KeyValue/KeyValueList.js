@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Loading from '../Loading/Loading';
 import KeyValue from './KeyValue';
+import AddKeyValue from './AddKeyValue';
 import * as KeyValueActions from '../../actions/keyValue';
 
 class KeyValueList extends Component {
@@ -15,8 +16,20 @@ class KeyValueList extends Component {
   render() {
     return (
       <div>
+      {this.props.add && <AddKeyValue namespace={this.props.namespace}/>}
+      {!this.props.add && (
+        <div className="row">
+          <div className="col-lg-12">
+            <i
+              className="fa fa-plus-square-o fa-4x fa-foreground"
+              aria-hidden="true"
+              onClick={this.props.actions.handleToggleAdd}
+              />
+          </div>
+        </div>
+      )}
+      {this.props.items.map((value, i) => <KeyValue key={i} keyObject={value} namespace={this.props.namespace}/>)}
       {this.props.loading && <Loading/>}
-      {!this.props.loading && this.props.items.map((value, i) => <KeyValue key={i} keyObject={value} namespace={this.props.namespace}/>)}
       </div>
     );
   }
@@ -24,6 +37,7 @@ class KeyValueList extends Component {
 
 KeyValueList.propTypes = {
   loading: React.PropTypes.bool.isRequired,
+  add: React.PropTypes.bool.isRequired,
   items: React.PropTypes.array.isRequired,
   namespace: React.PropTypes.string.isRequired,
   actions: React.PropTypes.object.isRequired

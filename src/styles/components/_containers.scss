@@ -35,6 +35,21 @@
       color: $text-color;
     }
   }
+
+  h4 {
+    color: $foreground;
+    &.hover,
+    &:hover {
+      color: $text-color;
+    }
+  }
+
+  .hidden-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+  }
 }
 
 .container-header {
