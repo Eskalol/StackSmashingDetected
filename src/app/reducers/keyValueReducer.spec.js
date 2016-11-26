@@ -1,5 +1,5 @@
 import keyValues from './keyValueReducer';
-import * as types from '../constants/KeyValueTypes';
+import * as types from '../constants/keyValueTypes';
 
 describe('keyvalue reducer', () => {
   it('should handle inital state', () => {
