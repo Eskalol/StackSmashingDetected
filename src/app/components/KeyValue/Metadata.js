@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as KeyValueActions from '../../actions/keyValue';
 
-class Metadata extends Component {
+export class Metadata extends Component {
   constructor(props) {
     super(props);
     this.handleMetaData = this.handleMetaData.bind(this);

@@ -35,8 +35,10 @@ export default function namespaces(state = initialState, action) {
       return Object.assign({}, state, {
         itemCnt: action.itemCnt,
         items: action.namespaces.map(namespace => {
-          namespace
-        })
+          // console.log("Got namespaces: ", namespace);
+          return namespace;
+        }),
+        loading: false
       });
 
     default:
