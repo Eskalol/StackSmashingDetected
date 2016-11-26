@@ -171,3 +171,9 @@ export const toggleShowValueWrapper = id => {
     dispatch(toggleShowValue(id));
   };
 };
+
+export const toggleEditWrapper = id => {
+  return dispatch => {
+    dispatch(toggleEdit(id));
+  };
+};

@@ -79,6 +79,7 @@ export default function keyValues(state = initialState, action) {
       });
 
     case TOGGLE_EDIT:
+      console.log("toggle edit handle");
       return Object.assign({}, state, {
         items: state.items.map(key =>
           key.id === action.id ?
@@ -116,7 +117,6 @@ export default function keyValues(state = initialState, action) {
       });
 
     case TOGGLE_SHOW_VALUE:
-      console.log("key value toggled");
       return Object.assign({}, state, {
         items: state.items.map(key =>
           key.id === action.id ?
