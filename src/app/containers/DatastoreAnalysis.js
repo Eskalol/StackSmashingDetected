@@ -112,9 +112,9 @@ export class DatastoreAnalysis extends Component {
   render() {
     return (
       <div>
-      {this.props.isFetching && <Loading/>}
+      {this.props.isFetchingNamespaces && <Loading/>}
       {
-        !this.props.isFetching &&
+        !this.props.isFetchingNamespaces &&
         this.getStateGraph(this.createDataSet(this.props.items))
       }
       {console.log(this.props.keys)}
@@ -126,7 +126,8 @@ export class DatastoreAnalysis extends Component {
 DatastoreAnalysis.propTypes = {
   items: React.PropTypes.array.isRequired,
   keys: React.PropTypes.array.isRequired,
-  isFetching: React.PropTypes.bool.isRequired,
+  isFetchingNamespaces: React.PropTypes.bool.isRequired,
+  isFetchingKeys: React.PropTypes.bool.isRequired,
   actions: React.PropTypes.object.isRequired
 };
 

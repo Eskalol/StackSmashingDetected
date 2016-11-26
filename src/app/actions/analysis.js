@@ -8,16 +8,26 @@ export function requestNamespaces() {
   };
 }
 
-export function receiveNamespaces(json) {
+export function receiveNamespaces(namespaces) {
   return {
     type: RECEIVE_NAMESPACES,
-    namespaces: json,
+    namespaces,
     receivedAt: Date.now()
   };
 }
 
-export const requestKeys = () => ({type: REQUEST_KEYS});
-export const receiveKeys = keys => ({type: RECEIVE_KEYS, keys, receivedAt: Date.now()});
+export function requestKeys() {
+  return {
+    type: REQUEST_KEYS
+  };
+}
+export function receiveKeys(keys) {
+  return {
+    type: RECEIVE_KEYS,
+    keys,
+    receivedAt: Date.now()
+  };
+}
 
 /*
 // Fetch key count for a namespace
@@ -51,7 +61,7 @@ function getKeyCountForEach(namespaces){
   });
 }*/
 
-export function getKeys(namespace) {
+function getKeys(namespace) {
   return dispatch => {
     dispatch(requestKeys());
     return fetch(`https://play.dhis2.org/test/api/25/dataStore/${namespace}`, {
@@ -65,6 +75,7 @@ export function getKeys(namespace) {
     }).then(response => {
       return response.json();
     }).then(json => {
+      console.log("Amount of keys: ", json.length);
       dispatch(receiveKeys(json));
     }).catch(error => {
       console.log(error.message);
@@ -85,18 +96,11 @@ export function fetchNamespaces() {
       }
     }).then(response => {
       return response.json();
-    }).then(json => {
-      // console.log("Got:");
-      // console.log(json);
-      // dispatch(receiveNamespaces(json));
-      return json;
+    // }).then(json => {
+    //   // dispatch(receiveNamespaces(json));
+    //   return json;
     }).then(namespaces => {
-      // Fetch keys here
-      // For each namespace, fetch keys
-
-      // dispatch ny action her
       namespaces.forEach(namespace => {
-        console.log("Getting keys for namespace:", namespace);
         getKeys(namespace);
       });
 
