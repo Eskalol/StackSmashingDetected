@@ -5,6 +5,7 @@ import {routerReducer} from 'react-router-redux';
 import namespacesReducer from './namespacesReducer';
 import keyValueReducer from './keyValueReducer';
 import analysisReducer from './analysisReducer';
+import analysisNamespaceReducer from './analysisNamespaceReducer';
 
 const rootReducer = combineReducers({
   header: headerReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   routing: routerReducer,
   namespaces: namespacesReducer,
   keyValues: keyValueReducer,
-  analysis: analysisReducer
+  analysis: analysisReducer,
+  analysisNamespace: analysisNamespaceReducer
 });
 
 export default rootReducer;

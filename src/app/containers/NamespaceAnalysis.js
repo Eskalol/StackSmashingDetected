@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+
+import Loading from '../components/Loading/Loading';
+
 import * as HeaderActions from '../actions/header';
+import * as AnalysisNamespaceReducer from '../actions/analysis';
 
 export class NamespaceAnalysis extends Component {
   constructor(props) {
@@ -10,11 +14,14 @@ export class NamespaceAnalysis extends Component {
     actions.changeText(`${this.props.namespaceName} > Analysis`);
     actions.analysisButton(true);
     actions.analysisListUrl(`/namespace?name=${this.props.namespaceName}`, true);
+
+    // this.props.actions.getKeys(this.props.namespaceName);
   }
 
   render() {
     return (
       <div>
+      {this.props.loading && <Loading/>}
 
       </div>
     );
@@ -23,11 +30,16 @@ export class NamespaceAnalysis extends Component {
 
 NamespaceAnalysis.propTypes = {
   actions: React.PropTypes.object.isRequired,
-  namespaceName: React.PropTypes.string.isRequired
+  namespaceName: React.PropTypes.string.isRequired,
+  items: React.PropTypes.array,
+  loading: React.PropTypes.array
+  // keyCnt: React.PropTypes.int
 };
 
 function mapStateToProps(state) {
-  return {namespaceName: state.routing.locationBeforeTransitions.query.name};
+  return {
+    namespaceName: state.routing.locationBeforeTransitions.query.name
+  };
 }
 
 /**
@@ -37,7 +49,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(Object.assign({}, HeaderActions), dispatch)
+    actions: bindActionCreators(Object.assign({}, HeaderActions, AnalysisNamespaceReducer), dispatch)
   };
 }
 
