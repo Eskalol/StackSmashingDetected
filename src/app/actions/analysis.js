@@ -22,7 +22,15 @@ export function requestKeys() {
     type: REQUEST_KEYS
   };
 }
-export const receiveKeys = (keys, namespace) => ({type: RECEIVE_KEYS, receivedAt: Date.now(), keyCnt: keys.length, namespace});
+export function receiveKeys(keys, namespace) {
+  console.log("INSIDE RECEIVE KEYS");
+  return {
+    type: RECEIVE_KEYS,
+    receivedAt: Date.now(),
+    keyCnt: keys.length,
+    namespace
+  };
+}
 
 function getKeys(namespace) {
   return dispatch => {
@@ -39,6 +47,7 @@ function getKeys(namespace) {
     }).then(json => {
       console.log("Amount of keys: ", json.length);
       dispatch(receiveKeys(json, namespace));
+      console.log("AFTER");
     }).catch(error => {
       console.log(error.message);
     });
