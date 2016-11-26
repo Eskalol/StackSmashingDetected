@@ -28,6 +28,7 @@
     "url": "https://github.com/Eskalol/StackSmashingDetected"
   },
   "dependencies": {
+    "chart.js": "^1.1.1",
     "classnames": "^2.2.5",
     "es6-shim": "^0.35.0",
     "express": "^4.14.0",
