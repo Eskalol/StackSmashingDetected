@@ -14,6 +14,7 @@ const props = {
   },
   actions: {
     toggleShowValueWrapper: jasmine.createSpy(),
+    toggleOverflowWrapper: jasmine.createSpy(),
     toggleEditWrapper: jasmine.createSpy(),
     getMetadata: jasmine.createSpy(),
     deleteKeyValuePair: jasmine.createSpy()
@@ -69,6 +70,30 @@ describe('Components', () => {
       const _wrapper = mount(<Value {...__props}/>);
       _wrapper.find('i .fa-chevron-circle-up').simulate('click');
       expect(_wrapper.props().actions.toggleShowValueWrapper).toHaveBeenCalled();
+    });
+    it('should component will mount', () => {
+      const _props = Object.assign({}, props, {
+        keyObject: {
+          ...props.keyObject,
+          value: `
+          0123456789
+          0123456789
+          0123456789
+          0123456789
+          0123456789
+          0123456789
+          0123456789
+          0123456789
+          0123456789
+          0123456789
+          0123456789
+          0123456789
+          `
+        }
+      });
+      const wrapper = mount(<Value {..._props}/>);
+      expect(wrapper.props().actions.toggleShowValueWrapper).toHaveBeenCalled();
+      expect(wrapper.props().actions.toggleOverflowWrapper).toHaveBeenCalled();
     });
   });
 });

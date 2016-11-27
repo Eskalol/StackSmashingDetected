@@ -35,7 +35,6 @@ export class Value extends Component {
   }
 
   handleShowValue() {
-    console.log("handle show value fires");
     this.props.actions.toggleShowValueWrapper(this.props.keyObject.id);
   }
 
