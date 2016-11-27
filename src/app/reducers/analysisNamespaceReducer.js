@@ -1,13 +1,10 @@
 import {REQUEST_KEYS,
         RECEIVE_KEYS,
-        RECEIVE_METADATA,
-        RECEIVE_VALUE,
-        REQUEST_VALUE} from '../constants/AnalysisNamespaceTypes';
+        RECEIVE_METADATA} from '../constants/AnalysisNamespaceTypes';
 
 const initialState = {
   items: [],
   loading: false,
-  add: false,
   keyCnt: 0
 };
 
@@ -19,45 +16,23 @@ export default function analysisNamespace(state = initialState, action) {
       });
 
     case RECEIVE_KEYS:
-      console.log("RECEIVE KEYS");
       return Object.assign({}, state, {
-        items: action.keys.map((key, id) => ({
-          key,
-          id,
-          edit: false,
-          metaData: {},
-          value: {},
-          // loading: true,
-          overflow: false,
-          showValue: true,
-          metaDataShow: false
+        items: action.keys.map(key => ({
+          key
         })),
-        keyCnt: action.keys.length,
-        loading: false
-      });
-
-    case RECEIVE_VALUE:
-      return Object.assign({}, state, {
-        items: state.items.map(key =>
-          key.id === action.id ?
-            Object.assign({}, key, {value: JSON.stringify(action.value), loading: false}) :
-            key
-          ),
-        keyCnt: state.keyCnt - 1,
-        loading: state.keyCnt - 1 !== 0
+        keyCnt: action.keys.length
       });
 
     case RECEIVE_METADATA:
       return Object.assign({}, state, {
         items: state.items.map(key =>
-          key.id === action.id ?
-          Object.assign({}, key, {metaData: action.metaData, metaDataShow: true}) :
-          key
-        )
+          key.key === action.key ?
+            Object.assign({}, key, {created: action.created, lastUpdated: action.lastUpdated}) :
+            key
+          ),
+        keyCnt: state.keyCnt - 1,
+        loading: state.keyCnt - 1 !== 0
       });
-
-    case REQUEST_VALUE:
-      return state;
 
     default:
       return state;
