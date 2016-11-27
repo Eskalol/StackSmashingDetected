@@ -23,7 +23,6 @@ export function requestKeys() {
   };
 }
 export function receiveKeys(keys, namespace) {
-  console.log("INSIDE RECEIVE KEYS");
   return {
     type: RECEIVE_KEYS,
     receivedAt: Date.now(),
@@ -45,9 +44,8 @@ function getKeys(namespace) {
     }).then(response => {
       return response.json();
     }).then(json => {
-      console.log("Amount of keys: ", json.length);
+      // console.log("Amount of keys: ", json.length);
       dispatch(receiveKeys(json, namespace));
-      console.log("AFTER");
     }).catch(error => {
       console.log(error.message);
     });

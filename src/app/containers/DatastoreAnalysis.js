@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-// import {Line, Bar, Radar, Pie, Doughnut} from 'react-chartjs';
+import {Line, Bar, Radar, Pie, Doughnut} from 'react-chartjs';
 
 import Loading from '../components/Loading/Loading';
 
@@ -23,91 +23,107 @@ export class DatastoreAnalysis extends Component {
     };
   }
 
-  // // Change graph type
-  // setGraph(type) {
-  //   if (!type) {
-  //     this.setState({chart: "Line"});
-  //   } else if (type === "Line" || type === "Bar" || type === "Radar") {
-  //     this.setState({chart: type});
-  //   }
-  // }
+  // Change graph type
+  setGraph(type) {
+    if (!type) {
+      this.setState({chart: "Line"});
+    } else if (type === "Line" || type === "Bar" || type === "Radar") {
+      this.setState({chart: type});
+    }
+  }
 
-  // // Return the JSX graph type specified by the state.
-  // getStateGraph(data) {
-  //   switch (this.state.chart) {
-  //     case "Line":
-  //       return <Line data={data} options={null} width="550" height="250"/>;
+  // Return the JSX graph type specified by the state.
+  getStateGraph(data) {
+    switch (this.state.chart) {
+      case "Line":
+        return <Line data={data} options={null} width="550" height="250"/>;
 
-  //     case "Bar":
-  //       return <Bar data={data} options={null} width="550" height="250"/>;
+      case "Bar":
+        return <Bar data={data} options={null} width="550" height="250"/>;
 
-  //     case "Radar":
-  //       return <Radar data={data} options={null} width="550" height="250"/>;
+      case "Radar":
+        return <Radar data={data} options={null} width="550" height="250"/>;
 
-  //     case "Pie":
-  //       return <Pie data={data} options={null} width="550" height="250"/>;
+      case "Pie":
+        return <Pie data={data} options={null} width="550" height="250"/>;
 
-  //     case "Doughnut":
-  //       return <Doughnut data={data} options={null} width="550" height="250"/>;
+      case "Doughnut":
+        return <Doughnut data={data} options={null} width="550" height="250"/>;
 
-  //     default:
-  //       return <Line data={data} options={null} width="550" height="250"/>;
-  //   }
-  // }
+      default:
+        return <Line data={data} options={null} width="550" height="250"/>;
+    }
+  }
 
-  // // Create dataset for line, bar and radar chart
-  // createDataSetType1(namespaces) {
-  //   return {
-  //     labels: namespaces,
-  //     datasets: [
-  //       {
-  //         label: "Namespaces",
-  //         fillColor: "rgba(151,187,205,0.2)",
-  //         strokeColor: "rgba(151,187,205,1)",
-  //         pointColor: "rgba(151,187,205,1)",
-  //         pointStrokeColor: "#fff",
-  //         pointHighlightFill: "#fff",
-  //         pointHighlightStroke: "rgba(151,187,205,1)",
-  //         data: [1, 2, 3]
-  //       }
-  //     ]
-  //   };
-  // }
+  // Create dataset for line, bar and radar chart
+  createDataSetType1(namespaces, data) {
+    return {
+      labels: namespaces,
+      datasets: [
+        {
+          label: "Namespaces",
+          fillColor: "rgba(151,187,205,0.2)",
+          strokeColor: "rgba(151,187,205,1)",
+          pointColor: "rgba(151,187,205,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(151,187,205,1)",
+          data
+        }
+      ]
+    };
+  }
 
-  // // Create dataset for pie and doughnut chart
-  // createDataSetType2(namespaces) {
-  //   return {
-  //     labels: namespaces,
-  //     datasets: [
-  //       {
-  //         backgroundColor: [
-  //           "#FF6080",
-  //           "#30A0EB",
-  //           "#FFCE50"
-  //         ],
-  //         hoverBackgroundColor: [
-  //           "#FF6080",
-  //           "#30A0EB",
-  //           "#FFCE50"
-  //         ],
-  //         data: [1, 2, 3]
-  //       }]
-  //   };
-  // }
+  // Create dataset for pie and doughnut chart
+  createDataSetType2(namespaces, data) {
+    return {
+      labels: namespaces,
+      datasets: [
+        {
+          backgroundColor: [
+            "#FF6080",
+            "#30A0EB",
+            "#FFCE50"
+          ],
+          hoverBackgroundColor: [
+            "#FF6080",
+            "#30A0EB",
+            "#FFCE50"
+          ],
+          data
+        }]
+    };
+  }
 
-  // createDataSet(namespaces) {
-  //   switch (this.state.chart) {
-  //     case "Line":
-  //     case "Bar":
-  //     case "Radar":
-  //     default:
-  //       return this.createDataSetType1(namespaces);
-  //     case "Pie":
-  //     case "Doughnut":
-  //       return this.createDataSetType2(namespaces);
-  //   }
-  // }
+  // data is received as [[namespace1, keyCount1], [namespace2, keyCount2] ...]
+  // Splits the data into two new arrays containing namespaces and key counts.
+  splitDataSet(data) {
+    const namespaces = [];
+    const dataSet = [];
+    data.forEach(elem => {
+      namespaces.push(elem[0]);
+      dataSet.push(elem[1]);
+    });
+    return [namespaces, dataSet];
+  }
 
+  createDataSet(inputData) {
+    const splitData = this.splitDataSet(inputData);
+    const namespaces = splitData[0];
+    const data = splitData[1];
+
+    switch (this.state.chart) {
+      case "Line":
+      case "Bar":
+      case "Radar":
+      default:
+        return this.createDataSetType1(namespaces, data);
+      case "Pie":
+      case "Doughnut":
+        return this.createDataSetType2(namespaces, data);
+    }
+  }
+      //
       // {this.props.isFetchingNamespaces && <Loading/>}
       // {
       //   !this.props.isFetchingNamespaces &&
@@ -123,9 +139,8 @@ export class DatastoreAnalysis extends Component {
       <div>
         {this.props.loading && <Loading/>}
         {!this.props.loading && (
-          <span>{this.props.items}</span>
+          this.getStateGraph(this.createDataSet(this.props.items))
         )}
-        {console.log("items[0]:", this.props.items[0])}
       </div>
     );
   }

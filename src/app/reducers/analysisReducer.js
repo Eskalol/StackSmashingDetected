@@ -7,10 +7,7 @@ const initialState = {
   namespaceCnt: 0
 };
 
-
 export default function namespaces(state = initialState, action) {
-  console.log("handle action");
-  console.log(action);
   switch (action.type) {
     case REQUEST_KEYS:
       return Object.assign({}, state, {
@@ -18,12 +15,14 @@ export default function namespaces(state = initialState, action) {
       });
 
     case RECEIVE_KEYS:
-      console.log("CHECK");
       return Object.assign({}, state, {
         items: state.items.map(n =>
-          n.namespace === action.namespace ?
-            Object.assign({}, n, {keyCnt: action.keyCnt}) :
-            n
+          // n.namespace === action.namespace ?
+          //   Object.assign({}, n, {keyCnt: action.keyCnt}) :
+          //   n
+            n === action.namespace ?
+              [n, action.keyCnt] :
+              n
           ),
         namespaceCnt: state.namespaceCnt + 1,
         itemCnt: state.itemCnt - 1,
@@ -36,14 +35,13 @@ export default function namespaces(state = initialState, action) {
       });
 
     case RECEIVE_NAMESPACES:
-      console.log("Received namespaces");
       return Object.assign({}, state, {
         itemCnt: action.itemCnt,
         items: action.namespaces.map(namespace => {
           // console.log("Got namespaces: ", namespace);
           return namespace;
-        }),
-        loading: false
+        })
+        // loading: false
       });
 
     default:
