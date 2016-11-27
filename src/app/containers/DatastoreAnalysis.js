@@ -8,6 +8,10 @@ import Loading from '../components/Loading/Loading';
 import * as HeaderActions from '../actions/header';
 import * as AnalysisActions from '../actions/analysis';
 
+const chartOptions = {
+  responsive: true
+};
+
 export class DatastoreAnalysis extends Component {
   constructor(props) {
     super(props);
@@ -18,8 +22,7 @@ export class DatastoreAnalysis extends Component {
     this.props.actions.fetchNamespaces();
 
     this.state = {
-      chart: "Bar",
-      dataset: null
+      chart: "Bar"
     };
   }
 
@@ -39,7 +42,7 @@ export class DatastoreAnalysis extends Component {
         return <Line data={data} options={null} width="550" height="250"/>;
 
       case "Bar":
-        return <Bar data={data} options={null} width="550" height="250"/>;
+        return <Bar data={data} options={chartOptions}/>;
 
       case "Radar":
         return <Radar data={data} options={null} width="550" height="250"/>;
@@ -80,17 +83,17 @@ export class DatastoreAnalysis extends Component {
       labels: namespaces,
       datasets: [
         {
+          data,
           backgroundColor: [
-            "#FF6080",
-            "#30A0EB",
-            "#FFCE50"
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56"
           ],
           hoverBackgroundColor: [
-            "#FF6080",
-            "#30A0EB",
-            "#FFCE50"
-          ],
-          data
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56"
+          ]
         }]
     };
   }
@@ -123,17 +126,7 @@ export class DatastoreAnalysis extends Component {
         return this.createDataSetType2(namespaces, data);
     }
   }
-      //
-      // {this.props.isFetchingNamespaces && <Loading/>}
-      // {
-      //   !this.props.isFetchingNamespaces &&
-      //   this.getStateGraph(this.createDataSet(this.props.items))
-      // }
-      // {this.props.isFetchingKeys && <Loading/>}
-      // {
-      //   !this.props.isFetchingKeys &&
-      //   console.log("KEYS:", this.props.keys)
-      // }
+
   render() {
     return (
       <div>
@@ -148,9 +141,6 @@ export class DatastoreAnalysis extends Component {
 
 DatastoreAnalysis.propTypes = {
   items: React.PropTypes.array.isRequired,
-  // keys: React.PropTypes.array.isRequired,
-  // isFetchingNamespaces: React.PropTypes.bool.isRequired,
-  // isFetchingKeys: React.PropTypes.bool.isRequired,
   loading: React.PropTypes.bool.isRequired,
   actions: React.PropTypes.object.isRequired
 };

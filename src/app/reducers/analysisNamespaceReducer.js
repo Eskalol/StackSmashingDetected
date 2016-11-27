@@ -1,8 +1,8 @@
 import {REQUEST_KEYS,
         RECEIVE_KEYS,
-        RECEIVE_VALUE,
         RECEIVE_METADATA,
-        REQUEST_VALUE} from '../constants/keyValueTypes';
+        RECEIVE_VALUE,
+        REQUEST_VALUE} from '../constants/AnalysisNamespaceTypes';
 
 const initialState = {
   items: [],
@@ -19,6 +19,7 @@ export default function keyValues(state = initialState, action) {
       });
 
     case RECEIVE_KEYS:
+      console.log("RECEIVE KEYS");
       return Object.assign({}, state, {
         items: action.keys.map((key, id) => ({
           key,
@@ -26,12 +27,13 @@ export default function keyValues(state = initialState, action) {
           edit: false,
           metaData: {},
           value: {},
-          loading: true,
+          // loading: true,
           overflow: false,
           showValue: true,
           metaDataShow: false
         })),
-        keyCnt: action.keys.length
+        keyCnt: action.keys.length,
+        loading: false
       });
 
     case RECEIVE_VALUE:

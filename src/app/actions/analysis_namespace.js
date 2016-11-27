@@ -2,7 +2,7 @@ import {REQUEST_KEYS,
         RECEIVE_KEYS,
         RECEIVE_METADATA,
         RECEIVE_VALUE,
-        REQUEST_VALUE} from '../constants/keyValueTypes';
+        REQUEST_VALUE} from '../constants/AnalysisNamespaceTypes';
 
 export const requestKeys = () => ({type: REQUEST_KEYS});
 export const receiveKeys = keys => ({type: RECEIVE_KEYS, keys, receivedAt: Date.now()});
@@ -52,6 +52,7 @@ export const getMetaData = (namespace, key, id) => {
 };
 
 export const getKeys = namespace => {
+  console.log("getKeys()");
   return dispatch => {
     dispatch(requestKeys());
     return fetch(`https://play.dhis2.org/test/api/25/dataStore/${namespace}`, {
@@ -65,6 +66,7 @@ export const getKeys = namespace => {
     }).then(response => {
       return response.json();
     }).then(json => {
+      console.log("Got: ", json);
       dispatch(receiveKeys(json));
     }).catch(error => {
       console.log(error.message);
