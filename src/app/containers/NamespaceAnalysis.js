@@ -51,15 +51,13 @@ export class NamespaceAnalysis extends Component {
     return (
       <div>
       {this.props.loading && <Loading/>}
-        <h1>Test</h1>
         {!this.props.loading && (
           this.getGraph(this.createDataSet(this.props.items))
         )}
-      {console.log("NamespaceAnalysis: ", this.props)}
-      {console.log("Actions: ", this.props.actions)}
       {console.log("LOADING: ", this.props.loading)}
       {console.log("ITEMS: ", this.props.items)}
-      {console.log("PROPS: ", this.props)}
+      {console.log("ACTIONS: ", this.props.actions)}
+
       </div>
     );
   }
@@ -76,7 +74,7 @@ NamespaceAnalysis.propTypes = {
 function mapStateToProps(state) {
   return {
     namespaceName: state.routing.locationBeforeTransitions.query.name,
-    state: state.namespaceAnalysis
+    state: state.analysisNamespace
   };
 }
 
