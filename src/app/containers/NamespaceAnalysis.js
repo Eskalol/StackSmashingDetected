@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Radar} from 'react-chartjs';
+import {Bar, Radar} from 'react-chartjs';
 
 import Loading from '../components/Loading/Loading';
 
@@ -10,6 +10,10 @@ import * as AnalysisNamespaceAction from '../actions/analysisNamespace';
 
 const chartOptions = {
   pointLabelFontSize: 20,
+  responsive: true
+};
+
+const barOptions = {
   responsive: true
 };
 
@@ -25,7 +29,12 @@ export class NamespaceAnalysis extends Component {
   }
 
   // Return the specified graph
-  getGraph(data) {
+  getGraph(inputData) {
+    const data = inputData[0];
+    const chart = inputData[1];
+    if (chart === "Bar") {
+      return <Bar data={data} options={barOptions}/>;
+    }
     return <Radar data={data} options={chartOptions}/>;
   }
 
@@ -60,6 +69,10 @@ export class NamespaceAnalysis extends Component {
     // Getting all the unique dates in a way that if there are dates a key was
     // created but none updated (and vice versa) the date is still included
     const uniqueDates = this.getUniqueDays(inputData);
+    let chart = "Radar";
+    if (uniqueDates.length <= 2) {
+      chart = "Bar";
+    }
 
     // Creating arrays with as many zeroes as uniqueDates is long
     const creationDataSet = uniqueDates.map(() => (0));
@@ -71,31 +84,34 @@ export class NamespaceAnalysis extends Component {
       lastEditDataSet[uniqueDates.indexOf(elem.lastUpdated)]++;
     });
 
-    return {
-      labels: uniqueDates,
-      datasets: [
-        {
-          label: "Creation",
-          fillColor: "rgba(151,187,205,0.4)",
-          strokeColor: "rgba(151,187,205,1)",
-          pointColor: "rgba(151,187,205,1)",
-          pointStrokeColor: "#fff",
-          pointHighlightFill: "#fff",
-          pointHighlightStroke: "rgba(151,187,205,1)",
-          data: creationDataSet
-        },
-        {
-          label: "Last edit",
-          fillColor: "rgba(220,220,220,0.6)",
-          strokeColor: "rgba(220,220,220,1)",
-          pointColor: "rgba(220,220,220,1)",
-          pointStrokeColor: "#fff",
-          pointHighlightFill: "#fff",
-          pointHighlightStroke: "rgba(220,220,220,1)",
-          data: lastEditDataSet
-        }
-      ]
-    };
+    return [
+      {
+        labels: uniqueDates,
+        datasets: [
+          {
+            label: "Creation",
+            fillColor: "rgba(151,187,205,0.4)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: creationDataSet
+          },
+          {
+            label: "Last edit",
+            fillColor: "rgba(220,220,220,0.6)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: lastEditDataSet
+          }
+        ]
+      },
+      chart
+    ];
   }
 
   createDataSet(inputData) {
