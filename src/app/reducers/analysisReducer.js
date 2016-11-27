@@ -8,6 +8,9 @@ const initialState = {
 };
 
 export default function namespaces(state = initialState, action) {
+  console.log("handle action");
+  console.log(action);
+
   switch (action.type) {
     case REQUEST_KEYS:
       return state;
