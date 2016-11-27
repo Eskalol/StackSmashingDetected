@@ -11,7 +11,7 @@ const initialState = {
   keyCnt: 0
 };
 
-export default function keyValues(state = initialState, action) {
+export default function namespaceAnalysis(state = initialState, action) {
   switch (action.type) {
     case REQUEST_KEYS:
       return Object.assign({}, state, {

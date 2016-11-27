@@ -6,7 +6,7 @@ import {Bar} from 'react-chartjs';
 import Loading from '../components/Loading/Loading';
 
 import * as HeaderActions from '../actions/header';
-import * as AnalysisNamespaceAction from '../actions/analysis_namespace';
+import * as AnalysisNamespaceAction from '../actions/analysisNamespace';
 
 export class NamespaceAnalysis extends Component {
   constructor(props) {
@@ -56,8 +56,10 @@ export class NamespaceAnalysis extends Component {
           this.getGraph(this.createDataSet(this.props.items))
         )}
       {console.log("NamespaceAnalysis: ", this.props)}
-      {console.log("Actions: ", this.actions)}
+      {console.log("Actions: ", this.props.actions)}
       {console.log("LOADING: ", this.props.loading)}
+      {console.log("ITEMS: ", this.props.items)}
+      {console.log("PROPS: ", this.props)}
       </div>
     );
   }
@@ -67,14 +69,14 @@ NamespaceAnalysis.propTypes = {
   actions: React.PropTypes.object.isRequired,
   namespaceName: React.PropTypes.string.isRequired,
   items: React.PropTypes.array.isRequired,
-  loading: React.PropTypes.array
+  loading: React.PropTypes.bool.isRequired
   // keyCnt: React.PropTypes.int
 };
 
 function mapStateToProps(state) {
   return {
     namespaceName: state.routing.locationBeforeTransitions.query.name,
-    state: state.namespace_analysis
+    state: state.namespaceAnalysis
   };
 }
 
