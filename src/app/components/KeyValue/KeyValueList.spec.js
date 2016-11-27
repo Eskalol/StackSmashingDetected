@@ -18,7 +18,7 @@ const props = {
 
 describe('Components', () => {
   describe('<KeyValueList/>', () => {
-    it('should render KeyValueLit correctly', () => {
+    it('should render KeyValueList correctly', () => {
       const wrapper = mount(
         <Provider store={store}>
           <KeyValueList {...props}/>

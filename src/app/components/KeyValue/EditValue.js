@@ -52,7 +52,7 @@ export class EditValue extends Component {
               <input
                 className="input-line"
                 defaultValue={this.props.keyObject.value}
-                size={this.props.keyObject.value.length}
+                size={JSON.stringify(this.props.keyObject.value).length}
                 onKeyDown={this.handleSubmitEnter}
                 onChange={this.handleChange}
                 />
@@ -63,7 +63,7 @@ export class EditValue extends Component {
                 className="text-area"
                 rows="10"
                 cols="30"
-                defaultValue={this.props.keyObject.value}
+                defaultValue={JSON.stringify(this.props.keyObject.value)}
                 onKeyDown={this.handleSubmitEnter}
                 onChange={this.handleChange}
                 />

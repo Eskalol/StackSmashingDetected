@@ -34,7 +34,7 @@ export default function keyValues(state = initialState, action) {
       return Object.assign({}, state, {
         items: state.items.map(key =>
           key.id === action.id ?
-            Object.assign({}, key, {value: JSON.stringify(action.value), loading: false}) :
+            Object.assign({}, key, {value: action.value, loading: false}) :
             key
           ),
         keyCnt: state.keyCnt - 1,

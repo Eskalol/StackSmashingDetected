@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import JSONTree from 'react-json-tree';
 import * as KeyValueActions from '../../actions/keyValue';
 
 export class Value extends Component {
@@ -12,6 +13,7 @@ export class Value extends Component {
     this.handleMetadata = this.handleMetadata.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.getTheme = this.getTheme.bind(this);
   }
 
   componentWillMount() {
@@ -38,6 +40,29 @@ export class Value extends Component {
     this.props.actions.toggleShowValueWrapper(this.props.keyObject.id);
   }
 
+  getTheme() {
+    return {
+      scheme: 'chalk',
+      author: 'chris kempson (http://chriskempson.com)',
+      base00: '#151515',
+      base01: '#202020',
+      base02: '#303030',
+      base03: '#505050',
+      base04: '#b0b0b0',
+      base05: '#d0d0d0',
+      base06: '#e0e0e0',
+      base07: '#f5f5f5',
+      base08: '#fb9fb1',
+      base09: '#eda987',
+      base0A: '#ddb26f',
+      base0B: '#acc267',
+      base0C: '#12cfc0',
+      base0D: '#6fc2ef',
+      base0E: '#e1a3ee',
+      base0F: '#deaf8f'
+    };
+  }
+
   render() {
     return (
       <div className="container">
@@ -52,14 +77,14 @@ export class Value extends Component {
               {
               this.props.keyObject.overflow && !this.props.keyObject.showValue &&
                 (<div><i className="fa fa-chevron-circle-down fa-2x fa-foreground" onClick={this.handleShowValue}/>
-                  <span>Data length: {this.props.keyObject.value.length}</span></div>)
+                  <span>Data length: {JSON.stringify(this.props.keyObject.value).length}</span></div>)
               }
               {
               this.props.keyObject.overflow && this.props.keyObject.showValue &&
-                (<div><textarea className="text-area" rows="10" cols="30" value={this.props.keyObject.value} disabled/>
+                (<div><JSONTree data={this.props.keyObject.value} theme={this.getTheme()}/>
                   <i className="fa fa-chevron-circle-up fa-2x fa-foreground" onClick={this.handleShowValue}/></div>)
               }
-              {!this.props.keyObject.overflow && (<p>{this.props.keyObject.value}</p>)}
+              {!this.props.keyObject.overflow && (<JSONTree data={this.props.keyObject.value} theme={this.getTheme()}/>)}
             </div>
           </div>
           <div className="col-sm-1">
