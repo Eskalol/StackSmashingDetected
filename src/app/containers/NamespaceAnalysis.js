@@ -66,8 +66,8 @@ export class NamespaceAnalysis extends Component {
 NamespaceAnalysis.propTypes = {
   actions: React.PropTypes.object.isRequired,
   namespaceName: React.PropTypes.string.isRequired,
-  items: React.PropTypes.array.isRequired,
-  loading: React.PropTypes.bool.isRequired
+  items: React.PropTypes.array,
+  loading: React.PropTypes.bool
   // keyCnt: React.PropTypes.int
 };
 
