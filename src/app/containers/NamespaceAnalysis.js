@@ -66,14 +66,15 @@ export class NamespaceAnalysis extends Component {
 NamespaceAnalysis.propTypes = {
   actions: React.PropTypes.object.isRequired,
   namespaceName: React.PropTypes.string.isRequired,
-  items: React.PropTypes.array,
+  items: React.PropTypes.array.isRequired,
   loading: React.PropTypes.array
   // keyCnt: React.PropTypes.int
 };
 
 function mapStateToProps(state) {
   return {
-    namespaceName: state.routing.locationBeforeTransitions.query.name
+    namespaceName: state.routing.locationBeforeTransitions.query.name,
+    state: state.namespace_analysis
   };
 }
 
