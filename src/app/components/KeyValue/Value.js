@@ -3,13 +3,13 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as KeyValueActions from '../../actions/keyValue';
 
-class Value extends Component {
+export class Value extends Component {
   constructor(props) {
     super(props);
 
     // Bind handleShowValue
     this.handleShowValue = this.handleShowValue.bind(this);
-    this.handleMetaData = this.handleMetaData.bind(this);
+    this.handleMetadata = this.handleMetadata.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
@@ -22,8 +22,8 @@ class Value extends Component {
     }
   }
 
-  handleMetaData() {
-    this.props.actions.getMetaData(this.props.namespace, this.props.keyObject.key, this.props.keyObject.id);
+  handleMetadata() {
+    this.props.actions.getMetadata(this.props.namespace, this.props.keyObject.key, this.props.keyObject.id);
   }
 
   handleEdit() {
@@ -66,7 +66,7 @@ class Value extends Component {
           <div className="col-sm-1">
             <div className="align-right">
               <i className="fa fa-pencil fa-2x fa-foreground fa-padding" aria-hidden="true" onClick={this.handleEdit}/>
-              <i className="fa fa-tag fa-2x fa-foreground fa-padding" aria-hidden="true" onClick={this.handleMetaData}/>
+              <i className="fa fa-tag fa-2x fa-foreground fa-padding" aria-hidden="true" onClick={this.handleMetadata}/>
               <i className="fa fa-times fa-2x fa-foreground fa-padding" aria-hidden="true" onClick={this.handleDelete}/>
             </div>
           </div>

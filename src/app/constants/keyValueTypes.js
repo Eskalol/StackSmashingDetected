@@ -4,7 +4,6 @@ export const TOGGLE_EDIT = 'TOGGLE_EDIT';
 export const UPDATE_KEY = 'UPDATE_KEY';
 export const REQUEST_KEYS = 'REQUEST_KEYS';
 export const RECEIVE_KEYS = 'RECEIVE_KEYS';
-export const REQUEST_VALUE = 'REQUEST_VALUE';
 export const RECEIVE_VALUE = 'RECEIVE_VALUE';
 export const TOGGLE_ADD = 'TOGGLE_ADD';
 export const DELETE_KEY_VALUE = 'DELETE_KEY_VALUE';

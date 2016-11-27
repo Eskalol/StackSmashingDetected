@@ -1,16 +1,4 @@
-import {REQUEST_KEYS,
-        RECEIVE_KEYS,
-        RECEIVE_VALUE,
-        RECEIVE_METADATA,
-        REQUEST_VALUE,
-        TOGGLE_ADD,
-        ADD_KEY,
-        TOGGLE_EDIT,
-        DELETE_KEY_VALUE,
-        ADD_KEY_VALUE,
-        TOGGLE_OVERFLOW,
-        TOGGLE_SHOW_VALUE,
-        TOGGLE_METADATA} from '../constants/keyValueTypes';
+import * as types from '../constants/keyValueTypes';
 
 const initialState = {
   items: [],
@@ -21,28 +9,28 @@ const initialState = {
 
 export default function keyValues(state = initialState, action) {
   switch (action.type) {
-    case REQUEST_KEYS:
+    case types.REQUEST_KEYS:
       return Object.assign({}, state, {
         loading: true
       });
 
-    case RECEIVE_KEYS:
+    case types.RECEIVE_KEYS:
       return Object.assign({}, state, {
         items: action.keys.map((key, id) => ({
           key,
           id,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: true,
           overflow: false,
           showValue: true,
-          metaDataShow: false
+          metadataShow: false
         })),
         keyCnt: action.keys.length
       });
 
-    case RECEIVE_VALUE:
+    case types.RECEIVE_VALUE:
       return Object.assign({}, state, {
         items: state.items.map(key =>
           key.id === action.id ?
@@ -53,33 +41,33 @@ export default function keyValues(state = initialState, action) {
         loading: state.keyCnt - 1 !== 0
       });
 
-    case RECEIVE_METADATA:
+    case types.RECEIVE_METADATA:
       return Object.assign({}, state, {
         items: state.items.map(key =>
           key.id === action.id ?
-          Object.assign({}, key, {metaData: action.metaData, metaDataShow: true}) :
+          Object.assign({}, key, {metadata: action.metadata, metadataShow: true}) :
           key
         )
       });
 
-    case TOGGLE_ADD:
+    case types.TOGGLE_ADD:
       return Object.assign({}, state, {
         add: !state.add
       });
 
-    case ADD_KEY:
+    case types.ADD_KEY:
       return Object.assign({}, state, {
         items: [...state, {
           key: action.key,
           id: action.id,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: {},
           loading: false
         }]
       });
 
-    case TOGGLE_EDIT:
+    case types.TOGGLE_EDIT:
       return Object.assign({}, state, {
         items: state.items.map(key =>
           key.id === action.id ?
@@ -88,26 +76,26 @@ export default function keyValues(state = initialState, action) {
         )
       });
 
-    case DELETE_KEY_VALUE:
+    case types.DELETE_KEY_VALUE:
       return Object.assign({}, state, {
         items: state.items.filter(key =>
           key.id !== action.id
         )
       });
 
-    case ADD_KEY_VALUE:
+    case types.ADD_KEY_VALUE:
       return Object.assign({}, state, {
         items: [...state.items, {
           key: action.key,
           id: state.items.length,
           edit: false,
-          metaData: {},
+          metadata: {},
           value: action.value,
           loading: false
         }]
       });
 
-    case TOGGLE_OVERFLOW:
+    case types.TOGGLE_OVERFLOW:
       return Object.assign({}, state, {
         items: state.items.map(key =>
           key.id === action.id ?
@@ -116,7 +104,7 @@ export default function keyValues(state = initialState, action) {
         )
       });
 
-    case TOGGLE_SHOW_VALUE:
+    case types.TOGGLE_SHOW_VALUE:
       return Object.assign({}, state, {
         items: state.items.map(key =>
           key.id === action.id ?
@@ -125,17 +113,14 @@ export default function keyValues(state = initialState, action) {
         )
       });
 
-    case TOGGLE_METADATA:
+    case types.TOGGLE_METADATA:
       return Object.assign({}, state, {
         items: state.items.map(key =>
           key.id === action.id ?
-          Object.assign({}, key, {metaDataShow: !key.metaDataShow}) :
+          Object.assign({}, key, {metadataShow: !key.metadataShow}) :
           key
         )
       });
-
-    case REQUEST_VALUE:
-      return state;
 
     default:
       return state;

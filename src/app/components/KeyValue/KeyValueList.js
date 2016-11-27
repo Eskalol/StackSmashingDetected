@@ -6,7 +6,7 @@ import KeyValue from './KeyValue';
 import AddKeyValue from './AddKeyValue';
 import * as KeyValueActions from '../../actions/keyValue';
 
-class KeyValueList extends Component {
+export class KeyValueList extends Component {
   constructor(props) {
     super(props);
     const {actions} = this.props;

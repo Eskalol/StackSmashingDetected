@@ -16,15 +16,15 @@ export class KeyValue extends Component {
   render() {
     return (
       <div>
-        {!this.props.keyObject.loading && !this.props.keyObject.metaDataShow && (
+        {!this.props.keyObject.loading && !this.props.keyObject.metadataShow && (
           <div className="row">
             <div className="col-lg-12">
-              {!this.props.keyObject.metaDataShow && this.props.keyObject.edit && (<EditValue keyObject={this.props.keyObject} namespace={this.props.namespace}/>)}
-              {!this.props.keyObject.metaDataShow && !this.props.keyObject.edit && (<Value keyObject={this.props.keyObject} namespace={this.props.namespace}/>)}
+              {!this.props.keyObject.metadataShow && this.props.keyObject.edit && (<EditValue keyObject={this.props.keyObject} namespace={this.props.namespace}/>)}
+              {!this.props.keyObject.metadataShow && !this.props.keyObject.edit && (<Value keyObject={this.props.keyObject} namespace={this.props.namespace}/>)}
             </div>
           </div>
         )}
-        {!this.props.keyObject.loading && this.props.keyObject.metaDataShow && (<Metadata keyObject={this.props.keyObject} namespace={this.props.namespace}/>)}
+        {!this.props.keyObject.loading && this.props.keyObject.metadataShow && (<Metadata keyObject={this.props.keyObject} namespace={this.props.namespace}/>)}
       </div>
     );
   }
