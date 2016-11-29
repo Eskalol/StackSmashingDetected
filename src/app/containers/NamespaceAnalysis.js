@@ -122,8 +122,18 @@ export class NamespaceAnalysis extends Component {
     return (
       <div>
       {this.props.loading && <Loading/>}
-      {!this.props.loading && this.getGraph(this.createDataSetType1(this.props.items))}
-
+      {!this.props.loading && (
+        <div className="row">
+          <div className="col-lg-2 col-md-2 col-sx-2"></div>
+          <div className="col-lg-8 col-md-8 col-sx-8">
+            <div className="container-header info">Key value created and edited</div>
+            <div className="container info">
+              {this.getGraph(this.createDataSetType1(this.props.items))}
+            </div>
+          </div>
+          <div className="col-lg-2 col-md-2 col-sx-2"></div>
+        </div>
+      )}
       </div>
     );
   }

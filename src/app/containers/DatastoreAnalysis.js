@@ -132,7 +132,16 @@ export class DatastoreAnalysis extends Component {
       <div>
         {this.props.loading && <Loading/>}
         {!this.props.loading && (
-          this.getStateGraph(this.createDataSet(this.props.items))
+          <div className="row">
+            <div className="col-lg-2 col-md-2 col-sx-2"></div>
+            <div className="col-lg-8 col-md-8 col-sx-8">
+              <div className="container-header info">Amount of keys in namespaces</div>
+              <div className="container info">
+                {this.getStateGraph(this.createDataSet(this.props.items))}
+              </div>
+            </div>
+            <div className="col-lg-2 col-md-2 col-sx-2"></div>
+          </div>
         )}
       </div>
     );
