@@ -15,14 +15,6 @@ export class Value extends Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  componentWillMount() {
-    // Check overflow
-    if (this.props.keyObject.value.toString().length > 100) {
-      this.props.actions.toggleShowValueWrapper(this.props.keyObject.id);
-      this.props.actions.toggleOverflowWrapper(this.props.keyObject.id);
-    }
-  }
-
   handleMetadata() {
     this.props.actions.getMetadata(this.props.namespace, this.props.keyObject.key, this.props.keyObject.id);
   }

@@ -37,11 +37,16 @@ export default function keyValues(state = initialState, action) {
       return Object.assign({}, state, {
         items: state.items.map(key =>
           key.id === action.id ?
-            Object.assign({}, key, {value: JSON.stringify(action.value), loading: false}) :
+            Object.assign({}, key, {
+              value: JSON.stringify(action.value),
+              loading: false,
+              overflow: action.value.length > 100,
+              showValue: action.value.length <= 100
+            }) :
             key
           ),
-        keyCnt: state.keyCnt - 1,
-        loading: state.keyCnt - 1 !== 0
+        keyCnt: state.keyCnt === 0 ? 0 : state.keyCnt - 1,
+        loading: state.keyCnt === 0 ? false : state.keyCnt - 1 !== 0
       });
 
     case types.RECEIVE_METADATA:

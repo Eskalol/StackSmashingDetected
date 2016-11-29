@@ -137,6 +137,7 @@ export const putValue = (namespace, key, id, value) => {
     }).then(response => {
       if (response.ok) {
         dispatch(receiveValue(value, id));
+        dispatch(toggleEdit(id));
       }
     }).catch(error => {
       console.log(error.message);
