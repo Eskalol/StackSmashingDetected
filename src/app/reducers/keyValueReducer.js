@@ -4,7 +4,9 @@ const initialState = {
   items: [],
   loading: false,
   add: false,
-  keyCnt: 0
+  keyCnt: 0,
+  error: false,
+  message: ""
 };
 
 export default function keyValues(state = initialState, action) {
@@ -25,7 +27,8 @@ export default function keyValues(state = initialState, action) {
           loading: true,
           overflow: false,
           showValue: true,
-          metadataShow: false
+          metadataShow: false,
+          new: false
         })),
         keyCnt: action.keys.length
       });
@@ -85,14 +88,17 @@ export default function keyValues(state = initialState, action) {
 
     case types.ADD_KEY_VALUE:
       return Object.assign({}, state, {
-        items: [...state.items, {
+        error: false,
+        message: "",
+        items: [{
           key: action.key,
           id: state.items.length,
           edit: false,
           metadata: {},
           value: action.value,
-          loading: false
-        }]
+          loading: false,
+          new: true
+        }, ...state.items]
       });
 
     case types.TOGGLE_OVERFLOW:
@@ -120,6 +126,12 @@ export default function keyValues(state = initialState, action) {
           Object.assign({}, key, {metadataShow: !key.metadataShow}) :
           key
         )
+      });
+
+    case types.KEY_VALUE_ERROR:
+      return Object.assign({}, state, {
+        error: true,
+        message: action.msg
       });
 
     default:

@@ -30,7 +30,7 @@ describe('Components', () => {
     });
     it('it should not call actions on click when the fields are empty', () => {
       const wrapper = mount(<AddKeyValue {...props}/>);
-      wrapper.find('i .fa-envelope-open').simulate('click');
+      wrapper.find('i .fa-check').simulate('click');
       expect(wrapper.props().actions.postValue).not.toHaveBeenCalled();
     });
   });

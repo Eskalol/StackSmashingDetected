@@ -10,7 +10,8 @@ import {REQUEST_KEYS,
         ADD_KEY_VALUE,
         TOGGLE_OVERFLOW,
         TOGGLE_SHOW_VALUE,
-        TOGGLE_METADATA} from '../constants/keyValueTypes';
+        TOGGLE_METADATA,
+        KEY_VALUE_ERROR} from '../constants/keyValueTypes';
 
 export const requestKeys = () => ({type: REQUEST_KEYS});
 export const receiveKeys = keys => ({type: RECEIVE_KEYS, keys, receivedAt: Date.now()});
@@ -23,7 +24,7 @@ export const addKeyValue = (key, value) => ({type: ADD_KEY_VALUE, key, value});
 export const toggleOverflow = id => ({type: TOGGLE_OVERFLOW, id});
 export const toggleShowValue = id => ({type: TOGGLE_SHOW_VALUE, id});
 export const toggleMetadata = id => ({type: TOGGLE_METADATA, id});
-
+export const keyValueError = msg => ({type: KEY_VALUE_ERROR, msg});
 /* GET
   TODO: Fix parameter sequence
   TODO: Fix the names of different functions
@@ -106,10 +107,15 @@ export const postValue = (namespace, key, value) => {
         "Content-Type": "application/json"
       }
     }).then(response => {
+      if (!response.ok) {
+        dispatch(keyValueError(`${response.status} ${response.statusText}`));
+      }
       if (response.ok) {
         dispatch(addKeyValue(key, value));
+        dispatch(handleToggleAdd());
       }
     }).catch(error => {
+      dispatch(keyValueError(error.message));
       console.log(error.message);
     });
   };

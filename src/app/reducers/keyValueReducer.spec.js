@@ -9,7 +9,9 @@ describe('keyvalue reducer', () => {
       items: [],
       loading: false,
       add: false,
-      keyCnt: 0
+      keyCnt: 0,
+      error: false,
+      message: ""
     });
   });
   it('should handle REQUEST_KEYS correctly', () => {
@@ -37,7 +39,8 @@ describe('keyvalue reducer', () => {
           loading: true,
           overflow: false,
           showValue: true,
-          metadataShow: false
+          metadataShow: false,
+          new: false
         },
         {
           key: "KEY2",
@@ -48,7 +51,8 @@ describe('keyvalue reducer', () => {
           loading: true,
           overflow: false,
           showValue: true,
-          metadataShow: false
+          metadataShow: false,
+          new: false
         }
       ],
       keyCnt: 2
@@ -66,7 +70,8 @@ describe('keyvalue reducer', () => {
           loading: true,
           overflow: false,
           showValue: true,
-          metadataShow: false
+          metadataShow: false,
+          new: false
         },
         {
           key: "KEY2",
@@ -77,7 +82,8 @@ describe('keyvalue reducer', () => {
           loading: true,
           overflow: false,
           showValue: true,
-          metadataShow: false
+          metadataShow: false,
+          new: false
         }
       ],
       keyCnt: 2
@@ -96,7 +102,8 @@ describe('keyvalue reducer', () => {
           loading: true,
           overflow: false,
           showValue: true,
-          metadataShow: false
+          metadataShow: false,
+          new: false
         },
         {
           key: "KEY2",
@@ -107,7 +114,8 @@ describe('keyvalue reducer', () => {
           loading: false,
           overflow: false,
           showValue: true,
-          metadataShow: false
+          metadataShow: false,
+          new: false
         }
       ],
       keyCnt: 1,
@@ -296,9 +304,12 @@ describe('keyvalue reducer', () => {
           edit: false,
           metadata: {},
           value: "Test value",
-          loading: false
+          loading: false,
+          new: true
         }
-      ]
+      ],
+      error: false,
+      message: ''
     });
   });
   it('should handle TOGGLE_OVERFLOW correctly', () => {

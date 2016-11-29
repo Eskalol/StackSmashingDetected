@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import classNames from 'classnames';
 import * as KeyValueActions from '../../actions/keyValue';
 
 export class Value extends Component {
@@ -39,8 +40,9 @@ export class Value extends Component {
   }
 
   render() {
+    const containerClassNames = classNames('container', {success: this.props.keyObject.new});
     return (
-      <div className="container">
+      <div className={containerClassNames}>
         <div className="row">
           <div className="col-sm-3">
             <div className="align-left">

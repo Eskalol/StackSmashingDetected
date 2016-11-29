@@ -50,6 +50,10 @@
     text-overflow: ellipsis;
     max-width: 200px;
   }
+
+  .text-error {
+    color: $error;
+  }
 }
 
 .container-header {
