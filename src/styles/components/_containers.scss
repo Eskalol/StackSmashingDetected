@@ -42,6 +42,8 @@
     &:hover {
       color: $text-color;
     }
+    width: 20rem;
+    overflow: hidden;
   }
 
   .hidden-overflow {
