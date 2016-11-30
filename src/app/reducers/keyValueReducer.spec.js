@@ -417,4 +417,17 @@ describe('keyvalue reducer', () => {
       ]
     });
   });
+  it('should handle KEY_VALUE_ERROR', () => {
+    expect(keyValues(undefined, {
+      type: types.KEY_VALUE_ERROR,
+      msg: 'lol'
+    })).toEqual({
+      items: [],
+      loading: false,
+      add: false,
+      keyCnt: 0,
+      error: true,
+      message: 'lol'
+    });
+  });
 });
