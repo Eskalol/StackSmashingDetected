@@ -102,7 +102,9 @@ export default function keyValues(state = initialState, action) {
           metadata: {},
           value: action.value,
           loading: false,
-          new: true
+          new: true,
+          overflow: action.value.length > 100,
+          showValue: action.value.length <= 100
         }, ...state.items]
       });
 
