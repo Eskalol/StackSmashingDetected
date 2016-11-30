@@ -7,7 +7,7 @@ const initialState = {
   namespaceCnt: 0
 };
 
-export default function namespaces(state = initialState, action) {
+export default function analysisReducer(state = initialState, action) {
   switch (action.type) {
     case REQUEST_KEYS:
       return Object.assign({}, state, {
@@ -17,9 +17,6 @@ export default function namespaces(state = initialState, action) {
     case RECEIVE_KEYS:
       return Object.assign({}, state, {
         items: state.items.map(n =>
-          // n.namespace === action.namespace ?
-          //   Object.assign({}, n, {keyCnt: action.keyCnt}) :
-          //   n
             n === action.namespace ?
               [n, action.keyCnt] :
               n
@@ -38,10 +35,8 @@ export default function namespaces(state = initialState, action) {
       return Object.assign({}, state, {
         itemCnt: action.itemCnt,
         items: action.namespaces.map(namespace => {
-          // console.log("Got namespaces: ", namespace);
           return namespace;
         })
-        // loading: false
       });
 
     default:
