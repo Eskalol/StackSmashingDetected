@@ -305,7 +305,9 @@ describe('keyvalue reducer', () => {
           metadata: {},
           value: "Test value",
           loading: false,
-          new: true
+          new: true,
+          overflow: false,
+          showValue: true
         }
       ],
       error: false,
