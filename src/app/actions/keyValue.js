@@ -14,9 +14,9 @@ import {REQUEST_KEYS,
         KEY_VALUE_ERROR} from '../constants/keyValueTypes';
 
 export const requestKeys = () => ({type: REQUEST_KEYS});
-export const receiveKeys = keys => ({type: RECEIVE_KEYS, keys, receivedAt: Date.now()});
-export const receiveMetadata = (metadata, id) => ({type: RECEIVE_METADATA, metadata, id, receivedAt: Date.now()});
-export const receiveValue = (value, id) => ({type: RECEIVE_VALUE, value, id, receivedAt: Date.now()});
+export const receiveKeys = keys => ({type: RECEIVE_KEYS, keys});
+export const receiveMetadata = (metadata, id) => ({type: RECEIVE_METADATA, metadata, id});
+export const receiveValue = (value, id) => ({type: RECEIVE_VALUE, value, id});
 export const toggleEdit = id => ({type: TOGGLE_EDIT, id});
 export const handleToggleAdd = () => ({type: TOGGLE_ADD});
 export const deleteKeyValue = id => ({type: DELETE_KEY_VALUE, id});

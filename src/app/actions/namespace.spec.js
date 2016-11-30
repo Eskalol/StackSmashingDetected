@@ -10,8 +10,7 @@ describe('Namespace actions', () => {
   it('should create RECEIVE_NAMESPACES action', () => {
     expect(actions.receiveNamespaces('some lol')).toEqual({
       type: RECEIVE_NAMESPACES,
-      namespaces: 'some lol',
-      receivedAt: Date.now()
+      namespaces: 'some lol'
     });
   });
 });

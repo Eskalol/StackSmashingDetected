@@ -13,8 +13,7 @@ export function receiveNamespaces(json) {
   console.log(json);
   return {
     type: RECEIVE_NAMESPACES,
-    namespaces: json,
-    receivedAt: Date.now()
+    namespaces: json
   };
 }
 
