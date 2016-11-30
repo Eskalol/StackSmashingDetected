@@ -10,7 +10,6 @@ describe('Analysis actions', () => {
   it('should create RECEIVE_KEYS action', () => {
     expect(actions.receiveKeys(['cool', 'lol'], 'cool')).toEqual({
       type: RECEIVE_KEYS,
-      receivedAt: Date.now(),
       keyCnt: 2,
       namespace: 'cool'
     });
@@ -19,8 +18,7 @@ describe('Analysis actions', () => {
     expect(actions.receiveNamespaces(['imba', 'lol', 'cool'])).toEqual({
       type: RECEIVE_NAMESPACES,
       itemCnt: 3,
-      namespaces: ['imba', 'lol', 'cool'],
-      receivedAt: Date.now()
+      namespaces: ['imba', 'lol', 'cool']
     });
   });
   it('should create REQUEST_NAMESPACES action', () => {

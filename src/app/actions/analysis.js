@@ -12,8 +12,7 @@ export function receiveNamespaces(namespaces) {
   return {
     type: RECEIVE_NAMESPACES,
     itemCnt: namespaces.length,
-    namespaces,
-    receivedAt: Date.now()
+    namespaces
   };
 }
 
@@ -25,7 +24,6 @@ export function requestKeys() {
 export function receiveKeys(keys, namespace) {
   return {
     type: RECEIVE_KEYS,
-    receivedAt: Date.now(),
     keyCnt: keys.length,
     namespace
   };
